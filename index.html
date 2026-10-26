@@ -122,8 +122,8 @@
 
         /* 3D Borderless Seamless Feather Mask - Dissolves ALL 4 corners AND edges into #14171f */
         .mask-radial-feather {
-            mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 35%, rgba(0, 0, 0, 0.85) 55%, rgba(0, 0, 0, 0.35) 75%, transparent 92%);
-            -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 35%, rgba(0, 0, 0, 0.85) 55%, rgba(0, 0, 0, 0.35) 75%, transparent 92%);
+            mask-image: radial-gradient(ellipse 96% 94% at 50% 50%, #000 80%, rgba(0, 0, 0, 0.85) 92%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 96% 94% at 50% 50%, #000 80%, rgba(0, 0, 0, 0.85) 92%, transparent 100%);
         }
     
         /* Accordion Smooth Expand & Cascade Animation */
@@ -397,25 +397,25 @@ window.MESH_DATA = {
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#f5d26e] animate-ping"></span>
                                     Tùy Chọn Màu
                                 </span>
-                                <span id="active-mode-label" class="text-[9px] font-bold text-white/80 uppercase tracking-tight">Trắng Tinh</span>
+                                <span id="active-mode-label" class="text-[9px] font-bold text-white/80 uppercase tracking-tight">Màu Thực Tế</span>
                             </div>
 
-                            <!-- Nút 1: Phôi Trắng Tinh (Không có dòng note thừa) -->
+                            <!-- Nút 1: Phôi Trắng Tinh (Fill trắng toàn bộ sản phẩm) -->
                             <button type="button" onclick="set3DFinishMode('white')" id="btn-finish-white"
-                                    class="finish-mode-btn active group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#1e222e] border-2 border-[#d4af37] text-left transition-all duration-300 shadow-[0_2px_12px_rgba(212,175,55,0.25)] focus:outline-none cursor-pointer">
+                                    class="finish-mode-btn group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
                                 <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-white via-[#f1f5f9] to-[#cbd5e1] border border-white shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#0f172a]">
                                     ⚪
                                 </div>
-                                <span class="text-xs font-black text-white group-hover:text-[#f5d26e] truncate">Phôi Trắng Tinh</span>
+                                <span class="text-xs font-black text-[#cbd5e1] group-hover:text-white truncate">Phôi Trắng Tinh</span>
                             </button>
 
-                            <!-- Nút 2: Lên Màu Thực Tế (Không có dòng note thừa) -->
+                            <!-- Nút 2: Lên Màu Thực Tế (Mặc định: Thân vàng gold, đế đá thềm lục địa) -->
                             <button type="button" onclick="set3DFinishMode('real')" id="btn-finish-real"
-                                    class="finish-mode-btn group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
+                                    class="finish-mode-btn active group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#1e222e] border-2 border-[#d4af37] text-left transition-all duration-300 shadow-[0_2px_12px_rgba(212,175,55,0.25)] focus:outline-none cursor-pointer">
                                 <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#faf0d2] via-[#b88648] to-[#12151c] border border-[#d4af37] shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#faf0d2]">
                                     ✨
                                 </div>
-                                <span class="text-xs font-black text-[#e2e8f0] group-hover:text-white truncate">Lên Màu Thực Tế</span>
+                                <span class="text-xs font-black text-white group-hover:text-[#f5d26e] truncate">Lên Màu Thực Tế</span>
                             </button>
 
                             <!-- BẢNG TÔ MÀU RIÊNG CHO PHẦN TƯỢNG ĐỒNG VÀNG -->
@@ -439,7 +439,7 @@ window.MESH_DATA = {
 
                     
                     <!-- 3D Stage Container with Flanking Side Controls & Callout Pins -->
-                    <div class="relative w-full max-w-5xl h-[480px] sm:h-[580px] md:h-[660px] lg:h-[720px] flex items-center justify-center mask-radial-feather select-none cursor-grab active:cursor-grabbing">
+                    <div class="relative w-full max-w-5xl h-[480px] sm:h-[580px] md:h-[660px] lg:h-[720px] flex items-center justify-center select-none cursor-grab active:cursor-grabbing">
                         
                         <!-- ThreeJS WebGL Canvas Container -->
                         <div id="threejs-canvas-container" class="absolute inset-0 w-full h-full"></div>
@@ -516,7 +516,7 @@ window.MESH_DATA = {
                                     id="btn-toggle-spin"
                                     class="px-3.5 py-1.5 rounded-full bg-[#161922]/90 hover:bg-[#161922] text-[#f5d26e] hover:text-white border border-[#d4af37]/30 shadow-md backdrop-blur-md text-[11px] font-bold transition-all flex items-center gap-1.5 focus:outline-none">
                                 <span class="w-2 h-2 rounded-full bg-[#d4af37] animate-ping"></span>
-                                <span id="text-toggle-spin">Tự Xoay 360°</span>
+                                <span id="text-toggle-spin">Tạm dừng</span>
                             </button>
                         </div>
 
@@ -1769,24 +1769,25 @@ window.MESH_DATA = {
                 if (currentMesh2) currentMesh2.visible = true;
                 if (currentMesh3) currentMesh3.visible = false; // Hide bronze to focus on stone
                 if (threeCamera) {
-                    threeCamera.position.set(0, 25, 300);
-                    threeCamera.lookAt(0, -10, 0);
+                    threeCamera.position.set(0, -50, 520);
+                    threeCamera.lookAt(0, -85, 0);
                 }
             } else if (mode === 'bronze') {
                 if (currentMesh1) currentMesh1.visible = false;
                 if (currentMesh2) currentMesh2.visible = false;
                 if (currentMesh3) currentMesh3.visible = true; // Hide stone to focus on bronze
                 if (threeCamera) {
-                    threeCamera.position.set(0, 95, 380);
-                    threeCamera.lookAt(0, 40, 0);
+                    threeCamera.position.set(0, 85, 660);
+                    threeCamera.lookAt(0, 65, 0);
                 }
             } else {
+                // Toàn Cảnh Trực Diện: Bao quát trọn vẹn sản phẩm đặt trên bệ đá
                 if (currentMesh1) currentMesh1.visible = true;
                 if (currentMesh2) currentMesh2.visible = true;
                 if (currentMesh3) currentMesh3.visible = true;
                 if (threeCamera) {
-                    threeCamera.position.set(0, 105, 580);
-                    threeCamera.lookAt(0, 45, 0);
+                    threeCamera.position.set(0, 35, 780);
+                    threeCamera.lookAt(0, 20, 0);
                 }
             }
         }
@@ -1803,9 +1804,10 @@ window.MESH_DATA = {
             // 1. Scene
             threeScene = new THREE.Scene();
 
-            // 2. Camera
+            // 2. Camera - Góc Cam Toàn Cảnh Đối Diện Sản Phẩm Đặt Trên Bệ Đá
             threeCamera = new THREE.PerspectiveCamera(38, width / height, 0.1, 5000);
-            threeCamera.position.set(0, 50, 480);
+            threeCamera.position.set(0, 35, 780);
+            threeCamera.lookAt(0, 20, 0);
 
             // 3. Renderer with Alpha & Antialias
             threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
@@ -1817,9 +1819,7 @@ window.MESH_DATA = {
             threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
             container.appendChild(threeRenderer.domElement);
 
-            // 4. FIXED CAMERA & DIRECT OBJECT TURNTABLE INTERACTION
-            // Camera is locked permanently at the golden executive vantage point.
-            // When user drags, ONLY the product model rotates horizontally (turntable) - no camera disorientation.
+            // 4. FIXED CAMERA & DIRECT OBJECT TURNTABLE INTERACTION (XOAY TẠI CHỖ)
             let isDragging = false;
             let previousMouseX = 0;
             const dom = threeRenderer.domElement;
@@ -1837,10 +1837,11 @@ window.MESH_DATA = {
                 const deltaX = e.clientX - previousMouseX;
                 previousMouseX = e.clientX;
 
-                // Directly rotate the product around its vertical axis (z-axis in z-up model space)
-                threeModelGroup.rotation.z += deltaX * 0.008;
+                // Xoay tròn mượt mà quanh trục Y tại đúng 1 vị trí cố định
+                threeModelGroup.rotation.y += deltaX * 0.008;
 
-                const deg = Math.round(((-threeModelGroup.rotation.z * 180 / Math.PI) % 360 + 360) % 360);
+                const diff = threeModelGroup.rotation.y - 1.486;
+                const deg = Math.round(((diff * 180 / Math.PI) % 360 + 360) % 360);
                 const label = document.getElementById('label-3d-angle');
                 if (label) label.textContent = `GÓC XOAY ${deg}°`;
             });
@@ -1850,11 +1851,10 @@ window.MESH_DATA = {
                 if (dom) dom.style.cursor = 'grab';
             });
 
-            // Gentle zoom on mouse wheel without changing camera angle
             dom.addEventListener('wheel', (e) => {
                 e.preventDefault();
                 if (!threeCamera) return;
-                threeCamera.position.z = Math.max(300, Math.min(850, threeCamera.position.z + e.deltaY * 0.45));
+                threeCamera.position.z = Math.max(380, Math.min(1200, threeCamera.position.z + e.deltaY * 0.5));
             }, { passive: false });
 
             // 5. Studio Lighting Setup
@@ -1905,132 +1905,171 @@ window.MESH_DATA = {
                 canvas.height = 1024;
                 const ctx = canvas.getContext('2d');
 
-                // 1. Phông nền chuyển màu dốc thẳng đứng:
-                // y = 1024 (Đáy cuối cùng của đế): Đen tuyền tuyệt đối (#000000 - #030406)
-                // y = 650 -> 1024 (Nửa dưới khối đế): Đen kịt huyền vũ đanh chắc
-                // y = 0 -> 600 (Phần trên của đế): Nền đá trầm tích sẫm màu để các dải vân màu và hạt lấp lánh nổi bật
+                // ==========================================
+                // 1. NỀN CHUYỂN MÀU ĐÁ THỀM LỤC ĐỊA & TRẦM TÍCH ĐÁY BIỂN
+                // ==========================================
+                // y = 0..300: Phần trên (Đá phiến xám tro & than trầm tích tự nhiên)
+                // y = 300..720: Phần giữa (Nền đá xanh thẫm đại dương & thềm lục địa)
+                // y = 720..1024: Phần đáy (Đen tuyền huyền vũ đanh chắc)
                 const bgGrad = ctx.createLinearGradient(0, 0, 0, 1024);
-                bgGrad.addColorStop(0, '#10141d');      // Đỉnh đế: Xám than trầm tích
-                bgGrad.addColorStop(0.35, '#0b0e14');   // Giữa trên: Đen thềm lục địa
-                bgGrad.addColorStop(0.60, '#05070a');   // Giữa dưới: Đen sẫm chuyển tối
-                bgGrad.addColorStop(0.75, '#020204');   // Gần đáy: Đen tuyền
-                bgGrad.addColorStop(1.0, '#000000');    // Cuối đế: Đen tuyền tuyệt đối 100%
+                bgGrad.addColorStop(0, '#262d3a');      // Đỉnh đế: Xám đá tự nhiên
+                bgGrad.addColorStop(0.18, '#1a202c');   // Thân trên: Đá trầm tích sẫm màu
+                bgGrad.addColorStop(0.38, '#101622');   // Chuyển tiếp giữa
+                bgGrad.addColorStop(0.55, '#0b101b');   // Giữa đế: Thềm địa chất sẫm
+                bgGrad.addColorStop(0.75, '#04070c');   // Gần đáy: Đen huyền vũ
+                bgGrad.addColorStop(1.0, '#000000');    // Đáy cùng: Đen tuyền tuyệt đối 100%
                 ctx.fillStyle = bgGrad;
                 ctx.fillRect(0, 0, 1024, 1024);
 
-                // 2. Dải Vân Địa Chất Đa Sắc ở Phần Trên Đế (y từ 0 đến 620, tắt dần trước khi xuống đáy):
-                for (let i = 0; i < 60; i++) {
-                    const y = (i / 60) * 620; // Chỉ vẽ trên 60% chiều cao phía trên, đáy dưới hoàn toàn đen
-                    const fadeRatio = 1 - (y / 620); // Càng xuống dưới càng mờ dần vào màu đen
+                // ==========================================
+                // 2. PHẦN TRÊN CỦA ĐẾ (y từ 0 đến 380): NHÌN GIỐNG MÀU ĐÁ HƠN, NHIỀU VÂN ĐÁ TỰ NHIÊN HƠN
+                // ==========================================
+                // 2.1. Lớp vi hạt đá tự nhiên (Stone mineral granularity / noise):
+                for (let g = 0; g < 1500; g++) {
+                    const gx = Math.random() * 1024;
+                    const gy = Math.random() * 380;
+                    const gSize = 0.5 + Math.random() * 1.8;
+                    const gAlpha = 0.15 + Math.random() * 0.45;
+                    const gRand = Math.random();
+                    if (gRand > 0.6) ctx.fillStyle = `rgba(200, 215, 235, ${gAlpha})`;
+                    else if (gRand > 0.3) ctx.fillStyle = `rgba(140, 155, 175, ${gAlpha})`;
+                    else ctx.fillStyle = `rgba(240, 245, 255, ${gAlpha * 0.8})`;
+                    ctx.fillRect(gx, gy, gSize, gSize);
+                }
+
+                // 2.2. Hệ thống vân nứt tự nhiên của đá (Fracture & Marble Fissures) ở phần trên:
+                for (let f = 0; f < 38; f++) {
+                    let fx = Math.random() * 1024;
+                    let fy = 15 + Math.random() * 330;
+                    ctx.beginPath();
+                    ctx.moveTo(fx, fy);
+                    const segments = 6 + Math.floor(Math.random() * 8);
+                    for (let s = 0; s < segments; s++) {
+                        fx += (Math.random() - 0.45) * 45;
+                        fy += (Math.random() - 0.2) * 25;
+                        ctx.lineTo(fx, fy);
+                    }
+                    const fAlpha = 0.35 + Math.random() * 0.55;
+                    ctx.strokeStyle = (f % 2 === 0) 
+                        ? `rgba(255, 255, 255, ${fAlpha})` 
+                        : `rgba(180, 200, 225, ${fAlpha * 0.85})`;
+                    ctx.lineWidth = 0.8 + Math.random() * 1.6;
+                    ctx.stroke();
+                }
+
+                // 2.3. Các dải vân địa tầng lượn sóng ngang ở phần trên:
+                for (let i = 0; i < 45; i++) {
+                    const y = (i / 45) * 360;
+                    const fadeRatio = 1 - (y / 400);
 
                     ctx.beginPath();
-                    ctx.moveTo(0, y + 40 + (Math.sin(i * 0.32) * 30));
+                    ctx.moveTo(0, y + 25 + (Math.sin(i * 0.45) * 20));
                     ctx.bezierCurveTo(
-                        280, y + 10 + (Math.cos(i * 0.4) * 40),
-                        650, y - 45 + (Math.sin(i * 0.46) * 45),
-                        1024, y - 80 + (Math.cos(i * 0.35) * 35)
+                        280, y + (Math.cos(i * 0.5) * 25),
+                        680, y - 15 + (Math.sin(i * 0.4) * 25),
+                        1024, y + 10 + (Math.cos(i * 0.35) * 20)
                     );
 
-                    if (i % 7 === 0) {
-                        // Sa thạch vàng óng ánh (Golden Sandstone)
-                        ctx.strokeStyle = `rgba(245, 196, 110, ${0.92 * fadeRatio})`;
-                        ctx.lineWidth = 4.5;
-                    } else if (i % 5 === 0) {
-                        // Sa thạch hổ phách đồng (Amber Copper Stratum)
-                        ctx.strokeStyle = `rgba(217, 149, 72, ${0.88 * fadeRatio})`;
-                        ctx.lineWidth = 3.5;
-                    } else if (i % 3 === 0) {
-                        // Vân thạch anh sáng lấp lánh (Bright Quartz Mineral)
-                        ctx.strokeStyle = `rgba(255, 240, 215, ${0.95 * fadeRatio})`;
-                        ctx.lineWidth = 2.2;
+                    if (i % 6 === 0) {
+                        ctx.strokeStyle = `rgba(240, 248, 255, ${0.85 * fadeRatio})`;
+                        ctx.lineWidth = 3.2;
                     } else if (i % 4 === 0) {
-                        // Dải đất nung ấm (Terracotta Mineral Vein)
-                        ctx.strokeStyle = `rgba(184, 91, 59, ${0.75 * fadeRatio})`;
-                        ctx.lineWidth = 3;
+                        ctx.strokeStyle = `rgba(215, 175, 115, ${0.7 * fadeRatio})`;
+                        ctx.lineWidth = 2.4;
+                    } else if (i % 3 === 0) {
+                        ctx.strokeStyle = `rgba(190, 205, 225, ${0.75 * fadeRatio})`;
+                        ctx.lineWidth = 2.0;
                     } else {
-                        // Vân đá phiến sẫm tạo độ sâu 3D
-                        ctx.strokeStyle = `rgba(20, 25, 35, ${0.65 * fadeRatio})`;
-                        ctx.lineWidth = 1.5;
+                        ctx.strokeStyle = `rgba(15, 20, 30, ${0.65 * fadeRatio})`;
+                        ctx.lineWidth = 1.6;
                     }
                     ctx.stroke();
                 }
 
-                // 3. Vân Xoáy Địa Tầng Đồng Tâm ở Mặt Trước (Vortex Whorl quanh dấu mốc 20 năm, nằm ở phần trên)
-                const vortexCx = 320, vortexCy = 480;
-                for (let r = 10; r < 360; r += 7) {
-                    const rRatio = Math.max(0, 1 - (r / 360));
+                // ==========================================
+                // 3. PHẦN GIỮA CỦA ĐẾ (y từ 320 đến 740): DÒNG CHẢY XUÔI TỪ TRÊN XUỐNG
+                // 3 Gam màu chủ đạo: Trắng, Xanh dương nhạt, Xanh dương đậm
+                // ==========================================
+                const numStreams = 44;
+                for (let s = 0; s < numStreams; s++) {
+                    const startX = (s / numStreams) * 1024 + (Math.random() * 20 - 10);
+                    const startY = 310 + Math.random() * 60;   // Bắt đầu từ phần giáp ranh giữa
+                    const endY = 660 + Math.random() * 90;     // Chảy xuôi xuống gần đáy
+                    const streamLen = endY - startY;
+
+                    // Điểm uốn lượn dòng chảy tự nhiên
+                    const swing1 = (Math.sin(s * 0.7) * 25) + (Math.random() * 14 - 7);
+                    const swing2 = (Math.cos(s * 0.6) * 35) + (Math.random() * 16 - 8);
+
+                    // 3.1. Dòng chảy nền XANH DƯƠNG ĐẬM (Deep Oceanic / Petroleum Navy Flow)
                     ctx.beginPath();
-                    for (let a = -Math.PI * 0.7; a <= Math.PI * 0.8; a += 0.05) {
-                        const wave = Math.sin(a * 4 + r * 0.08) * 5;
-                        const rx = r * 0.9 + wave;
-                        const ry = r * 1.25 + wave;
-                        const px = vortexCx + Math.cos(a) * rx;
-                        const py = vortexCy + Math.sin(a) * ry;
-                        if (a === -Math.PI * 0.7) ctx.moveTo(px, py);
-                        else ctx.lineTo(px, py);
-                    }
-                    if (r % 28 === 0) {
-                        ctx.strokeStyle = `rgba(245, 210, 110, ${0.9 * rRatio})`;
-                        ctx.lineWidth = 3.5;
-                    } else if (r % 21 === 0) {
-                        ctx.strokeStyle = `rgba(200, 130, 60, ${0.85 * rRatio})`;
-                        ctx.lineWidth = 2.8;
-                    } else if (r % 14 === 0) {
-                        ctx.strokeStyle = `rgba(255, 245, 230, ${0.9 * rRatio})`;
-                        ctx.lineWidth = 1.8;
-                    } else {
-                        ctx.strokeStyle = `rgba(30, 36, 48, ${0.5 * rRatio})`;
-                        ctx.lineWidth = 1;
-                    }
+                    ctx.moveTo(startX, startY);
+                    ctx.bezierCurveTo(
+                        startX + swing1 * 0.8, startY + streamLen * 0.35,
+                        startX + swing2 * 0.9, startY + streamLen * 0.7,
+                        startX + swing1 * 0.5, endY
+                    );
+                    ctx.strokeStyle = (s % 3 === 0) ? 'rgba(30, 64, 175, 0.88)' : 'rgba(29, 78, 216, 0.78)';
+                    ctx.lineWidth = 4.5 + (s % 3) * 1.5;
+                    ctx.lineCap = 'round';
                     ctx.stroke();
-                }
 
-                // 4. HIỆU ỨNG LẤP LÁNH TINH THỂ KHOÁNG VẬT Ở PHẦN TRÊN ĐẾ (Sparkling Mineral Crystal Specks)
-                // Rải ~350 tinh thể thạch anh & vàng khoáng lấp lánh ở phần trên (y < 600)
-                for (let s = 0; s < 380; s++) {
-                    const sx = Math.random() * 1024;
-                    // Phân bổ hạt lấp lánh tập trung ở phần trên (y từ 30 đến 580)
-                    const sy = 30 + Math.pow(Math.random(), 1.4) * 550;
-                    const size = 1.0 + Math.random() * 2.2;
-                    const alpha = 0.4 + Math.random() * 0.6;
-
-                    // Hạt sáng đa sắc: Vàng gold kim loại, kim cương trắng, hổ phách ấm
-                    const randColor = Math.random();
-                    let color = `rgba(255, 235, 170, ${alpha})`;
-                    if (randColor > 0.65) color = `rgba(255, 255, 255, ${alpha + 0.15})`;
-                    else if (randColor > 0.35) color = `rgba(255, 205, 80, ${alpha})`;
-
-                    // Vẽ điểm sáng với hào quang lấp lánh
-                    ctx.fillStyle = color;
-                    ctx.beginPath();
-                    ctx.arc(sx, sy, size, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Các tinh thể lớn có tia lấp lánh chéo
-                    if (size > 2.0) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.8})`;
-                        ctx.lineWidth = 0.8;
+                    // 3.2. Dòng chảy phát sáng XANH DƯƠNG NHẠT (Light Cyan / Sky Blue Flow)
+                    if (s % 2 === 0 || s % 3 === 0) {
                         ctx.beginPath();
-                        ctx.moveTo(sx - 3, sy);
-                        ctx.lineTo(sx + 3, sy);
-                        ctx.moveTo(sx, sy - 3);
-                        ctx.lineTo(sx, sy + 3);
+                        ctx.moveTo(startX + 1, startY + 10);
+                        ctx.bezierCurveTo(
+                            startX + swing1 * 0.8 + 1, startY + streamLen * 0.35,
+                            startX + swing2 * 0.9 + 1, startY + streamLen * 0.7,
+                            startX + swing1 * 0.5 + 1, endY - 15
+                        );
+                        ctx.strokeStyle = (s % 4 === 0) ? 'rgba(147, 197, 253, 0.92)' : 'rgba(96, 165, 250, 0.85)';
+                        ctx.lineWidth = 2.4 + (s % 2) * 1.2;
+                        ctx.stroke();
+                    }
+
+                    // 3.3. Dòng chảy tinh thể TRẮNG SÁNG (Crisp Quartz / Pure Mineral White Flow)
+                    if (s % 3 === 0 || s % 5 === 0) {
+                        ctx.beginPath();
+                        ctx.moveTo(startX - 1, startY + 18);
+                        ctx.bezierCurveTo(
+                            startX + swing1 * 0.8 - 0.5, startY + streamLen * 0.38,
+                            startX + swing2 * 0.9 - 0.5, startY + streamLen * 0.68,
+                            startX + swing1 * 0.5 - 0.5, endY - 30
+                        );
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.96)';
+                        ctx.lineWidth = 1.4 + (s % 2) * 0.8;
                         ctx.stroke();
                     }
                 }
 
-                // Đảm bảo phần đáy cuối cùng (y từ 720 đến 1024) đen tuyền hoàn toàn
-                const bottomFade = ctx.createLinearGradient(0, 650, 0, 1024);
-                bottomFade.addColorStop(0, 'rgba(0,0,0,0)');
-                bottomFade.addColorStop(0.4, 'rgba(0,0,0,0.85)');
-                bottomFade.addColorStop(0.7, 'rgba(0,0,0,0.98)');
+                // 4. Các Giọt Năng Lượng & Tinh Thể Lấp Lánh Theo Dòng Chảy ở Phần Giữa:
+                for (let d = 0; d < 180; d++) {
+                    const dx = Math.random() * 1024;
+                    const dy = 350 + Math.random() * 320;
+                    const dSize = 1.0 + Math.random() * 2.2;
+                    const dRand = Math.random();
+                    
+                    ctx.beginPath();
+                    ctx.arc(dx, dy, dSize, 0, Math.PI * 2);
+                    if (dRand > 0.6) ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+                    else if (dRand > 0.3) ctx.fillStyle = 'rgba(147, 197, 253, 0.95)';
+                    else ctx.fillStyle = 'rgba(59, 130, 246, 0.85)';
+                    ctx.fill();
+                }
+
+                // 5. Đảm bảo phần đáy cuối cùng (y từ 720 đến 1024) đen tuyền đanh chắc
+                const bottomFade = ctx.createLinearGradient(0, 680, 0, 1024);
+                bottomFade.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                bottomFade.addColorStop(0.35, 'rgba(4, 7, 12, 0.7)');
+                bottomFade.addColorStop(0.65, 'rgba(2, 3, 6, 0.95)');
                 bottomFade.addColorStop(1.0, '#000000');
                 ctx.fillStyle = bottomFade;
-                ctx.fillRect(0, 650, 1024, 374);
+                ctx.fillRect(0, 680, 1024, 344);
 
                 const tex = new THREE.CanvasTexture(canvas);
                 tex.wrapS = THREE.RepeatWrapping;
-                tex.wrapT = THREE.ClampToEdgeWrapping; // Không lặp lại theo chiều dọc để đáy luôn đen tuyền
+                tex.wrapT = THREE.ClampToEdgeWrapping;
                 tex.repeat.set(2, 1);
                 return tex;
             }
@@ -2134,10 +2173,10 @@ window.MESH_DATA = {
                 side: THREE.DoubleSide
             });
 
-            // Current Active Mode Tracker
-            let currentFinishMode = 'white';
+                        // Current Active Mode Tracker
+            let currentFinishMode = 'real';
 
-            // Global Color Switcher Function
+            // Global Color Switcher Function (Nút Lớn ở Trên)
             window.set3DFinishMode = function(mode) {
                 currentFinishMode = mode;
                 const btnWhite = document.getElementById('btn-finish-white');
@@ -2145,6 +2184,7 @@ window.MESH_DATA = {
                 const label = document.getElementById('active-mode-label');
 
                 if (mode === 'white') {
+                    // Màu trắng tinh sẽ fill TRẮNG TINH TOÀN BỘ SẢN PHẨM (cả đế đá và thân tượng)
                     if (currentMesh1) currentMesh1.material = whiteBaseMaterial;
                     if (currentMesh3) currentMesh3.material = whiteSculptureMaterial;
                     if (currentMesh2) currentMesh2.material = whiteBadgeMaterial;
@@ -2159,6 +2199,7 @@ window.MESH_DATA = {
                     }
                     if (label) label.innerText = 'Trắng Tinh';
                 } else if (mode === 'real') {
+                    // Lên màu thực tế: Thân tượng đồng vàng, đế đá địa chất
                     if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
                     if (currentMesh3) currentMesh3.material = realisticSculptureMaterial;
                     if (currentMesh2) currentMesh2.material = realisticBadgeMaterial;
@@ -2175,31 +2216,36 @@ window.MESH_DATA = {
                 }
             };
 
-            // Custom Single-Click Color Swatch Fill
+            // Custom Single-Click Color Swatch Fill (Bảng Màu Nhỏ ở Dưới: Màu Tượng Đồng)
+            // Lưu ý theo yêu cầu: Nút màu trắng ở dưới sẽ CHỈ fill phần trên, còn phần đế VẪN GIỮ MÀU ĐÁ
             window.setCustomModelColor = function(hexColor, name) {
                 const label = document.getElementById('active-mode-label');
                 if (label) label.innerText = name || 'Tùy Chỉnh';
 
                 const customMat = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(hexColor),
-                    roughness: hexColor === '#ffffff' ? 0.55 : 0.28,
-                    metalness: hexColor === '#ffffff' ? 0.05 : 0.85,
+                    roughness: hexColor === '#ffffff' ? 0.45 : 0.28,
+                    metalness: hexColor === '#ffffff' ? 0.08 : 0.85,
                     side: THREE.DoubleSide
                 });
 
+                // Fill màu cho phần trên (thân tượng đồng và phù hiệu)
                 if (currentMesh3) currentMesh3.material = customMat;
                 if (currentMesh2) currentMesh2.material = customMat;
                 
-                // If pure white selected from swatch, fill base as white too
-                if (hexColor === '#ffffff') {
-                    if (currentMesh1) currentMesh1.material = whiteBaseMaterial;
-                } else if (hexColor === '#14171f') {
-                    if (currentMesh1) currentMesh1.material = new THREE.MeshStandardMaterial({
-                        color: 0x14171f, roughness: 0.65, metalness: 0.2, side: THREE.FrontSide
-                    });
-                } else {
-                    // Keep realistic strata base or harmonize with color
-                    if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
+                // Phần đế VẪN GIỮ MÀU ĐÁ THỰC TẾ ĐỊA CHẤT (không bị fill trắng)
+                if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
+
+                // Cập nhật trạng thái nút
+                const btnWhite = document.getElementById('btn-finish-white');
+                const btnReal = document.getElementById('btn-finish-real');
+                if (btnWhite) {
+                    btnWhite.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]');
+                    btnWhite.classList.add('border-[#d4af37]/25');
+                }
+                if (btnReal) {
+                    btnReal.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]');
+                    btnReal.classList.add('border-[#d4af37]/25');
                 }
             };
 
@@ -2248,55 +2294,72 @@ window.MESH_DATA = {
                 return geometry;
             }
 
+            let modelInnerGroup = null;
+
             try {
                 if (window.MESH_DATA) {
-                    // SubTool 1: Stone Base
+                    modelInnerGroup = new THREE.Group();
+
+                    // SubTool 1: Stone Base (Khối đế đá trầm tích địa chất)
                     if (window.MESH_DATA.subTool1) {
                         const geom1 = unpackVerticesToGeometry(window.MESH_DATA.subTool1);
                         if (geom1) {
-                            const mesh1 = new THREE.Mesh(geom1, whiteBaseMaterial);
+                            const mesh1 = new THREE.Mesh(geom1, realisticStoneMaterial);
                             currentMesh1 = mesh1;
-                            threeModelGroup.add(mesh1);
+                            modelInnerGroup.add(mesh1);
                         }
                     }
 
-                    // SubTool 2: 20-Year Emblem / Badge
+                    // SubTool 2: 20-Year Emblem / Badge (Phù hiệu kỷ niệm 20 năm)
                     if (window.MESH_DATA.subTool2) {
                         const geom2 = unpackVerticesToGeometry(window.MESH_DATA.subTool2);
                         if (geom2) {
-                            const mesh2 = new THREE.Mesh(geom2, whiteBadgeMaterial);
+                            const mesh2 = new THREE.Mesh(geom2, realisticBadgeMaterial);
                             currentMesh2 = mesh2;
-                            threeModelGroup.add(mesh2);
+                            modelInnerGroup.add(mesh2);
                         }
                     }
 
-                    // SubTool 3: Bronze Flowing Sculpture
+                    // SubTool 3: Bronze Flowing Sculpture (Thân tượng đồng vươn cao)
                     if (window.MESH_DATA.subTool3) {
                         const geom3 = unpackVerticesToGeometry(window.MESH_DATA.subTool3);
                         if (geom3) {
-                            const mesh3 = new THREE.Mesh(geom3, whiteSculptureMaterial);
+                            const mesh3 = new THREE.Mesh(geom3, realisticSculptureMaterial);
                             currentMesh3 = mesh3;
-                            threeModelGroup.add(mesh3);
+                            modelInnerGroup.add(mesh3);
                         }
                     }
 
-                    // Auto Center & Orient Z-up STL to Three.js Y-up
-                    // In ZBrush STL: Z is up, X/Y is base. We rotate X by -90 deg
-                    threeModelGroup.rotation.x = -Math.PI / 2;
+                    // ==========================================
+                    // THIẾT LẬP TRỌNG TÂM CỐ ĐỊNH: SẢN PHẨM XOAY TRÒN TẠI CHỖ (ZERO WOBBLE)
+                    // ==========================================
+                    // 1. Chuyển đổi hệ tọa độ Z-up (ZBrush STL) sang Y-up (Three.js) bên trong modelInnerGroup
+                    modelInnerGroup.rotation.x = -Math.PI / 2;
 
-                    const box = new THREE.Box3().setFromObject(threeModelGroup);
+                    // 2. Tính toán chính xác trọng tâm thực tế của toàn bộ sản phẩm
+                    const box = new THREE.Box3().setFromObject(modelInnerGroup);
                     const center = box.getCenter(new THREE.Vector3());
-                    const size = box.getSize(new THREE.Vector3());
 
-                    // Center the model in scene
-                    threeModelGroup.position.x = -center.x;
-                    threeModelGroup.position.y = -center.y + 15;
-                    threeModelGroup.position.z = -center.z;
+                    // 3. DỊCH CHUYỂN modelInnerGroup ĐÚNG BẰNG -center:
+                    // Đưa trục xoay của cha (0,0,0) đi xuyên qua chính xác đường tâm trọng lực của tác phẩm!
+                    modelInnerGroup.position.set(-center.x, -center.y, -center.z);
 
-                    // Golden Executive Vantage Point: Toàn Thể Bao Quát Như Ảnh Mẫu (Đế Đá + Thân Vàng + Đỉnh Vương Miện)
-                    // Camera bao quát trọn vẹn 100% chiều cao tác phẩm với khoảng cách tối ưu
-                    threeCamera.position.set(0, 105, 580);
-                    threeCamera.lookAt(0, 45, 0);
+                    // 4. Nhóm bàn xoay threeModelGroup nằm tại 1 vị trí cố định vững vàng trong không gian
+                    threeModelGroup = new THREE.Group();
+                    threeModelGroup.add(modelInnerGroup);
+                    threeScene.add(threeModelGroup);
+
+                    // Đặt tượng cố định tại 1 vị trí vững chắc trong khung hình
+                    threeModelGroup.position.set(0, 10, 0);
+
+                    // 5. GÓC XOAY ĐỐI DIỆN MẶT TRƯỚC SẢN PHẨM:
+                    // Điểm chạm 20 năm và dòng chảy đồng hướng thẳng về phía camera
+                    const initialFrontAngle = 1.486; // ~85.1 độ đưa phù hiệu mặt trước ra chính diện (+Z)
+                    threeModelGroup.rotation.y = initialFrontAngle;
+
+                    // 6. Camera toàn cảnh: Nhìn rõ từ đỉnh vương miện đến chân đế đá
+                    threeCamera.position.set(0, 35, 780);
+                    threeCamera.lookAt(0, 20, 0);
 
                     // Hide loading indicator smoothly
                     if (loadingOverlay) {
@@ -2322,13 +2385,14 @@ window.MESH_DATA = {
                 threeRenderer.setSize(newW, newH);
             });
 
-            // 8. Animation Render Loop
+            // 8. Animation Render Loop: Sản phẩm tự xoay tròn 360 độ tại 1 vị trí cố định
             function animateThree() {
                 requestAnimationFrame(animateThree);
 
                 if (is3DAutoSpinning && threeModelGroup) {
-                    threeModelGroup.rotation.z += 0.007; // Smooth 360 degree spin
-                    const deg = Math.round(((-threeModelGroup.rotation.z * 180 / Math.PI) % 360 + 360) % 360);
+                    threeModelGroup.rotation.y += 0.0055; // Tự xoay mượt mà tại chỗ quanh trục trọng tâm
+                    const diff = threeModelGroup.rotation.y - 1.486;
+                    const deg = Math.round(((diff * 180 / Math.PI) % 360 + 360) % 360);
                     const label = document.getElementById('label-3d-angle');
                     if (label) label.textContent = `GÓC XOAY ${deg}°`;
                 }
@@ -2339,18 +2403,19 @@ window.MESH_DATA = {
             animateThree();
         }
 
-        // Rotate Controls Hook
+        // Rotate Controls Hook (Nút Mũi Tên Trái / Phải)
         function rotate3DView(direction) {
             is3DAutoSpinning = false;
             updateSpinButtonUI(false);
             if (threeModelGroup) {
-                const step = 0.22; // ~12.5 degrees per click
+                const step = 0.22; // ~12.5 độ
                 if (direction === 'left') {
-                    threeModelGroup.rotation.z -= step;
+                    threeModelGroup.rotation.y -= step;
                 } else {
-                    threeModelGroup.rotation.z += step;
+                    threeModelGroup.rotation.y += step;
                 }
-                const deg = Math.round(((-threeModelGroup.rotation.z * 180 / Math.PI) % 360 + 360) % 360);
+                const diff = threeModelGroup.rotation.y - 1.486;
+                const deg = Math.round(((diff * 180 / Math.PI) % 360 + 360) % 360);
                 const label = document.getElementById('label-3d-angle');
                 if (label) label.textContent = `GÓC XOAY ${deg}°`;
             }
