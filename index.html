@@ -382,19 +382,71 @@ window.MESH_DATA = {
                         <div class="h-[2px] w-20 bg-[#d4af37] rounded-full"></div>
                     </div>
                     <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl text-[#f5d26e] font-extrabold mb-3 tracking-tight">Chiêm Ngưỡng Tác Phẩm 3D</h2>
-                    <p class="text-[#94a3b8] font-medium text-sm md:text-base max-w-2xl leading-relaxed">
-                        Tác phẩm quay trực tiếp trên nền web với hiệu ứng làm mờ hoàn toàn 4 góc và các cạnh — liền mạch, không khung viền.
-                    </p>
+                    
                 </div>
 
                 <!-- BORDERLESS 3D HOLOGRAPHIC STAGE (Clean Canvas + Flanking Controls + Interactive Part Callouts) -->
                 <div class="reveal delay-200 relative max-w-6xl w-full mx-auto flex flex-col items-center justify-center">
+
+                    <!-- FLOATING COLOR SELECTOR (ĐẶT NGOÀI mask-radial-feather, z-40 KHÔNG BỊ MẤT GÓC HAY MỜ GRADIENT) -->
+                    <div class="absolute right-3 sm:right-6 top-3 sm:top-5 z-40 select-none animate-fade-in pointer-events-auto">
+                        <div class="p-2.5 rounded-2xl bg-[#141720]/95 backdrop-blur-xl border border-[#d4af37]/40 shadow-[0_8px_32px_rgba(0,0,0,0.6)] flex flex-col gap-2 w-[190px] sm:w-[210px]">
+                            <!-- Header -->
+                            <div class="flex items-center justify-between px-1 pb-1 border-b border-[#d4af37]/20">
+                                <span class="text-[10px] font-black uppercase tracking-wider text-[#d4af37] flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#f5d26e] animate-ping"></span>
+                                    Tùy Chọn Màu
+                                </span>
+                                <span id="active-mode-label" class="text-[9px] font-bold text-white/80 uppercase tracking-tight">Trắng Tinh</span>
+                            </div>
+
+                            <!-- Nút 1: Phôi Trắng Tinh (Không có dòng note thừa) -->
+                            <button type="button" onclick="set3DFinishMode('white')" id="btn-finish-white"
+                                    class="finish-mode-btn active group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#1e222e] border-2 border-[#d4af37] text-left transition-all duration-300 shadow-[0_2px_12px_rgba(212,175,55,0.25)] focus:outline-none cursor-pointer">
+                                <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-white via-[#f1f5f9] to-[#cbd5e1] border border-white shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#0f172a]">
+                                    ⚪
+                                </div>
+                                <span class="text-xs font-black text-white group-hover:text-[#f5d26e] truncate">Phôi Trắng Tinh</span>
+                            </button>
+
+                            <!-- Nút 2: Lên Màu Thực Tế (Không có dòng note thừa) -->
+                            <button type="button" onclick="set3DFinishMode('real')" id="btn-finish-real"
+                                    class="finish-mode-btn group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
+                                <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#faf0d2] via-[#b88648] to-[#12151c] border border-[#d4af37] shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#faf0d2]">
+                                    ✨
+                                </div>
+                                <span class="text-xs font-black text-[#e2e8f0] group-hover:text-white truncate">Lên Màu Thực Tế</span>
+                            </button>
+
+                            <!-- BẢNG TÔ MÀU RIÊNG CHO PHẦN TƯỢNG ĐỒNG VÀNG -->
+                            <div class="px-1 pt-1 border-t border-[#d4af37]/20">
+                                <span class="text-[9px] font-bold text-[#94a3b8] uppercase tracking-wider block mb-1.5">Màu Tượng Đồng:</span>
+                                <div class="grid grid-cols-5 gap-1.5">
+                                    <button type="button" onclick="setCustomModelColor('#d4af37', 'Vàng Gold')" title="Vàng Hoàng Kim"
+                                            class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#faf0d2] via-[#d4af37] to-[#b89628] border border-[#d4af37] hover:scale-110 hover:shadow-[0_0_10px_rgba(212,175,55,0.6)] transition-all shadow focus:outline-none cursor-pointer"></button>
+                                    <button type="button" onclick="setCustomModelColor('#b87333', 'Đồng Đỏ')" title="Đồng Cổ Điển"
+                                            class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#e09858] via-[#b87333] to-[#5a3212] border border-[#c68e5c] hover:scale-110 hover:shadow-[0_0_10px_rgba(184,115,51,0.6)] transition-all shadow focus:outline-none cursor-pointer"></button>
+                                    <button type="button" onclick="setCustomModelColor('#ffffff', 'Trắng Sứ')" title="Trắng Tinh Khiết"
+                                            class="w-7 h-7 rounded-lg bg-white border border-white/60 hover:scale-110 hover:shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-all shadow focus:outline-none cursor-pointer"></button>
+                                    <button type="button" onclick="setCustomModelColor('#1a1e26', 'Hắc Kim')" title="Hắc Kim / Titanium"
+                                            class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#2a303c] via-[#1a1e26] to-[#08090c] border border-white/30 hover:scale-110 hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all shadow focus:outline-none cursor-pointer"></button>
+                                    <button type="button" onclick="setCustomModelColor('#cbd5e1', 'Bạch Kim')" title="Bạch Kim Platinum"
+                                            class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#ffffff] via-[#cbd5e1] to-[#64748b] border border-white/50 hover:scale-110 hover:shadow-[0_0_10px_rgba(203,213,225,0.6)] transition-all shadow focus:outline-none cursor-pointer"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     
                     <!-- 3D Stage Container with Flanking Side Controls & Callout Pins -->
                     <div class="relative w-full max-w-5xl h-[480px] sm:h-[580px] md:h-[660px] lg:h-[720px] flex items-center justify-center mask-radial-feather select-none cursor-grab active:cursor-grabbing">
                         
                         <!-- ThreeJS WebGL Canvas Container -->
                         <div id="threejs-canvas-container" class="absolute inset-0 w-full h-full"></div>
+
+                        
+                        </div>
+
 
                         <!-- 3D Loading Spinner Overlay -->
                         <div id="threejs-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-[#14171f]/85 backdrop-blur-sm z-30 transition-opacity duration-500">
@@ -513,7 +565,7 @@ window.MESH_DATA = {
                         <ul class="space-y-4 text-[#e2e8f0] font-semibold text-sm tracking-wide flex-1">
                             <li class="flex items-center gap-3">
                                 <span class="w-2.5 h-2.5 rounded-full bg-[#161922] shrink-0"></span>
-                                <span>KHỞI NGUỒN</span>
+                                <span>KHƠI NGUỒN</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="w-2.5 h-2.5 rounded-full bg-[#161922] shrink-0"></span>
@@ -613,7 +665,7 @@ window.MESH_DATA = {
                 <div class="reveal delay-100 bg-[#161922] p-8 md:p-10 rounded-3xl border border-[#d4af37]/25 shadow-[0_10px_35px_rgba(54,78,147,0.06)] mb-12 relative overflow-hidden">
                     <div class="w-2 h-full bg-gradient-to-b from-[#d4af37] to-[#f5d26e] absolute left-0 top-0"></div>
                     <p class="text-lg md:text-2xl font-bold text-[#f5d26e] leading-relaxed italic pl-4">
-                        "Thưa [Ông/Bà], nhân dịp 20 năm PVEP, chúng tôi muốn gửi tới Ông/Bà một biểu tượng nhỏ về hành trình của PVEP, mang tên <span class="text-[#f5d26e] underline decoration-2 underline-offset-4 not-italic">KHỞI NGUỒN</span>."
+                        "Thưa [Ông/Bà], nhân dịp 20 năm PVEP, chúng tôi muốn gửi tới Ông/Bà một biểu tượng nhỏ về hành trình của PVEP, mang tên <span class="text-[#f5d26e] underline decoration-2 underline-offset-4 not-italic">KHƠI NGUỒN</span>."
                     </p>
                 </div>
 
@@ -704,7 +756,7 @@ window.MESH_DATA = {
                 <!-- 5 Pillar Cards: Full Meaning, Iconic Graphics & Client Interpretation -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
                     
-                    <!-- Keyword 1: KHỞI NGUỒN -->
+                    <!-- Keyword 1: KHƠI NGUỒN -->
                     <div class="reveal delay-100 bg-[#161922] border border-[#d4af37]/30 hover:border-[#d4af37] p-6 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl group bg-[#161922]">
                         <div>
                             <div class="flex items-center justify-between mb-4">
@@ -1620,18 +1672,14 @@ window.MESH_DATA = {
             <!-- Ambient Glow -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-64 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <div class="max-w-5xl mx-auto relative z-10 text-center">
                 
-                <!-- Tagline Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#161922]/10 border border-white/15 text-xs font-bold tracking-[0.2em] text-[#d4af37] uppercase mb-5">
-                    <span class="w-2 h-2 rounded-full bg-[#d4af37] animate-ping"></span>
-                    Thông Điệp Đồng Hành · PVEP 20 Năm
-                </div>
+                
 
                 <!-- Core Quote -->
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight leading-snug mb-4" style="font-family: 'Montserrat', sans-serif;">
-                    "Khơi Tầng Địa Chất · Kiến Tạo Giá Trị Nguồn<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-white to-[#f5d26e]">Vươn Mình Bền Vững Cùng Tương Lai"</span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-black uppercase tracking-tight leading-snug mb-4 max-w-5xl mx-auto" style="font-family: 'Montserrat', sans-serif;">
+                    <span class="block sm:whitespace-nowrap text-white">"Khơi Tầng Địa Chất · Kiến Tạo Giá Trị Nguồn</span>
+                    <span class="block mt-1 sm:whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-white to-[#f5d26e]">Vươn Mình Bền Vững Cùng Tương Lai"</span>
                 </h2>
 
                 <p class="text-white/80 font-medium text-sm md:text-base max-w-xl mx-auto leading-relaxed mb-8">
@@ -1843,80 +1891,159 @@ window.MESH_DATA = {
             // ==========================================
             
             // 1. Texture Generator: Dark Marble & Amber Veined Stone (SubTool1 - Đế đá địa chất)
-            function createStoneTexture() {
+            // ==========================================
+            // REALISTIC GEOLOGICAL STRATA TEXTURE (Chuẩn 100% Theo Ảnh Mẫu Số 2)
+            // ==========================================
+            // ==========================================
+            // REALISTIC GEOLOGICAL STRATA TEXTURE:
+            // - CUỐI ĐẾ: ĐEN TUYỀN (Solid Pitch Black #000000)
+            // - TRÊN ĐẾ: ĐA MÀU SẮC ĐỊA TẦNG & LẤP LÁNH TINH THỂ (Multi-color strata & shimmering mineral specks)
+            // ==========================================
+            function createRealisticGeologicalStoneTexture() {
                 const canvas = document.createElement('canvas');
                 canvas.width = 1024;
                 canvas.height = 1024;
                 const ctx = canvas.getContext('2d');
 
-                // Deep Obsidian Charcoal & Volcanic Basalt Base (Đậm, đanh chắc, uy nghiêm)
-                const bgGrad = ctx.createLinearGradient(0, 0, 1024, 1024);
-                bgGrad.addColorStop(0, '#0c0e12');
-                bgGrad.addColorStop(0.3, '#14171e');
-                bgGrad.addColorStop(0.65, '#0e1014');
-                bgGrad.addColorStop(1, '#08090c');
+                // 1. Phông nền chuyển màu dốc thẳng đứng:
+                // y = 1024 (Đáy cuối cùng của đế): Đen tuyền tuyệt đối (#000000 - #030406)
+                // y = 650 -> 1024 (Nửa dưới khối đế): Đen kịt huyền vũ đanh chắc
+                // y = 0 -> 600 (Phần trên của đế): Nền đá trầm tích sẫm màu để các dải vân màu và hạt lấp lánh nổi bật
+                const bgGrad = ctx.createLinearGradient(0, 0, 0, 1024);
+                bgGrad.addColorStop(0, '#10141d');      // Đỉnh đế: Xám than trầm tích
+                bgGrad.addColorStop(0.35, '#0b0e14');   // Giữa trên: Đen thềm lục địa
+                bgGrad.addColorStop(0.60, '#05070a');   // Giữa dưới: Đen sẫm chuyển tối
+                bgGrad.addColorStop(0.75, '#020204');   // Gần đáy: Đen tuyền
+                bgGrad.addColorStop(1.0, '#000000');    // Cuối đế: Đen tuyền tuyệt đối 100%
                 ctx.fillStyle = bgGrad;
                 ctx.fillRect(0, 0, 1024, 1024);
 
-                // Sharp Sedimentary Geological Strata Lines (Vân sa thạch vàng nâu sắc nét & tầng địa chất thềm lục địa)
-                for (let i = 0; i < 52; i++) {
-                    const y = (i / 52) * 1024;
+                // 2. Dải Vân Địa Chất Đa Sắc ở Phần Trên Đế (y từ 0 đến 620, tắt dần trước khi xuống đáy):
+                for (let i = 0; i < 60; i++) {
+                    const y = (i / 60) * 620; // Chỉ vẽ trên 60% chiều cao phía trên, đáy dưới hoàn toàn đen
+                    const fadeRatio = 1 - (y / 620); // Càng xuống dưới càng mờ dần vào màu đen
+
                     ctx.beginPath();
-                    ctx.moveTo(0, y + (Math.sin(i * 0.38) * 40));
+                    ctx.moveTo(0, y + 40 + (Math.sin(i * 0.32) * 30));
                     ctx.bezierCurveTo(
-                        260, y + (Math.cos(i * 0.45) * 50),
-                        520, y - (Math.sin(i * 0.32) * 45),
-                        1024, y + (Math.cos(i * 0.55) * 35)
+                        280, y + 10 + (Math.cos(i * 0.4) * 40),
+                        650, y - 45 + (Math.sin(i * 0.46) * 45),
+                        1024, y - 80 + (Math.cos(i * 0.35) * 35)
                     );
-                    
-                    if (i % 6 === 0) {
-                        // High-contrast Warm Golden Amber Vein (Vân sa thạch vàng nổi bật)
-                        ctx.strokeStyle = 'rgba(235, 185, 95, 0.95)';
-                        ctx.lineWidth = 5 + (i % 3);
-                    } else if (i % 4 === 0) {
-                        // Luminous Gold Mineral Streak
-                        ctx.strokeStyle = 'rgba(212, 175, 55, 0.75)';
-                        ctx.lineWidth = 3;
-                    } else if (i % 3 === 0) {
-                        // Deep Slate Grey Mineral Rib
-                        ctx.strokeStyle = 'rgba(45, 52, 66, 0.85)';
+
+                    if (i % 7 === 0) {
+                        // Sa thạch vàng óng ánh (Golden Sandstone)
+                        ctx.strokeStyle = `rgba(245, 196, 110, ${0.92 * fadeRatio})`;
+                        ctx.lineWidth = 4.5;
+                    } else if (i % 5 === 0) {
+                        // Sa thạch hổ phách đồng (Amber Copper Stratum)
+                        ctx.strokeStyle = `rgba(217, 149, 72, ${0.88 * fadeRatio})`;
                         ctx.lineWidth = 3.5;
+                    } else if (i % 3 === 0) {
+                        // Vân thạch anh sáng lấp lánh (Bright Quartz Mineral)
+                        ctx.strokeStyle = `rgba(255, 240, 215, ${0.95 * fadeRatio})`;
+                        ctx.lineWidth = 2.2;
+                    } else if (i % 4 === 0) {
+                        // Dải đất nung ấm (Terracotta Mineral Vein)
+                        ctx.strokeStyle = `rgba(184, 91, 59, ${0.75 * fadeRatio})`;
+                        ctx.lineWidth = 3;
                     } else {
-                        // Fine Quartz Hairline
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                        // Vân đá phiến sẫm tạo độ sâu 3D
+                        ctx.strokeStyle = `rgba(20, 25, 35, ${0.65 * fadeRatio})`;
+                        ctx.lineWidth = 1.5;
+                    }
+                    ctx.stroke();
+                }
+
+                // 3. Vân Xoáy Địa Tầng Đồng Tâm ở Mặt Trước (Vortex Whorl quanh dấu mốc 20 năm, nằm ở phần trên)
+                const vortexCx = 320, vortexCy = 480;
+                for (let r = 10; r < 360; r += 7) {
+                    const rRatio = Math.max(0, 1 - (r / 360));
+                    ctx.beginPath();
+                    for (let a = -Math.PI * 0.7; a <= Math.PI * 0.8; a += 0.05) {
+                        const wave = Math.sin(a * 4 + r * 0.08) * 5;
+                        const rx = r * 0.9 + wave;
+                        const ry = r * 1.25 + wave;
+                        const px = vortexCx + Math.cos(a) * rx;
+                        const py = vortexCy + Math.sin(a) * ry;
+                        if (a === -Math.PI * 0.7) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    }
+                    if (r % 28 === 0) {
+                        ctx.strokeStyle = `rgba(245, 210, 110, ${0.9 * rRatio})`;
+                        ctx.lineWidth = 3.5;
+                    } else if (r % 21 === 0) {
+                        ctx.strokeStyle = `rgba(200, 130, 60, ${0.85 * rRatio})`;
+                        ctx.lineWidth = 2.8;
+                    } else if (r % 14 === 0) {
+                        ctx.strokeStyle = `rgba(255, 245, 230, ${0.9 * rRatio})`;
+                        ctx.lineWidth = 1.8;
+                    } else {
+                        ctx.strokeStyle = `rgba(30, 36, 48, ${0.5 * rRatio})`;
                         ctx.lineWidth = 1;
                     }
                     ctx.stroke();
                 }
 
-                // Micro basalt rock pore grain
-                const imgData = ctx.getImageData(0, 0, 1024, 1024);
-                const data = imgData.data;
-                for (let p = 0; p < data.length; p += 4) {
-                    const noise = (Math.random() - 0.5) * 20;
-                    data[p] = Math.min(255, Math.max(0, data[p] + noise));
-                    data[p+1] = Math.min(255, Math.max(0, data[p+1] + noise));
-                    data[p+2] = Math.min(255, Math.max(0, data[p+2] + noise));
+                // 4. HIỆU ỨNG LẤP LÁNH TINH THỂ KHOÁNG VẬT Ở PHẦN TRÊN ĐẾ (Sparkling Mineral Crystal Specks)
+                // Rải ~350 tinh thể thạch anh & vàng khoáng lấp lánh ở phần trên (y < 600)
+                for (let s = 0; s < 380; s++) {
+                    const sx = Math.random() * 1024;
+                    // Phân bổ hạt lấp lánh tập trung ở phần trên (y từ 30 đến 580)
+                    const sy = 30 + Math.pow(Math.random(), 1.4) * 550;
+                    const size = 1.0 + Math.random() * 2.2;
+                    const alpha = 0.4 + Math.random() * 0.6;
+
+                    // Hạt sáng đa sắc: Vàng gold kim loại, kim cương trắng, hổ phách ấm
+                    const randColor = Math.random();
+                    let color = `rgba(255, 235, 170, ${alpha})`;
+                    if (randColor > 0.65) color = `rgba(255, 255, 255, ${alpha + 0.15})`;
+                    else if (randColor > 0.35) color = `rgba(255, 205, 80, ${alpha})`;
+
+                    // Vẽ điểm sáng với hào quang lấp lánh
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Các tinh thể lớn có tia lấp lánh chéo
+                    if (size > 2.0) {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.8})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(sx - 3, sy);
+                        ctx.lineTo(sx + 3, sy);
+                        ctx.moveTo(sx, sy - 3);
+                        ctx.lineTo(sx, sy + 3);
+                        ctx.stroke();
+                    }
                 }
-                ctx.putImageData(imgData, 0, 0);
+
+                // Đảm bảo phần đáy cuối cùng (y từ 720 đến 1024) đen tuyền hoàn toàn
+                const bottomFade = ctx.createLinearGradient(0, 650, 0, 1024);
+                bottomFade.addColorStop(0, 'rgba(0,0,0,0)');
+                bottomFade.addColorStop(0.4, 'rgba(0,0,0,0.85)');
+                bottomFade.addColorStop(0.7, 'rgba(0,0,0,0.98)');
+                bottomFade.addColorStop(1.0, '#000000');
+                ctx.fillStyle = bottomFade;
+                ctx.fillRect(0, 650, 1024, 374);
 
                 const tex = new THREE.CanvasTexture(canvas);
                 tex.wrapS = THREE.RepeatWrapping;
-                tex.wrapT = THREE.RepeatWrapping;
-                tex.repeat.set(2, 2);
+                tex.wrapT = THREE.ClampToEdgeWrapping; // Không lặp lại theo chiều dọc để đáy luôn đen tuyền
+                tex.repeat.set(2, 1);
                 return tex;
             }
 
-            // 2. Texture Generator: Imperial Gold & Black Crude Oil Fluid Intertwined (Đồng Vàng Hoàng Gia + Dòng Dầu Đen)
+            // Texture Sculpture: Champagne & Imperial Gold
             function createSculptureTexture() {
                 const canvas = document.createElement('canvas');
                 canvas.width = 1024;
                 canvas.height = 1024;
                 const ctx = canvas.getContext('2d');
 
-                // Champagne & Imperial Antique Gold Palette (Tone vàng trang sức quý phái, ánh kim mềm mại)
                 const baseGrad = ctx.createLinearGradient(0, 0, 1024, 1024);
-                baseGrad.addColorStop(0, '#faf0d2');     // Soft Champagne Pearl Highlight
+                baseGrad.addColorStop(0, '#faf0d2');     // Champagne Highlight
                 baseGrad.addColorStop(0.2, '#e8cb85');   // Luminous Warm Gold
                 baseGrad.addColorStop(0.5, '#d4af37');   // Classic Imperial Gold
                 baseGrad.addColorStop(0.8, '#bf953f');   // Burnished Bronze Gold Midtone
@@ -1924,7 +2051,6 @@ window.MESH_DATA = {
                 ctx.fillStyle = baseGrad;
                 ctx.fillRect(0, 0, 1024, 1024);
 
-                // Silky Polished Metal Grain & Satin Light Reflection Streaks
                 for (let i = 0; i < 48; i++) {
                     const x = (i / 48) * 1024;
                     ctx.beginPath();
@@ -1936,13 +2062,13 @@ window.MESH_DATA = {
                     );
 
                     if (i % 3 === 0) {
-                        ctx.strokeStyle = 'rgba(255, 248, 225, 0.85)'; // Soft Pearl Specular Rib
+                        ctx.strokeStyle = 'rgba(255, 248, 225, 0.85)';
                         ctx.lineWidth = 3.5;
                     } else if (i % 2 === 0) {
-                        ctx.strokeStyle = 'rgba(240, 205, 115, 0.55)'; // Warm Amber Sheen
+                        ctx.strokeStyle = 'rgba(240, 205, 115, 0.55)';
                         ctx.lineWidth = 2;
                     } else {
-                        ctx.strokeStyle = 'rgba(160, 120, 45, 0.35)';  // Delicate Bronze Shading
+                        ctx.strokeStyle = 'rgba(160, 120, 45, 0.35)';
                         ctx.lineWidth = 1.5;
                     }
                     ctx.stroke();
@@ -1955,38 +2081,129 @@ window.MESH_DATA = {
                 return tex;
             }
 
-                        const stoneColorMap = createStoneTexture();
+            const realisticStoneColorMap = createRealisticGeologicalStoneTexture();
             const sculptureColorMap = createSculptureTexture();
 
-            // Material 1: Luxury Champagne Imperial Gold (Điêu Khắc Đồng Vàng Đẳng Cấp)
-            const bronzeMaterial = new THREE.MeshStandardMaterial({
-                color: 0xffffff,           // Rely purely on the exquisite champagne gold map
-                map: sculptureColorMap,
-                metalness: 0.88,           // Kim loại bóng mờ cao cấp, phản xạ ánh kim trang nhã
-                roughness: 0.22,           // Bề mặt satin micro-brushed mượt mà như cúp vàng cao cấp
-                envMapIntensity: 2.2,
+            // ==========================================
+            // MATERIAL DEFINITIONS: 
+            // 1. Phôi Trắng Tinh Khôi (Pure White Sculptural Clay/Plaster)
+            // 2. Bản Màu Chuẩn Thực Tế (Realistic Strata & Gold)
+            // ==========================================
+            const whiteBaseMaterial = new THREE.MeshStandardMaterial({
+                color: 0xf8fafc,
+                roughness: 0.68,
+                metalness: 0.03,
                 side: THREE.DoubleSide
             });
 
-            // Material 2: Deep Obsidian Basalt Stone (Khối Đế Đá Đậm Màu, Đanh Chắc & Sắc Nét)
-            const stoneMaterial = new THREE.MeshStandardMaterial({
-                color: 0xffffff,           // Giữ 0xffffff để màu đen huyền vũ và vân sa thạch vàng hiển thị sắc sảo
-                map: stoneColorMap,
-                metalness: 0.16,
-                roughness: 0.42,           // Độ bóng satin tự nhiên của đá basalt mài bóng cao cấp
-                side: THREE.FrontSide,
-                wireframe: false
+            const whiteSculptureMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                roughness: 0.52,
+                metalness: 0.04,
+                side: THREE.DoubleSide
             });
 
-            // Material 3: Logo 20 Năm Khắc Ánh Kim Đồng (SubTool2 - Huy hiệu PVEP 20 năm)
-            // Khắc chìm ánh vàng đồng nổi bật trên mặt trước đế đá
-            const badgeMaterial = new THREE.MeshStandardMaterial({
-                color: 0xdfad68,           // Rich Warm Rose/Yellow Gold
+            const whiteBadgeMaterial = new THREE.MeshStandardMaterial({
+                color: 0xe2e8f0,
+                roughness: 0.60,
+                metalness: 0.08,
+                side: THREE.DoubleSide
+            });
+
+            // Realistic Photo 2 Materials
+            const realisticStoneMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                map: realisticStoneColorMap,
+                metalness: 0.12,
+                roughness: 0.40,
+                side: THREE.FrontSide
+            });
+
+            const realisticSculptureMaterial = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                map: sculptureColorMap,
+                metalness: 0.88,
+                roughness: 0.22,
+                side: THREE.DoubleSide
+            });
+
+            const realisticBadgeMaterial = new THREE.MeshStandardMaterial({
+                color: 0xdfad68,
                 metalness: 0.94,
                 roughness: 0.20,
                 side: THREE.DoubleSide
             });
 
+            // Current Active Mode Tracker
+            let currentFinishMode = 'white';
+
+            // Global Color Switcher Function
+            window.set3DFinishMode = function(mode) {
+                currentFinishMode = mode;
+                const btnWhite = document.getElementById('btn-finish-white');
+                const btnReal = document.getElementById('btn-finish-real');
+                const label = document.getElementById('active-mode-label');
+
+                if (mode === 'white') {
+                    if (currentMesh1) currentMesh1.material = whiteBaseMaterial;
+                    if (currentMesh3) currentMesh3.material = whiteSculptureMaterial;
+                    if (currentMesh2) currentMesh2.material = whiteBadgeMaterial;
+
+                    if (btnWhite) {
+                        btnWhite.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnWhite.classList.remove('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    }
+                    if (btnReal) {
+                        btnReal.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnReal.classList.add('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    }
+                    if (label) label.innerText = 'Trắng Tinh';
+                } else if (mode === 'real') {
+                    if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
+                    if (currentMesh3) currentMesh3.material = realisticSculptureMaterial;
+                    if (currentMesh2) currentMesh2.material = realisticBadgeMaterial;
+
+                    if (btnReal) {
+                        btnReal.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnReal.classList.remove('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    }
+                    if (btnWhite) {
+                        btnWhite.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnWhite.classList.add('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    }
+                    if (label) label.innerText = 'Màu Thực Tế';
+                }
+            };
+
+            // Custom Single-Click Color Swatch Fill
+            window.setCustomModelColor = function(hexColor, name) {
+                const label = document.getElementById('active-mode-label');
+                if (label) label.innerText = name || 'Tùy Chỉnh';
+
+                const customMat = new THREE.MeshStandardMaterial({
+                    color: new THREE.Color(hexColor),
+                    roughness: hexColor === '#ffffff' ? 0.55 : 0.28,
+                    metalness: hexColor === '#ffffff' ? 0.05 : 0.85,
+                    side: THREE.DoubleSide
+                });
+
+                if (currentMesh3) currentMesh3.material = customMat;
+                if (currentMesh2) currentMesh2.material = customMat;
+                
+                // If pure white selected from swatch, fill base as white too
+                if (hexColor === '#ffffff') {
+                    if (currentMesh1) currentMesh1.material = whiteBaseMaterial;
+                } else if (hexColor === '#14171f') {
+                    if (currentMesh1) currentMesh1.material = new THREE.MeshStandardMaterial({
+                        color: 0x14171f, roughness: 0.65, metalness: 0.2, side: THREE.FrontSide
+                    });
+                } else {
+                    // Keep realistic strata base or harmonize with color
+                    if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
+                }
+            };
+
+            // Enhanced Cylindrical UV unpacker (wraps 360 around Z-height seamlessly)
             function unpackVerticesToGeometry(meshInfo) {
                 if (!meshInfo || !meshInfo.b64) return null;
                 const binaryStr = atob(meshInfo.b64);
@@ -2000,22 +2217,31 @@ window.MESH_DATA = {
                 const geometry = new THREE.BufferGeometry();
                 geometry.setAttribute('position', new THREE.BufferAttribute(floatArray, 3));
                 
-                // Generate planar UV mapping based on bounding box so procedural textures map seamlessly
                 const pos = geometry.attributes.position;
                 const uvs = new Float32Array((pos.count) * 2);
-                let minY = Infinity, maxY = -Infinity;
+                let minZ = Infinity, maxZ = -Infinity;
                 let minX = Infinity, maxX = -Infinity;
+                let minY = Infinity, maxY = -Infinity;
                 for (let i = 0; i < pos.count; i++) {
                     const x = pos.getX(i);
                     const y = pos.getY(i);
+                    const z = pos.getZ(i);
                     if (x < minX) minX = x; if (x > maxX) maxX = x;
                     if (y < minY) minY = y; if (y > maxY) maxY = y;
+                    if (z < minZ) minZ = z; if (z > maxZ) maxZ = z;
                 }
-                const rangeX = (maxX - minX) || 1;
-                const rangeY = (maxY - minY) || 1;
+                const centerX = (minX + maxX) / 2;
+                const centerY = (minY + maxY) / 2;
+                const rangeZ = (maxZ - minZ) || 1;
+
+                // Cylindrical 360-degree UV unwrap: U from angle around Z axis, V from Z height
                 for (let i = 0; i < pos.count; i++) {
-                    uvs[i * 2] = (pos.getX(i) - minX) / rangeX;
-                    uvs[i * 2 + 1] = (pos.getY(i) - minY) / rangeY;
+                    const dx = pos.getX(i) - centerX;
+                    const dy = pos.getY(i) - centerY;
+                    const u = (Math.atan2(dy, dx) / (Math.PI * 2)) + 0.5;
+                    const v = (pos.getZ(i) - minZ) / rangeZ;
+                    uvs[i * 2] = u;
+                    uvs[i * 2 + 1] = v;
                 }
                 geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
                 geometry.computeVertexNormals();
@@ -2028,7 +2254,7 @@ window.MESH_DATA = {
                     if (window.MESH_DATA.subTool1) {
                         const geom1 = unpackVerticesToGeometry(window.MESH_DATA.subTool1);
                         if (geom1) {
-                            const mesh1 = new THREE.Mesh(geom1, stoneMaterial);
+                            const mesh1 = new THREE.Mesh(geom1, whiteBaseMaterial);
                             currentMesh1 = mesh1;
                             threeModelGroup.add(mesh1);
                         }
@@ -2038,7 +2264,7 @@ window.MESH_DATA = {
                     if (window.MESH_DATA.subTool2) {
                         const geom2 = unpackVerticesToGeometry(window.MESH_DATA.subTool2);
                         if (geom2) {
-                            const mesh2 = new THREE.Mesh(geom2, badgeMaterial);
+                            const mesh2 = new THREE.Mesh(geom2, whiteBadgeMaterial);
                             currentMesh2 = mesh2;
                             threeModelGroup.add(mesh2);
                         }
@@ -2048,7 +2274,7 @@ window.MESH_DATA = {
                     if (window.MESH_DATA.subTool3) {
                         const geom3 = unpackVerticesToGeometry(window.MESH_DATA.subTool3);
                         if (geom3) {
-                            const mesh3 = new THREE.Mesh(geom3, bronzeMaterial);
+                            const mesh3 = new THREE.Mesh(geom3, whiteSculptureMaterial);
                             currentMesh3 = mesh3;
                             threeModelGroup.add(mesh3);
                         }
