@@ -395,27 +395,36 @@ window.MESH_DATA = {
                             <div class="flex items-center justify-between px-1 pb-1 border-b border-[#d4af37]/20">
                                 <span class="text-[10px] font-black uppercase tracking-wider text-[#d4af37] flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#f5d26e] animate-ping"></span>
-                                    Tùy Chọn Màu
+                                    Tùy Chọn Khối Đế
                                 </span>
-                                <span id="active-mode-label" class="text-[9px] font-bold text-white/80 uppercase tracking-tight">Màu Thực Tế</span>
+                                <span id="active-mode-label" class="text-[9px] font-bold text-white/80 uppercase tracking-tight">Đế Màu</span>
                             </div>
 
-                            <!-- Nút 1: Phôi Trắng Tinh (Fill trắng toàn bộ sản phẩm) -->
+                            <!-- Nút 1: Đế Trắng (Chỉ đổi màu đế sang trắng phôi đá) -->
                             <button type="button" onclick="set3DFinishMode('white')" id="btn-finish-white"
-                                    class="finish-mode-btn group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
-                                <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-white via-[#f1f5f9] to-[#cbd5e1] border border-white shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#0f172a]">
+                                    class="finish-mode-btn group w-full flex items-center gap-2 px-2.5 py-2 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
+                                <div class="w-5 h-5 rounded-lg bg-gradient-to-br from-white via-[#f1f5f9] to-[#cbd5e1] border border-white shadow-inner shrink-0 flex items-center justify-center font-bold text-[10px] text-[#0f172a]">
                                     ⚪
                                 </div>
-                                <span class="text-xs font-black text-[#cbd5e1] group-hover:text-white truncate">Phôi Trắng Tinh</span>
+                                <span class="text-xs font-black text-[#cbd5e1] group-hover:text-white truncate">Đế Trắng</span>
                             </button>
 
-                            <!-- Nút 2: Lên Màu Thực Tế (Mặc định: Thân vàng gold, đế đá thềm lục địa) -->
+                            <!-- Nút 2: Đế Màu (Mặc định: Đế đá đen huyền vũ có vân màu) -->
                             <button type="button" onclick="set3DFinishMode('real')" id="btn-finish-real"
-                                    class="finish-mode-btn active group w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#1e222e] border-2 border-[#d4af37] text-left transition-all duration-300 shadow-[0_2px_12px_rgba(212,175,55,0.25)] focus:outline-none cursor-pointer">
-                                <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-[#faf0d2] via-[#b88648] to-[#12151c] border border-[#d4af37] shadow-inner shrink-0 flex items-center justify-center font-bold text-xs text-[#faf0d2]">
+                                    class="finish-mode-btn active group w-full flex items-center gap-2 px-2.5 py-2 rounded-xl bg-[#1e222e] border-2 border-[#d4af37] text-left transition-all duration-300 shadow-[0_2px_12px_rgba(212,175,55,0.25)] focus:outline-none cursor-pointer">
+                                <div class="w-5 h-5 rounded-lg bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#020617] border border-[#d4af37] shadow-inner shrink-0 flex items-center justify-center font-bold text-[10px] text-[#f5d26e]">
                                     ✨
                                 </div>
-                                <span class="text-xs font-black text-white group-hover:text-[#f5d26e] truncate">Lên Màu Thực Tế</span>
+                                <span class="text-xs font-black text-white group-hover:text-[#f5d26e] truncate">Đế Màu</span>
+                            </button>
+
+                            <!-- Nút 3: Đế Vàng Đồng (Màu vàng đồng sang trọng cho đế) -->
+                            <button type="button" onclick="set3DFinishMode('bronze')" id="btn-finish-bronze"
+                                    class="finish-mode-btn group w-full flex items-center gap-2 px-2.5 py-2 rounded-xl bg-[#161922]/80 border-2 border-[#d4af37]/25 hover:border-[#d4af37] hover:bg-[#1a1e29] text-left transition-all duration-300 focus:outline-none cursor-pointer">
+                                <div class="w-5 h-5 rounded-lg bg-gradient-to-br from-[#fde047] via-[#d4af37] to-[#78350f] border border-[#fde047] shadow-inner shrink-0 flex items-center justify-center font-bold text-[10px] text-[#78350f]">
+                                    🟡
+                                </div>
+                                <span class="text-xs font-black text-[#cbd5e1] group-hover:text-white truncate">Đế Vàng Đồng</span>
                             </button>
 
                             <!-- BẢNG TÔ MÀU RIÊNG CHO PHẦN TƯỢNG ĐỒNG VÀNG -->
@@ -1906,172 +1915,179 @@ window.MESH_DATA = {
                 const ctx = canvas.getContext('2d');
 
                 // ==========================================
-                // 1. NỀN CHUYỂN MÀU ĐÁ THỀM LỤC ĐỊA & TRẦM TÍCH ĐÁY BIỂN
+                // 1. NỀN ĐÁ HUYỀN VŨ ĐEN SÂU THẲM
                 // ==========================================
-                // y = 0..300: Phần trên (Đá phiến xám tro & than trầm tích tự nhiên)
-                // y = 300..720: Phần giữa (Nền đá xanh thẫm đại dương & thềm lục địa)
-                // y = 720..1024: Phần đáy (Đen tuyền huyền vũ đanh chắc)
                 const bgGrad = ctx.createLinearGradient(0, 0, 0, 1024);
-                bgGrad.addColorStop(0, '#262d3a');      // Đỉnh đế: Xám đá tự nhiên
-                bgGrad.addColorStop(0.18, '#1a202c');   // Thân trên: Đá trầm tích sẫm màu
-                bgGrad.addColorStop(0.38, '#101622');   // Chuyển tiếp giữa
-                bgGrad.addColorStop(0.55, '#0b101b');   // Giữa đế: Thềm địa chất sẫm
-                bgGrad.addColorStop(0.75, '#04070c');   // Gần đáy: Đen huyền vũ
-                bgGrad.addColorStop(1.0, '#000000');    // Đáy cùng: Đen tuyền tuyệt đối 100%
+                bgGrad.addColorStop(0, '#202630');      // Đỉnh đế: Xám đá tự nhiên
+                bgGrad.addColorStop(0.10, '#141820');   // Chuyển mềm vào đen
+                bgGrad.addColorStop(0.20, '#080a10');   // Nền đen huyền vũ
+                bgGrad.addColorStop(0.40, '#040608');   // Đen trầm sâu
+                bgGrad.addColorStop(0.65, '#020305');   // Tối dần về cuối
+                bgGrad.addColorStop(0.80, '#010203');   // Đen sẫm
+                bgGrad.addColorStop(1.0, '#000000');    // Đáy tuyệt đối đen 100%
                 ctx.fillStyle = bgGrad;
                 ctx.fillRect(0, 0, 1024, 1024);
 
                 // ==========================================
-                // 2. PHẦN TRÊN CỦA ĐẾ (y từ 0 đến 380): NHÌN GIỐNG MÀU ĐÁ HƠN, NHIỀU VÂN ĐÁ TỰ NHIÊN HƠN
+                // 2. PHẦN TRÊN CÙNG: MÀU XÁM ĐẬM THỂ HIỆN ĐÁ & VI HẠT KHOÁNG
                 // ==========================================
-                // 2.1. Lớp vi hạt đá tự nhiên (Stone mineral granularity / noise):
                 for (let g = 0; g < 1500; g++) {
                     const gx = Math.random() * 1024;
-                    const gy = Math.random() * 380;
-                    const gSize = 0.5 + Math.random() * 1.8;
-                    const gAlpha = 0.15 + Math.random() * 0.45;
-                    const gRand = Math.random();
-                    if (gRand > 0.6) ctx.fillStyle = `rgba(200, 215, 235, ${gAlpha})`;
-                    else if (gRand > 0.3) ctx.fillStyle = `rgba(140, 155, 175, ${gAlpha})`;
-                    else ctx.fillStyle = `rgba(240, 245, 255, ${gAlpha * 0.8})`;
+                    const gy = Math.random() * 160;
+                    const gSize = 0.5 + Math.random() * 1.5;
+                    const gAlpha = 0.12 + Math.random() * 0.25;
+                    ctx.fillStyle = (Math.random() > 0.5) 
+                        ? `rgba(160, 175, 195, ${gAlpha})` 
+                        : `rgba(15, 20, 28, ${gAlpha * 1.3})`;
                     ctx.fillRect(gx, gy, gSize, gSize);
                 }
 
-                // 2.2. Hệ thống vân nứt tự nhiên của đá (Fracture & Marble Fissures) ở phần trên:
-                for (let f = 0; f < 38; f++) {
+                // Vết rạn nứt tự nhiên của đá
+                for (let f = 0; f < 18; f++) {
                     let fx = Math.random() * 1024;
-                    let fy = 15 + Math.random() * 330;
+                    let fy = 10 + Math.random() * 140;
                     ctx.beginPath();
                     ctx.moveTo(fx, fy);
-                    const segments = 6 + Math.floor(Math.random() * 8);
-                    for (let s = 0; s < segments; s++) {
-                        fx += (Math.random() - 0.45) * 45;
-                        fy += (Math.random() - 0.2) * 25;
+                    const segs = 4 + Math.floor(Math.random() * 6);
+                    for (let s = 0; s < segs; s++) {
+                        fx += (Math.random() - 0.45) * 40;
+                        fy += (Math.random() - 0.2) * 18;
                         ctx.lineTo(fx, fy);
                     }
-                    const fAlpha = 0.35 + Math.random() * 0.55;
-                    ctx.strokeStyle = (f % 2 === 0) 
-                        ? `rgba(255, 255, 255, ${fAlpha})` 
-                        : `rgba(180, 200, 225, ${fAlpha * 0.85})`;
-                    ctx.lineWidth = 0.8 + Math.random() * 1.6;
+                    ctx.strokeStyle = `rgba(170, 185, 205, ${0.18 + Math.random() * 0.22})`;
+                    ctx.lineWidth = 0.8 + Math.random() * 1.0;
                     ctx.stroke();
                 }
 
-                // 2.3. Các dải vân địa tầng lượn sóng ngang ở phần trên:
-                for (let i = 0; i < 45; i++) {
-                    const y = (i / 45) * 360;
-                    const fadeRatio = 1 - (y / 400);
+                // ==========================================
+                // 3. DÒNG CHẢY 44 THANH MÀU TỐI TRẦM, TRẢI DÀI TỪ CAO XUỐNG DƯỚI,
+                // ĐẢO NGƯỢC CHIỀU (BÊN TRÊN CAO TRẢI DỐC XUỐNG DƯỚI KHẮC PHỤC BỊ NGƯỢC)
+                // ==========================================
+                const bands = [
+                    { r: 12, g: 28, b: 72,  w: 14, amp: 14, freq: 2.2, phase: 0.1 },  // 0. Xanh navy tối
+                    { r: 24, g: 65, b: 110, w: 12, amp: -15, freq: 2.8, phase: 0.8 }, // 1. Xanh slate trầm
+                    { r: 8,  g: 55, b: 38,  w: 13, amp: 16, freq: 2.4, phase: 1.4 },  // 2. Xanh ngọc sẫm
+                    { r: 16, g: 36, b: 92,  w: 14, amp: -14, freq: 3.1, phase: 0.5 }, // 3. Xanh navy tối
+                    { r: 28, g: 75, b: 125, w: 12, amp: 18, freq: 2.0, phase: 1.9 },  // 4. Xanh slate trầm
+                    { r: 6,  g: 48, b: 32,  w: 13, amp: -16, freq: 2.6, phase: 1.1 }, // 5. Xanh ngọc sẫm
+                    { r: 14, g: 32, b: 84,  w: 14, amp: 15, freq: 3.4, phase: 0.3 },  // 6. Xanh navy tối
+                    { r: 90, g: 68, b: 20,  w: 3.5, amp: -13, freq: 3.6, phase: 2.1 }, // 7. VÀNG ĐỒNG CỔ TỐI (rất trầm)
+                    { r: 22, g: 60, b: 105, w: 11, amp: 19, freq: 2.3, phase: 0.7 },  // 8. Xanh slate trầm
+                    { r: 8,  g: 58, b: 40,  w: 13, amp: -17, freq: 2.9, phase: 1.6 }, // 9. Xanh ngọc sẫm
+                    { r: 18, g: 42, b: 104, w: 14, amp: 16, freq: 3.0, phase: 0.9 },  // 10. Xanh sapphire tối
+                    { r: 26, g: 70, b: 118, w: 12, amp: -14, freq: 2.5, phase: 2.3 }, // 11. Xanh slate trầm
+                    { r: 100, g: 105, b: 110, w: 1.8, amp: 20, freq: 3.8, phase: 1.2 }, // 12. KHÓI NGÀ MỜ
+                    { r: 5,  g: 42, b: 28,  w: 13, amp: 17, freq: 3.2, phase: 0.4 },  // 13. Xanh ngọc sẫm
+                    { r: 10, g: 24, b: 68,  w: 14, amp: -15, freq: 2.7, phase: 1.8 }, // 14. Xanh navy tối
+                    { r: 28, g: 75, b: 125, w: 12, amp: -17, freq: 2.4, phase: 0.6 }, // 15. Xanh slate trầm
+                    { r: 7,  g: 52, b: 35,  w: 13, amp: 15, freq: 3.3, phase: 2.0 },  // 16. Xanh ngọc sẫm
+                    { r: 15, g: 34, b: 88,  w: 14, amp: -16, freq: 2.8, phase: 1.0 }, // 17. Xanh sapphire tối
+                    { r: 20, g: 58, b: 100, w: 11, amp: 17, freq: 2.2, phase: 1.5 },  // 18. Xanh slate trầm
+                    { r: 82, g: 60, b: 16,  w: 3.2, amp: -13, freq: 3.5, phase: 0.2 }, // 19. VÀNG ĐỒNG CỔ TỐI (rất trầm)
+                    { r: 14, g: 30, b: 80,  w: 14, amp: 16, freq: 3.0, phase: 2.4 },  // 20. Xanh navy tối
+                    { r: 6,  g: 46, b: 30,  w: 13, amp: -15, freq: 2.6, phase: 0.8 }, // 21. Xanh ngọc sẫm
+                    { r: 24, g: 65, b: 112, w: 12, amp: 18, freq: 2.1, phase: 1.7 },  // 22. Xanh slate trầm
+                    { r: 100, g: 105, b: 110, w: 1.8, amp: -18, freq: 3.6, phase: 0.9 }, // 23. KHÓI NGÀ MỜ
+                    { r: 12, g: 22, b: 64,  w: 14, amp: -16, freq: 3.1, phase: 1.3 }, // 24. Xanh navy tối
+                    { r: 5,  g: 40, b: 26,  w: 13, amp: 14, freq: 2.7, phase: 2.5 },  // 25. Xanh ngọc sẫm
+                    { r: 22, g: 58, b: 102, w: 12, amp: -15, freq: 2.3, phase: 0.5 }, // 26. Xanh slate trầm
+                    { r: 10, g: 20, b: 58,  w: 14, amp: 16, freq: 3.4, phase: 1.9 },  // 27. Xanh navy tối
+                    { r: 4,  g: 32, b: 22,  w: 13, amp: -14, freq: 2.9, phase: 1.1 }, // 28. Xanh ngọc sẫm
+                    { r: 18, g: 48, b: 88,  w: 12, amp: 17, freq: 2.2, phase: 1.6 },  // 29. Xanh slate trầm
+                    { r: 8,  g: 16, b: 48,  w: 14, amp: 15, freq: 2.5, phase: 0.4 },  // 30. Xanh navy tối
+                    { r: 6,  g: 38, b: 25,  w: 13, amp: -15, freq: 2.8, phase: 2.0 },  // 31. Xanh ngọc sẫm
+                    { r: 16, g: 45, b: 82,  w: 11, amp: -16, freq: 3.2, phase: 2.2 }, // 32. Xanh slate tối
+                    { r: 10, g: 22, b: 55,  w: 14, amp: 14, freq: 2.7, phase: 1.0 },  // 33. Xanh navy tối
+                    { r: 5,  g: 34, b: 22,  w: 13, amp: -13, freq: 3.0, phase: 1.7 },  // 34. Xanh ngọc sẫm
+                    { r: 14, g: 38, b: 72,  w: 12, amp: 15, freq: 2.4, phase: 0.7 },  // 35. Xanh slate tối
+                    { r: 8,  g: 18, b: 45,  w: 14, amp: -14, freq: 3.2, phase: 1.5 },  // 36. Xanh navy tối
+                    { r: 4,  g: 28, b: 18,  w: 13, amp: 13, freq: 2.6, phase: 2.3 },  // 37. Xanh ngọc sẫm
+                    { r: 10, g: 28, b: 60,  w: 12, amp: -13, freq: 2.9, phase: 1.2 },  // 38. Xanh slate tối
+                    { r: 6,  g: 14, b: 38,  w: 14, amp: 14, freq: 2.5, phase: 0.6 },  // 39. Xanh navy tối
+                    { r: 3,  g: 22, b: 14,  w: 13, amp: -12, freq: 3.1, phase: 1.9 },  // 40. Xanh ngọc sẫm
+                    { r: 8,  g: 20, b: 48,  w: 12, amp: 12, freq: 2.7, phase: 1.4 },  // 41. Xanh slate tối
+                    { r: 5,  g: 10, b: 32,  w: 14, amp: -13, freq: 2.4, phase: 0.8 },  // 42. Đáy navy tối
+                    { r: 3,  g: 6,  b: 22,  w: 14, amp: 12, freq: 2.8, phase: 1.6 }   // 43. Chìm vào đá đen
+                ];
+
+                // TRẢI RỘNG TỪ TRÊN CAO XUỐNG DƯỚI (KHÔNG CÒN BỊ HƠI NGẮN):
+                // Bắt đầu từ y=260, bước 6.2px cho 44 thanh màu, kết hợp độ nghiêng lớn
+                const startY = 265;
+                const stepY = 6.2; // Ghép khít sát nhau 100% không khoảng cách
+
+                // ĐẢO NGƯỢC CHIỀU ĐỘ NGHIÊNG:
+                // Trải từ trên cao xuống dưới (Đổi dấu tiltAmp thành âm để đảo chiều hoàn toàn so với ảnh bị ngược)
+                const tiltAmp = -125; // Đảo chiều góc nghiêng và tăng biên độ trải dài
+                const tiltPhase = -2 * Math.PI * 0.486;
+
+                // LƯỢT 1: NỀN HÒA QUYỆN MỜ MỊN (BLUR 7px) - KHÔNG KHOẢNG CÁCH
+                try { ctx.filter = 'blur(7px)'; } catch(e) {}
+
+                for (let i = 0; i < bands.length; i++) {
+                    const b = bands[i];
+                    const baseY = startY + i * stepY;
+                    const progress = i / (bands.length - 1);
+                    // Màu sắc tối trầm, không bị sáng, tối dần đều về đáy
+                    const bright = 0.85 - (progress * 0.50);
+                    const curR = Math.round(b.r * bright);
+                    const curG = Math.round(b.g * bright);
+                    const curB = Math.round(b.b * bright);
+                    const curAlpha = 0.82 * (1.0 - progress * 0.25);
 
                     ctx.beginPath();
-                    ctx.moveTo(0, y + 25 + (Math.sin(i * 0.45) * 20));
-                    ctx.bezierCurveTo(
-                        280, y + (Math.cos(i * 0.5) * 25),
-                        680, y - 15 + (Math.sin(i * 0.4) * 25),
-                        1024, y + 10 + (Math.cos(i * 0.35) * 20)
-                    );
+                    for (let x = 0; x <= 1024; x += 16) {
+                        const tilt = Math.sin((x / 1024) * Math.PI * 2 + tiltPhase) * tiltAmp;
+                        const wave1 = Math.sin((x / 1024) * Math.PI * b.freq + b.phase) * b.amp;
+                        const wave2 = Math.cos((x / 1024) * Math.PI * (b.freq * 0.5) + b.phase * 1.5) * 5;
+                        const y = baseY + tilt + wave1 + wave2;
 
-                    if (i % 6 === 0) {
-                        ctx.strokeStyle = `rgba(240, 248, 255, ${0.85 * fadeRatio})`;
-                        ctx.lineWidth = 3.2;
-                    } else if (i % 4 === 0) {
-                        ctx.strokeStyle = `rgba(215, 175, 115, ${0.7 * fadeRatio})`;
-                        ctx.lineWidth = 2.4;
-                    } else if (i % 3 === 0) {
-                        ctx.strokeStyle = `rgba(190, 205, 225, ${0.75 * fadeRatio})`;
-                        ctx.lineWidth = 2.0;
-                    } else {
-                        ctx.strokeStyle = `rgba(15, 20, 30, ${0.65 * fadeRatio})`;
-                        ctx.lineWidth = 1.6;
+                        if (x === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
                     }
-                    ctx.stroke();
-                }
-
-                // ==========================================
-                // 3. PHẦN GIỮA CỦA ĐẾ (y từ 320 đến 740): DÒNG CHẢY XUÔI TỪ TRÊN XUỐNG
-                // 3 Gam màu chủ đạo: Trắng, Xanh dương nhạt, Xanh dương đậm
-                // ==========================================
-                const numStreams = 44;
-                for (let s = 0; s < numStreams; s++) {
-                    const startX = (s / numStreams) * 1024 + (Math.random() * 20 - 10);
-                    const startY = 310 + Math.random() * 60;   // Bắt đầu từ phần giáp ranh giữa
-                    const endY = 660 + Math.random() * 90;     // Chảy xuôi xuống gần đáy
-                    const streamLen = endY - startY;
-
-                    // Điểm uốn lượn dòng chảy tự nhiên
-                    const swing1 = (Math.sin(s * 0.7) * 25) + (Math.random() * 14 - 7);
-                    const swing2 = (Math.cos(s * 0.6) * 35) + (Math.random() * 16 - 8);
-
-                    // 3.1. Dòng chảy nền XANH DƯƠNG ĐẬM (Deep Oceanic / Petroleum Navy Flow)
-                    ctx.beginPath();
-                    ctx.moveTo(startX, startY);
-                    ctx.bezierCurveTo(
-                        startX + swing1 * 0.8, startY + streamLen * 0.35,
-                        startX + swing2 * 0.9, startY + streamLen * 0.7,
-                        startX + swing1 * 0.5, endY
-                    );
-                    ctx.strokeStyle = (s % 3 === 0) ? 'rgba(30, 64, 175, 0.88)' : 'rgba(29, 78, 216, 0.78)';
-                    ctx.lineWidth = 4.5 + (s % 3) * 1.5;
+                    ctx.lineWidth = b.w + 2.5; // Đảm bảo khít sát 100%
+                    ctx.strokeStyle = `rgba(${curR}, ${curG}, ${curB}, ${curAlpha})`;
                     ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
                     ctx.stroke();
-
-                    // 3.2. Dòng chảy phát sáng XANH DƯƠNG NHẠT (Light Cyan / Sky Blue Flow)
-                    if (s % 2 === 0 || s % 3 === 0) {
-                        ctx.beginPath();
-                        ctx.moveTo(startX + 1, startY + 10);
-                        ctx.bezierCurveTo(
-                            startX + swing1 * 0.8 + 1, startY + streamLen * 0.35,
-                            startX + swing2 * 0.9 + 1, startY + streamLen * 0.7,
-                            startX + swing1 * 0.5 + 1, endY - 15
-                        );
-                        ctx.strokeStyle = (s % 4 === 0) ? 'rgba(147, 197, 253, 0.92)' : 'rgba(96, 165, 250, 0.85)';
-                        ctx.lineWidth = 2.4 + (s % 2) * 1.2;
-                        ctx.stroke();
-                    }
-
-                    // 3.3. Dòng chảy tinh thể TRẮNG SÁNG (Crisp Quartz / Pure Mineral White Flow)
-                    if (s % 3 === 0 || s % 5 === 0) {
-                        ctx.beginPath();
-                        ctx.moveTo(startX - 1, startY + 18);
-                        ctx.bezierCurveTo(
-                            startX + swing1 * 0.8 - 0.5, startY + streamLen * 0.38,
-                            startX + swing2 * 0.9 - 0.5, startY + streamLen * 0.68,
-                            startX + swing1 * 0.5 - 0.5, endY - 30
-                        );
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.96)';
-                        ctx.lineWidth = 1.4 + (s % 2) * 0.8;
-                        ctx.stroke();
-                    }
                 }
 
-                // 4. Các Giọt Năng Lượng & Tinh Thể Lấp Lánh Theo Dòng Chảy ở Phần Giữa:
-                for (let d = 0; d < 180; d++) {
-                    const dx = Math.random() * 1024;
-                    const dy = 350 + Math.random() * 320;
-                    const dSize = 1.0 + Math.random() * 2.2;
-                    const dRand = Math.random();
-                    
+                // LƯỢT 2: CÁC THANH MÀU TỐI TRẦM TRỒNG TRÉO LÊN NHAU (BLUR NHẸ 2px)
+                try { ctx.filter = 'blur(2px)'; } catch(e) {}
+
+                for (let i = 0; i < bands.length; i++) {
+                    const b = bands[i];
+                    const baseY = startY + i * stepY;
+                    const progress = i / (bands.length - 1);
+                    const bright = 0.82 - (progress * 0.48);
+                    const curR = Math.round(b.r * bright);
+                    const curG = Math.round(b.g * bright);
+                    const curB = Math.round(b.b * bright);
+                    const curAlpha = 0.78 * (1.0 - progress * 0.22);
+
                     ctx.beginPath();
-                    ctx.arc(dx, dy, dSize, 0, Math.PI * 2);
-                    if (dRand > 0.6) ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
-                    else if (dRand > 0.3) ctx.fillStyle = 'rgba(147, 197, 253, 0.95)';
-                    else ctx.fillStyle = 'rgba(59, 130, 246, 0.85)';
-                    ctx.fill();
+                    for (let x = 0; x <= 1024; x += 12) {
+                        const tilt = Math.sin((x / 1024) * Math.PI * 2 + tiltPhase) * tiltAmp;
+                        const wave1 = Math.sin((x / 1024) * Math.PI * b.freq + b.phase) * b.amp;
+                        const wave2 = Math.cos((x / 1024) * Math.PI * (b.freq * 0.5) + b.phase * 1.5) * 5;
+                        const y = baseY + tilt + wave1 + wave2;
+
+                        if (x === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.lineWidth = b.w;
+                    ctx.strokeStyle = `rgba(${curR}, ${curG}, ${curB}, ${curAlpha})`;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.stroke();
                 }
 
-                // 5. Đảm bảo phần đáy cuối cùng (y từ 720 đến 1024) đen tuyền đanh chắc
-                const bottomFade = ctx.createLinearGradient(0, 680, 0, 1024);
-                bottomFade.addColorStop(0, 'rgba(0, 0, 0, 0)');
-                bottomFade.addColorStop(0.35, 'rgba(4, 7, 12, 0.7)');
-                bottomFade.addColorStop(0.65, 'rgba(2, 3, 6, 0.95)');
-                bottomFade.addColorStop(1.0, '#000000');
-                ctx.fillStyle = bottomFade;
-                ctx.fillRect(0, 680, 1024, 344);
+                try { ctx.filter = 'none'; } catch(e) {}
 
-                const tex = new THREE.CanvasTexture(canvas);
-                tex.wrapS = THREE.RepeatWrapping;
-                tex.wrapT = THREE.ClampToEdgeWrapping;
-                tex.repeat.set(2, 1);
-                return tex;
+                const texture = new THREE.CanvasTexture(canvas);
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.ClampToEdgeWrapping;
+                texture.needsUpdate = true;
+                return texture;
             }
 
             // Texture Sculpture: Champagne & Imperial Gold
@@ -2128,6 +2144,13 @@ window.MESH_DATA = {
             // 1. Phôi Trắng Tinh Khôi (Pure White Sculptural Clay/Plaster)
             // 2. Bản Màu Chuẩn Thực Tế (Realistic Strata & Gold)
             // ==========================================
+            const bronzeBaseMaterial = new THREE.MeshStandardMaterial({
+                color: 0xc8963e, // Vàng đồng sang trọng
+                roughness: 0.28,
+                metalness: 0.88,
+                side: THREE.DoubleSide
+            });
+
             const whiteBaseMaterial = new THREE.MeshStandardMaterial({
                 color: 0xf8fafc,
                 roughness: 0.68,
@@ -2173,55 +2196,64 @@ window.MESH_DATA = {
                 side: THREE.DoubleSide
             });
 
-                        // Current Active Mode Tracker
-            let currentFinishMode = 'real';
+                                    // Current Active Mode Tracker: Quản lý riêng màu khối đế
+            let currentBaseFinishMode = 'real';
 
-            // Global Color Switcher Function (Nút Lớn ở Trên)
+            // Global Color Switcher Function (Nút Lớn ở Trên: CHỈ ĐỔI MÀU ĐẾ)
             window.set3DFinishMode = function(mode) {
-                currentFinishMode = mode;
+                currentBaseFinishMode = mode;
                 const btnWhite = document.getElementById('btn-finish-white');
                 const btnReal = document.getElementById('btn-finish-real');
+                const btnBronze = document.getElementById('btn-finish-bronze');
                 const label = document.getElementById('active-mode-label');
 
+                // Reset all 3 buttons to inactive
+                [btnWhite, btnReal, btnBronze].forEach(btn => {
+                    if (!btn) return;
+                    btn.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.25)]', 'bg-[#1e222e]');
+                    btn.classList.add('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    const textSpan = btn.querySelector('span');
+                    if (textSpan) {
+                        textSpan.classList.remove('text-white', 'text-[#f5d26e]');
+                        textSpan.classList.add('text-[#cbd5e1]');
+                    }
+                });
+
                 if (mode === 'white') {
-                    // Màu trắng tinh sẽ fill TRẮNG TINH TOÀN BỘ SẢN PHẨM (cả đế đá và thân tượng)
+                    // CHỈ ĐỔI MÀU ĐẾ THÔI (thân tượng giữ nguyên màu hiện tại)
                     if (currentMesh1) currentMesh1.material = whiteBaseMaterial;
-                    if (currentMesh3) currentMesh3.material = whiteSculptureMaterial;
-                    if (currentMesh2) currentMesh2.material = whiteBadgeMaterial;
-
                     if (btnWhite) {
-                        btnWhite.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnWhite.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.25)]', 'bg-[#1e222e]');
                         btnWhite.classList.remove('border-[#d4af37]/25', 'bg-[#161922]/80');
+                        const textSpan = btnWhite.querySelector('span');
+                        if (textSpan) { textSpan.classList.add('text-white'); textSpan.classList.remove('text-[#cbd5e1]'); }
                     }
-                    if (btnReal) {
-                        btnReal.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
-                        btnReal.classList.add('border-[#d4af37]/25', 'bg-[#161922]/80');
-                    }
-                    if (label) label.innerText = 'Trắng Tinh';
+                    if (label) label.innerText = 'Đế Trắng';
                 } else if (mode === 'real') {
-                    // Lên màu thực tế: Thân tượng đồng vàng, đế đá địa chất
+                    // CHỈ ĐỔI MÀU ĐẾ THÔI (thân tượng giữ nguyên màu hiện tại)
                     if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
-                    if (currentMesh3) currentMesh3.material = realisticSculptureMaterial;
-                    if (currentMesh2) currentMesh2.material = realisticBadgeMaterial;
-
                     if (btnReal) {
-                        btnReal.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
+                        btnReal.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.25)]', 'bg-[#1e222e]');
                         btnReal.classList.remove('border-[#d4af37]/25', 'bg-[#161922]/80');
+                        const textSpan = btnReal.querySelector('span');
+                        if (textSpan) { textSpan.classList.add('text-white'); textSpan.classList.remove('text-[#cbd5e1]'); }
                     }
-                    if (btnWhite) {
-                        btnWhite.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]', 'bg-[#1e222e]');
-                        btnWhite.classList.add('border-[#d4af37]/25', 'bg-[#161922]/80');
+                    if (label) label.innerText = 'Đế Màu';
+                } else if (mode === 'bronze') {
+                    // CHỈ ĐỔI MÀU ĐẾ THÔI SANG VÀNG ĐỒNG
+                    if (currentMesh1) currentMesh1.material = bronzeBaseMaterial;
+                    if (btnBronze) {
+                        btnBronze.classList.add('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.25)]', 'bg-[#1e222e]');
+                        btnBronze.classList.remove('border-[#d4af37]/25', 'bg-[#161922]/80');
+                        const textSpan = btnBronze.querySelector('span');
+                        if (textSpan) { textSpan.classList.add('text-white'); textSpan.classList.remove('text-[#cbd5e1]'); }
                     }
-                    if (label) label.innerText = 'Màu Thực Tế';
+                    if (label) label.innerText = 'Đế Vàng Đồng';
                 }
             };
 
             // Custom Single-Click Color Swatch Fill (Bảng Màu Nhỏ ở Dưới: Màu Tượng Đồng)
-            // Lưu ý theo yêu cầu: Nút màu trắng ở dưới sẽ CHỈ fill phần trên, còn phần đế VẪN GIỮ MÀU ĐÁ
             window.setCustomModelColor = function(hexColor, name) {
-                const label = document.getElementById('active-mode-label');
-                if (label) label.innerText = name || 'Tùy Chỉnh';
-
                 const customMat = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(hexColor),
                     roughness: hexColor === '#ffffff' ? 0.45 : 0.28,
@@ -2229,23 +2261,20 @@ window.MESH_DATA = {
                     side: THREE.DoubleSide
                 });
 
-                // Fill màu cho phần trên (thân tượng đồng và phù hiệu)
+                // Fill màu cho phần thân tượng phía trên
                 if (currentMesh3) currentMesh3.material = customMat;
-                if (currentMesh2) currentMesh2.material = customMat;
-                
-                // Phần đế VẪN GIỮ MÀU ĐÁ THỰC TẾ ĐỊA CHẤT (không bị fill trắng)
-                if (currentMesh1) currentMesh1.material = realisticStoneMaterial;
 
-                // Cập nhật trạng thái nút
-                const btnWhite = document.getElementById('btn-finish-white');
-                const btnReal = document.getElementById('btn-finish-real');
-                if (btnWhite) {
-                    btnWhite.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]');
-                    btnWhite.classList.add('border-[#d4af37]/25');
+                // VỚI MÀU ĐEN (hoặc hắc kim): LOGO VẪN GIỮ MÀU VÀNG GOLD
+                const isDark = hexColor === '#1a1e26' || hexColor === '#14171f' || hexColor === '#000000' || (name && (name.toLowerCase().includes('đen') || name.toLowerCase().includes('hắc')));
+                if (isDark) {
+                    if (currentMesh2) currentMesh2.material = realisticBadgeMaterial; // Giữ nguyên logo vàng óng ánh
+                } else {
+                    if (currentMesh2) currentMesh2.material = customMat;
                 }
-                if (btnReal) {
-                    btnReal.classList.remove('active', 'border-[#d4af37]', 'shadow-[0_2px_12px_rgba(212,175,55,0.2)]');
-                    btnReal.classList.add('border-[#d4af37]/25');
+                
+                // Khối đế giữ nguyên trạng thái màu hiện tại của nó (Đế Màu hoặc Đế Trắng)
+                if (currentMesh1) {
+                    currentMesh1.material = (currentBaseFinishMode === 'white') ? whiteBaseMaterial : ((currentBaseFinishMode === 'bronze') ? bronzeBaseMaterial : realisticStoneMaterial);
                 }
             };
 
