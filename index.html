@@ -8,7 +8,7 @@
     <!-- Google Fonts: Montserrat Only -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&subset=vietnamese&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,8 +31,8 @@
                         'brand-deep': '#0b0d11',
                     },
                     fontFamily: {
-                        'sans': ['"Montserrat"', 'sans-serif'],
-                        'heading': ['"Montserrat"', 'sans-serif'],
+                        'sans': ['"Be Vietnam Pro"', '"Montserrat"', 'system-ui', 'sans-serif'],
+                        'heading': ['"Be Vietnam Pro"', '"Montserrat"', 'system-ui', 'sans-serif'],
                     }
                 }
             }
@@ -314,9 +314,9 @@ window.MESH_DATA = {
                         </div>
                     </div>
                     
-                    <!-- Main Title: "Khơi Nguồn" (Chuẩn Title Case mềm mại, không bao giờ lỗi dấu) -->
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[3.85rem] font-extrabold mb-8 leading-[1.1] tracking-tight" style="font-family: 'Montserrat', sans-serif;">
-                        <span class="block overflow-hidden">
+                    <!-- Main Title: "Khơi Nguồn" (Hiển thị trọn vẹn, không lỗi dấu, không bị cấn viền) -->
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[3.85rem] font-extrabold mb-8 leading-[1.25] tracking-tight font-heading">
+                        <span class="block overflow-visible py-1">
                             <span class="block animate-slide-up delay-300 text-white overflow-visible">
                                 Khơi <span class="bg-gradient-to-r from-[#f5d26e] via-[#d4af37] to-[#e5be52] bg-clip-text text-transparent">Nguồn</span>
                             </span>
@@ -352,8 +352,8 @@ window.MESH_DATA = {
                                         <!-- Vertical accent line inside card -->
                                         <div class="w-1.5 h-10 rounded-full bg-gradient-to-b from-[#d4af37] to-[#f5d26e] shrink-0"></div>
                                         <p class="text-xs sm:text-sm font-medium text-white/95 tracking-wide leading-snug">
-                                            Từ một món quà nghệ thuật <span class="text-[#d4af37] font-bold">&rarr;</span><br>
-                                            kể câu chuyện tự hào trong <span class="text-[#f5d26e] font-bold">30s – 3 phút</span>
+                                            Từ một món quà nghệ thuật<br>
+                                            <span class="text-[#d4af37] font-bold">&rarr;</span> kể câu chuyện tự hào trong <span class="text-[#f5d26e] font-bold">30s – 3 phút</span>
                                         </p>
                                     </div>
                                 </div>
@@ -571,18 +571,18 @@ window.MESH_DATA = {
                         <h3 class="text-2xl font-black text-[#e2e8f0] mb-3 uppercase">Người Trao</h3>
                         <p class="text-[#94a3b8] text-sm font-medium mb-6 pb-4 border-b border-[#d4af37]/20">Chỉ cần ghi nhớ 3 ý chính:</p>
                         
-                        <ul class="space-y-4 text-[#e2e8f0] font-semibold text-sm tracking-wide flex-1">
-                            <li class="flex items-center gap-3">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#161922] shrink-0"></span>
-                                <span>KHƠI NGUỒN</span>
+                        <ul class="space-y-4 text-[#e2e8f0] font-bold text-sm tracking-wide flex-1">
+                            <li class="flex items-center gap-2.5 text-[#f5d26e]">
+                                <span class="font-black text-base text-[#f5d26e]">✓</span>
+                                <span class="text-[#e2e8f0]">KHƠI NGUỒN</span>
                             </li>
-                            <li class="flex items-center gap-3">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#161922] shrink-0"></span>
-                                <span>DÒNG CHẢY NĂNG LƯỢNG</span>
+                            <li class="flex items-center gap-2.5 text-[#f5d26e]">
+                                <span class="font-black text-base text-[#f5d26e]">✓</span>
+                                <span class="text-[#e2e8f0]">DÒNG CHẢY NĂNG LƯỢNG</span>
                             </li>
-                            <li class="flex items-center gap-3">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#161922] shrink-0"></span>
-                                <span>20 NĂM PVEP</span>
+                            <li class="flex items-center gap-2.5 text-[#f5d26e]">
+                                <span class="font-black text-base text-[#f5d26e]">✓</span>
+                                <span class="text-[#e2e8f0]">20 NĂM PVEP</span>
                             </li>
                         </ul>
                     </div>
@@ -1008,7 +1008,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-20s')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (Giọng Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu</span>
                                 </button>
                             </div>
 
@@ -1049,7 +1049,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-40s')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (Giọng Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu</span>
                                 </button>
                             </div>
 
@@ -1093,7 +1093,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-core')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (Giọng Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu</span>
                                 </button>
                             </div>
 
@@ -1170,7 +1170,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-industry')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (Giọng Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu</span>
                                 </button>
                             </div>
 
@@ -1221,7 +1221,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-90s')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (Giọng Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu</span>
                                 </button>
                             </div>
 
@@ -1271,7 +1271,7 @@ window.MESH_DATA = {
                                 <button type="button" onclick="readAloudScenario('text-speech-english')"
                                         class="shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f5d26e] to-[#b89628] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <span>Nghe Giọng Đọc Mẫu (English Nữ)</span>
+                                    <span>Nghe Giọng Đọc Mẫu (English)</span>
                                 </button>
                             </div>
 
@@ -2916,11 +2916,11 @@ window.MESH_DATA = {
         function renderListenedButton(btn, containerId) {
             if (!btn) return;
             const isEnglish = containerId && containerId.includes('english');
-            const voiceLabel = isEnglish ? '(English Nữ)' : '(Giọng Nữ)';
+            const suffix = isEnglish ? ' (English)' : '';
             btn.className = 'shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#151923] via-[#1e2535] to-[#151923] border-2 border-[#d4af37] text-[#f5d26e] font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:bg-[#252c40] hover:border-[#f5d26e] hover:shadow-[0_0_25px_rgba(245,210,110,0.4)] active:scale-95 transition-all cursor-pointer';
             btn.innerHTML = `
                 <span class="w-5 h-5 rounded-full bg-[#10b981]/25 border border-[#10b981] text-[#34d399] flex items-center justify-center text-xs font-black shadow-inner">✓</span>
-                <span class="tracking-wider">Đã Nghe · Bấm Nghe Lại ${voiceLabel}</span>
+                <span class="tracking-wider">Đã Nghe · Bấm Nghe Lại${suffix}</span>
                 <svg class="w-3.5 h-3.5 text-[#f5d26e]/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
             `;
         }
@@ -2954,14 +2954,14 @@ window.MESH_DATA = {
             // Update button UI to Playing state with glowing soundwave
             if (playBtn) {
                 const isEnglish = containerId.includes('english');
-                const voiceLabel = isEnglish ? '(English Nữ)' : '(Giọng Nữ)';
+                const suffix = isEnglish ? ' (English)' : '';
                 playBtn.className = 'shrink-0 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#f5d26e] text-[#0b0d11] font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(245,210,110,0.6)] hover:brightness-110 active:scale-95 transition-all cursor-pointer';
                 playBtn.innerHTML = `
                     <div class="flex items-center gap-1.5 py-0.5">
                         <span class="w-1.5 h-3.5 bg-[#0b0d11] rounded-full animate-bounce"></span>
                         <span class="w-1.5 h-5 bg-[#0b0d11] rounded-full animate-bounce [animation-delay:0.15s]"></span>
                         <span class="w-1.5 h-3 bg-[#0b0d11] rounded-full animate-bounce [animation-delay:0.3s]"></span>
-                        <span class="ml-1.5 font-black text-xs uppercase tracking-wider">Đang Phát ${voiceLabel} · Bấm Dừng</span>
+                        <span class="ml-1.5 font-black text-xs uppercase tracking-wider">Đang Phát${suffix} · Bấm Dừng</span>
                     </div>
                 `;
             }
