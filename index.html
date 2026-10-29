@@ -2853,15 +2853,15 @@ window.MESH_DATA = {
         };
 
         // ==========================================
-        // VOICE STUDIO FEMALE AUDIO ENGINE (Full 6 Scenarios)
+        // VOICE STUDIO AUDIO ENGINE - MC HẠNH PHÚC (Full 6 Scenarios)
         // ==========================================
         const SCENARIO_AUDIO_FILES = {
-            'text-speech-20s': 'audio/scenario_20s_female.m4a',
-            'text-speech-40s': 'audio/scenario_40s_female.m4a',
-            'text-speech-core': 'audio/scenario_core_60s_female.m4a',
-            'text-speech-industry': 'audio/scenario_industry_90s_female.m4a',
-            'text-speech-90s': 'audio/scenario_90s_female.m4a',
-            'text-speech-english': 'audio/scenario_english_female.m4a'
+            'text-speech-20s': 'audio/mc_hanh_phuc_phan_1_20s.mp3',
+            'text-speech-40s': 'audio/mc_hanh_phuc_phan_2_40s.mp3',
+            'text-speech-core': 'audio/mc_hanh_phuc_phan_3_60s.mp3',
+            'text-speech-industry': 'audio/mc_hanh_phuc_phan_4_90s.mp3',
+            'text-speech-90s': 'audio/mc_hanh_phuc_phan_5_90s.mp3',
+            'text-speech-english': 'audio/mc_hanh_phuc_phan_6_english.mp3'
         };
 
         const CONTAINER_TO_TAB = {
@@ -2944,7 +2944,7 @@ window.MESH_DATA = {
             // Mark as listened immediately upon play
             markScenarioAsListened(containerId);
 
-            const audioSrc = SCENARIO_AUDIO_FILES[containerId] || 'audio/scenario_20s_female.m4a';
+            const audioSrc = SCENARIO_AUDIO_FILES[containerId] || 'audio/mc_hanh_phuc_phan_1_20s.mp3';
             const audio = new Audio(audioSrc);
             audio.volume = 0.85;
             activeAudio = audio;
@@ -2971,14 +2971,18 @@ window.MESH_DATA = {
             };
 
             audio.onerror = (e) => {
-                console.warn('Local audio fallback to online neural stream:', e);
-                const rawText = container.innerText.trim().replace(/[“”"']/g, '').replace(/\s+/g, ' ');
-                const lang = containerId.includes('english') ? 'en' : 'vi';
-                const ttsUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&q=' + encodeURIComponent(rawText.slice(0, 180)) + '&tl=' + lang + '&client=tw-ob';
-                const fallbackAudio = new Audio(ttsUrl);
-                activeAudio = fallbackAudio;
-                fallbackAudio.onended = stopStudioAudio;
-                fallbackAudio.play().catch(stopStudioAudio);
+                // If .mp3 fails, attempt playing .m4a format fallback
+                if (audioSrc && audioSrc.endsWith('.mp3')) {
+                    const fallbackM4a = audioSrc.replace('.mp3', '.m4a');
+                    const retryAudio = new Audio(fallbackM4a);
+                    retryAudio.volume = 0.85;
+                    activeAudio = retryAudio;
+                    retryAudio.onended = stopStudioAudio;
+                    retryAudio.onerror = stopStudioAudio;
+                    retryAudio.play().catch(stopStudioAudio);
+                    return;
+                }
+                stopStudioAudio();
             };
 
             audio.play().catch(err => {
