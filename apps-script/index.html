@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVEP 20 Năm — Quản Lý Sản Phẩm & Tồn Kho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>body { font-family: "Be Vietnam Pro", sans-serif; background: #080b1f; color: #f8fafc; }</style>
+</head>
+<body>
+<div id="pvep-admin-portal" class="min-h-screen bg-[#080b1f] text-slate-100 overflow-y-auto">
+        
+        <!-- MÀN HÌNH 1: ĐĂNG NHẬP HỆ THỐNG -->
+        <div id="admin-login-screen" class="min-h-screen flex flex-col lg:flex-row">
+            <!-- Cột trái: Nhận diện thương hiệu PVEP 20 Năm -->
+            <div class="lg:w-1/2 p-8 sm:p-14 flex flex-col justify-between relative overflow-hidden" style="background:linear-gradient(145deg, #080b1f 0%, #1b2766 45%, #2e72bb 85%, #13a052 130%);">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white rounded-2xl p-2.5 w-24 sm:w-28 shadow-xl shrink-0">
+                        <img src="data:image/jpeg;base64,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" alt="PVEP 20 Năm" class="w-full h-auto object-contain">
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#7db6f0] block">PETROVIETNAM PVEP</span>
+                        <span class="text-sm font-extrabold text-white">Hệ Thống Quản Trị Sản Phẩm & Kho</span>
+                    </div>
+                </div>
+
+                <div class="my-10 space-y-4 max-w-lg">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider text-white">
+                        <span class="w-2 h-2 rounded-full bg-[#13a052]"></span>
+                        <span>Cổng Nội Bộ Đồng Bộ Thời Gian Thực</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        Quản lý Sản phẩm &amp; Kiểm tra Tồn kho
+                    </h1>
+                    <p class="text-base text-white/85 leading-relaxed">
+                        Mọi chỉnh sửa số lượng hàng hoặc thêm sản phẩm mới từ Template đều tự động cập nhật trực tiếp lên Website và cơ sở dữ liệu đám mây.
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-white/75 pt-4 border-t border-white/15">
+                    <span class="font-bold tracking-wider uppercase">TIÊN PHONG KHƠI NGUỒN NĂNG LƯỢNG</span>
+                    <span>Kỷ niệm 20 năm PVEP</span>
+                </div>
+            </div>
+
+            <!-- Cột phải: Form đăng nhập -->
+            <div class="lg:w-1/2 flex items-center justify-center p-6 sm:p-14 bg-[#0e1230]">
+                <div class="w-full max-w-md bg-[#131839] border border-[#2e72bb]/35 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white">Đăng nhập Quản lý</h2>
+                        <p class="text-sm text-[#94a3b8] mt-1">Dành cho cán bộ, nhân viên được phân quyền.</p>
+                    </div>
+
+                    <form id="pvep-login-form" onsubmit="submitAdminLogin(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Tên đăng nhập</label>
+                            <input id="admin-user" type="text" required autocomplete="username" placeholder="Nhập tên tài khoản (VD: admin)" class="w-full px-4 py-3.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Mật khẩu</label>
+                            <input id="admin-pass" type="password" required autocomplete="current-password" placeholder="••••••••" class="w-full px-4 py-3.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                        </div>
+
+                        <div id="admin-login-err" class="hidden p-3 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 text-xs font-semibold text-center"></div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2e72bb] to-[#13a052] text-white font-extrabold text-sm uppercase tracking-wider shadow-lg hover:brightness-110 transition-all">
+                            Đăng Nhập Hệ Thống
+                        </button>
+                    </form>
+
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <button type="button" onclick="closeAdminPortal()" class="inline-flex items-center gap-2 text-sm font-bold text-[#7db6f0] hover:text-white transition-colors">
+                            <span>← Quay về Website giới thiệu</span>
+                        </button>
+                        <span class="text-xs text-slate-400">TK: <code class="text-slate-200">admin</code> / <code class="text-slate-200">pvep2026</code></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 2: BẢNG ĐIỀU KHIỂN SẢN PHẨM & TỒN KHO (Đồng bộ giao diện Website) -->
+        <div id="admin-dashboard-screen" class="hidden min-h-screen flex flex-col bg-[#0e1230]">
+            <!-- Top Header Bar -->
+            <header class="sticky top-0 z-30 bg-[#080b1f]/95 backdrop-blur-md border-b border-[#2e72bb]/30 px-6 py-3.5">
+                <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="bg-white rounded-xl p-1.5 w-12 h-12 flex items-center justify-center shadow">
+                            <img src="data:image/jpeg;base64,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" alt="PVEP" class="max-h-full object-contain">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-base font-extrabold text-white uppercase tracking-wider">Quản Lý Sản Phẩm &amp; Số Lượng Kho</h2>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#13a052]/20 text-emerald-300 border border-[#13a052]/40">Đã đồng bộ Website</span>
+                            </div>
+                            <p id="admin-who-label" class="text-xs text-[#7db6f0]">Ban Tổ Chức PVEP · Quản Trị Viên</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2.5">
+                        <button onclick="closeAdminPortal()" class="px-4 py-2.5 rounded-xl bg-[#1b2249] hover:bg-[#232b5a] border border-[#2e72bb]/40 text-white text-xs font-bold flex items-center gap-2 transition-all">
+                            <span>← Về Website (Xem kết quả)</span>
+                        </button>
+                        <button onclick="logoutAdminPortal()" class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all">
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2 Chức năng chính duy nhất theo yêu cầu -->
+                <div class="max-w-6xl mx-auto mt-3 pt-3 border-t border-white/10 flex items-center gap-3">
+                    <button id="adm-tab-btn-stock" onclick="switchAdminTab('stock')" class="px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#2e72bb] text-white shadow transition-all">
+                        📦 1. Kiểm Tra Số Lượng Hàng &amp; Sản Phẩm
+                    </button>
+                    <button id="adm-tab-btn-add" onclick="switchAdminTab('add')" class="px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#131839] text-slate-300 hover:text-white border border-[#2e72bb]/30 transition-all">
+                        ➕ 2. Thêm Sản Phẩm Mới (Template Sẵn)
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="flex-1 max-w-6xl w-full mx-auto px-6 py-8">
+                
+                <!-- TAB 1: KIỂM TRA SỐ LƯỢNG HÀNG & DANH SÁCH SẢN PHẨM -->
+                <div id="adm-tab-stock" class="space-y-6">
+                    <!-- Thống kê tổng quan nhanh -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-[#131839] border border-[#2e72bb]/30 rounded-2xl p-5 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-[#94a3b8] font-semibold block">Tổng số dòng sản phẩm</span>
+                                <span id="stat-total-products" class="text-3xl font-black text-white mt-1 block">3</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-[#2e72bb]/20 border border-[#2e72bb]/40 flex items-center justify-center text-[#7db6f0] font-bold">SP</div>
+                        </div>
+                        <div class="bg-[#131839] border border-[#13a052]/30 rounded-2xl p-5 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-[#94a3b8] font-semibold block">Tổng số lượng hàng tồn kho</span>
+                                <span id="stat-total-stock" class="text-3xl font-black text-emerald-400 mt-1 block">350</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-[#13a052]/20 border border-[#13a052]/40 flex items-center justify-center text-emerald-300 font-bold">KHO</div>
+                        </div>
+                        <div class="bg-[#131839] border border-[#2e72bb]/30 rounded-2xl p-5 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-[#94a3b8] font-semibold block">Thêm sản phẩm mới</span>
+                                <span class="text-xs text-slate-300 mt-1 block">Tạo trang tự động theo Template</span>
+                            </div>
+                            <button onclick="switchAdminTab('add')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#2e72bb] to-[#13a052] text-white text-xs font-extrabold uppercase tracking-wider shadow hover:brightness-110">
+                                + Thêm mới
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Danh sách thẻ sản phẩm & kiểm tra tồn kho -->
+                    <div id="admin-products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+                </div>
+
+                <!-- TAB 2: THÊM / SỬA SẢN PHẨM THEO TEMPLATE SẴN -->
+                <div id="adm-tab-add" class="hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <!-- Form điền thông tin Template -->
+                        <form id="template-product-form" onsubmit="saveProductFromTemplate(event)" class="lg:col-span-7 bg-[#131839] border border-[#2e72bb]/35 rounded-3xl p-6 sm:p-8 space-y-5 shadow-xl">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-[#7db6f0]" id="form-mode-badge">Tạo Mới Từ Template Chuẩn</span>
+                                    <h3 class="text-xl font-extrabold text-white mt-0.5" id="form-mode-title">Thông Tin Sản Phẩm Landing Page</h3>
+                                </div>
+                                <button type="button" onclick="resetTemplateForm()" class="text-xs text-slate-400 hover:text-white underline">Làm mới biểu mẫu</button>
+                            </div>
+
+                            <input type="hidden" id="tpl-edit-id" value="">
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Số thứ tự (Sidebar) *</label>
+                                    <input id="tpl-code" type="text" required placeholder="VD: 04" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white font-bold text-sm focus:border-[#7db6f0] focus:outline-none">
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Tên Sản Phẩm / Tác Phẩm *</label>
+                                    <input id="tpl-name" type="text" required oninput="updateLiveTemplatePreview()" placeholder="VD: Sổ Tay Da & Bút Ký PVEP 20 Năm" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white font-bold text-sm focus:border-[#7db6f0] focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="sm:col-span-2">
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Nhãn Bộ Sưu Tập (Phía trên tiêu đề)</label>
+                                    <input id="tpl-category" type="text" oninput="updateLiveTemplatePreview()" placeholder="VD: Bộ Quà Tặng Lưu Niệm · Sản Phẩm 04" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-emerald-300 mb-1.5">Số Lượng Hàng Tồn Kho *</label>
+                                    <input id="tpl-stock" type="number" min="0" value="100" required oninput="updateLiveTemplatePreview()" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#13a052]/50 text-emerald-300 font-extrabold text-sm focus:border-[#13a052] focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1.5">Hình Ảnh Sản Phẩm (Chọn ảnh từ máy hoặc dán Link ảnh) *</label>
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <input id="tpl-image-url" type="text" oninput="updateLiveTemplatePreview()" placeholder="Dán link ảnh (https://...) hoặc bấm Chọn ảnh bên cạnh" class="flex-1 px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                                    <label class="px-4 py-2.5 rounded-xl bg-[#1b2249] hover:bg-[#232b5a] border border-[#2e72bb]/50 text-[#7db6f0] text-xs font-bold cursor-pointer flex items-center justify-center gap-2 shrink-0 transition-all">
+                                        <span>📷 Chọn ảnh từ máy</span>
+                                        <input type="file" accept="image/*" onchange="handleImageFileUpload(event)" class="hidden">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1.5">Thông Điệp Ngắn / Slogan</label>
+                                <input id="tpl-tagline" type="text" oninput="updateLiveTemplatePreview()" placeholder="VD: Dấu ấn tri ân đồng hành cùng chặng đường 20 năm phát triển." class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Tiêu Đề Khối Chế Tác</label>
+                                    <input id="tpl-spec-heading" type="text" oninput="updateLiveTemplatePreview()" placeholder="VD: Chế tác tinh xảo & sang trọng" class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Mô Tả Chi Tiết Sản Phẩm</label>
+                                    <input id="tpl-desc" type="text" oninput="updateLiveTemplatePreview()" placeholder="Mô tả chất liệu, ý nghĩa biểu trưng của món quà..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#0e1230] border border-[#2e72bb]/40 text-white text-sm focus:border-[#7db6f0] focus:outline-none">
+                                </div>
+                            </div>
+
+                            <!-- 4 ô thông số chuẩn Template -->
+                            <div>
+                                <label class="block text-xs font-bold text-[#7db6f0] uppercase tracking-wider mb-2">4 Ô Thông Số Kỹ Thuật Trên Template</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <input id="tpl-s1" type="text" oninput="updateLiveTemplatePreview()" placeholder="Chất liệu: Da thật & Hợp kim mạ vàng" class="px-3.5 py-2 rounded-xl bg-[#0e1230] border border-[#2e72bb]/30 text-white text-xs">
+                                    <input id="tpl-s2" type="text" oninput="updateLiveTemplatePreview()" placeholder="Kích thước: Tiêu chuẩn A5 (21 x 15cm)" class="px-3.5 py-2 rounded-xl bg-[#0e1230] border border-[#2e72bb]/30 text-white text-xs">
+                                    <input id="tpl-s3" type="text" oninput="updateLiveTemplatePreview()" placeholder="Trọng lượng: 0.85 kg nguyên hộp" class="px-3.5 py-2 rounded-xl bg-[#0e1230] border border-[#2e72bb]/30 text-white text-xs">
+                                    <input id="tpl-s4" type="text" oninput="updateLiveTemplatePreview()" placeholder="Hộp bảo quản: Hộp cứng ép kim logo PVEP" class="px-3.5 py-2 rounded-xl bg-[#0e1230] border border-[#2e72bb]/30 text-white text-xs">
+                                </div>
+                            </div>
+
+                            <div class="pt-3 flex flex-wrap items-center gap-3">
+                                <button type="submit" class="flex-1 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#2e72bb] to-[#13a052] text-white font-extrabold text-sm uppercase tracking-wider shadow-lg hover:brightness-110 transition-all">
+                                    ✓ Lưu Sản Phẩm &amp; Cập Nhật Lên Website
+                                </button>
+                                <button type="button" onclick="switchAdminTab('stock')" class="px-5 py-3.5 rounded-xl bg-[#1b2249] text-slate-300 hover:text-white text-xs font-bold">
+                                    Huỷ
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Khung Xem Trước Template Trực Tiếp (Live Preview) -->
+                        <div class="lg:col-span-5 bg-[#131839] border border-[#2e72bb]/35 rounded-3xl p-6 space-y-4 sticky top-28">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold uppercase tracking-wider text-[#7db6f0]">Xem Trước Trang Sản Phẩm (Template)</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#13a052]/20 text-emerald-300" id="preview-stock-pill">Tồn kho: 100</span>
+                            </div>
+                            <div class="rounded-2xl bg-[#080b1f] border border-[#2e72bb]/25 p-5 space-y-4">
+                                <div class="text-center space-y-1.5">
+                                    <span id="preview-cat" class="inline-block px-3 py-0.5 rounded-full bg-[#2e72bb]/20 text-[#7db6f0] text-xs font-bold uppercase">Bộ Quà Tặng · Sản Phẩm Mới</span>
+                                    <h4 id="preview-name" class="text-xl font-black text-white">Tên Sản Phẩm Mới</h4>
+                                    <p id="preview-tagline" class="text-xs text-slate-300">Thông điệp ngắn của sản phẩm sẽ hiển thị tại đây.</p>
+                                </div>
+                                <div class="h-48 rounded-xl bg-[#0e1230] border border-[#2e72bb]/20 flex items-center justify-center p-4 overflow-hidden">
+                                    <img id="preview-img" src="https://res.cloudinary.com/b2nf1kma/image/upload/v1792728707/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn-3.png" alt="Preview" class="max-h-full object-contain">
+                                </div>
+                                <div>
+                                    <h5 id="preview-spec-heading" class="text-sm font-bold text-white">Chế tác thủ công cao cấp</h5>
+                                    <p id="preview-desc" class="text-xs text-slate-300 mt-1">Mô tả chi tiết sản phẩm.</p>
+                                </div>
+                                <div id="preview-specs-grid" class="grid grid-cols-2 gap-2 text-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // CƠ SỞ DỮ LIỆU SẢN PHẨM ĐỒNG BỘ (WEBSITE <-> TRANG QUẢN LÝ <-> GOOGLE SHEET)
+        // =========================================================================
+        const GOOGLE_SHEET_ID = "1EetTvh90juJ2LoaTHK1k8pIe0tyZcFsHM6yQaqQ01UQ";
+        const APPS_SCRIPT_EXEC_URL = "https://script.google.com/macros/s/AKfycbxJyBDyG1eEuwJPNXDCbmRD82F4_zGzkG_LBg9nWfD4R0LcH-8FUhvzYH3AIN5z4kvj/exec";
+        const STORAGE_KEY_PRODUCTS = "pvep_products_v3";
+        const STORAGE_KEY_AUTH = "pvep_staff_auth_v3";
+        const DEFAULT_IMG = "https://res.cloudinary.com/b2nf1kma/image/upload/v1792728707/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn-3.png";
+
+        const DEFAULT_PRODUCTS = [
+            {
+                code: "01",
+                name: "Tác phẩm Khơi Nguồn",
+                category: "Talk Track Quà Tặng Lãnh Đạo · Sản Phẩm 01",
+                stock: 50,
+                tagline: "Khơi tầng địa chất. Kiến tạo giá trị nguồn. Vươn mình bền vững.",
+                specHeading: "Đá trầm tích nguyên khối & Đồng nghệ thuật",
+                desc: "Tác phẩm điêu khắc biểu trưng 20 năm PVEP tái hiện dòng chảy năng lượng vươn lên từ lòng đất mẹ, kết hợp giữa trầm tích địa chất triệu năm và ngọn lửa tiên phong.",
+                specs: [
+                    "Chất liệu chính: Đá trầm tích & Đồng đúc",
+                    "Kích thước: Cao 32cm x Rộng 18cm",
+                    "Trọng lượng: 3.5 kg nguyên khối",
+                    "Quy cách hộp: Hộp quà Lãnh đạo cao cấp"
+                ],
+                image: DEFAULT_IMG,
+                isPrimaryLanding: true
+            },
+            {
+                code: "02",
+                name: "Kỷ niệm chương 20 Năm PVEP",
+                category: "Bộ Sưu Tập Quà Tặng Lãnh Đạo · Sản Phẩm 02",
+                stock: 200,
+                tagline: "Biểu tượng 20 năm Khát vọng - Bản lĩnh - Tiên phong trong hành trình tìm kiếm và làm giàu nguồn năng lượng cho Tổ quốc.",
+                specHeading: "Chế tác thủ công đúc đồng mạ vàng 24K",
+                desc: "Tác phẩm kết hợp khối pha lê Tiệp Khắc K9 quang học không tì vết, khắc biểu trưng 20 năm ngọn lửa PVEP vươn cao, đặt trên bệ đá Granite tự nhiên nguyên khối.",
+                specs: [
+                    "Chất liệu thân: Pha lê Optical K9 & Vàng 24K",
+                    "Kích thước chuẩn: Cao 28cm x Rộng 16cm",
+                    "Trọng lượng: 2.85 kg nguyên khối",
+                    "Hộp bảo quản: Sơn mài dập nhũ 20 năm"
+                ],
+                image: DEFAULT_IMG
+            },
+            {
+                code: "03",
+                name: "Hộp Quà Trà & Cà Phê Thượng Hạng",
+                category: "Bộ Quà Ngoại Giao & Tri Ân · Sản Phẩm 03",
+                stock: 100,
+                tagline: "Hương vị tinh hoa đất trời Việt Nam - Món quà thắt chặt tình hữu nghị và tri ân các đối tác chiến lược.",
+                specHeading: "Trà Cổ Thụ Tà Xùa & Cà Phê Cầu Đất",
+                desc: "Hộp quà gỗ sồi sơn mài khắc chìm biểu trưng PVEP 20 năm, bên trong gồm Trà Shan Tuyết cổ thụ 300 năm tuổi và Cà phê hạt Arabica Specialty tuyển chọn.",
+                specs: [
+                    "Trà thượng hạng: Shan Tuyết Cổ Thụ Tà Xùa",
+                    "Cà phê nguyên bản: Arabica Cầu Đất rang mộc",
+                    "Quy cách đóng gói: Hộp gỗ sơn mài cao cấp",
+                    "Phụ kiện kèm theo: Phin pha & Thìa đồng PVEP"
+                ],
+                image: DEFAULT_IMG
+            }
+        ];
+
+        let currentActiveProductId = "01";
+
+        function loadProductsStore() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY_PRODUCTS);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                }
+            } catch (e) {}
+            return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        }
+
+        function saveProductsStore(list, skipCloudSync) {
+            localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(list));
+            renderAllProductViews();
+            if (!skipCloudSync) syncToGoogleSheet(list);
+        }
+
+        function syncToGoogleSheet(list) {
+            try {
+                fetch(APPS_SCRIPT_EXEC_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    body: JSON.stringify({ action: "syncProducts", products: list })
+                }).catch(() => {});
+            } catch (e) {}
+        }
+
+        window.onPvepSheetLoaded = function(res) {
+            try {
+                if (!res || !res.table || !res.table.rows) return;
+                const rows = res.table.rows;
+                const sheetProducts = [];
+                rows.forEach(r => {
+                    const c = r.c || [];
+                    const val = idx => (c[idx] && c[idx].v != null) ? String(c[idx].v).trim() : "";
+                    let code = val(0).replace(/^sp/i, "");
+                    if (!code || code.toLowerCase() === "masp") return;
+                    if (code.length === 1) code = "0" + code;
+                    sheetProducts.push({
+                        code: code,
+                        name: val(1) || ("Sản phẩm " + code),
+                        category: val(2) || ("Bộ Sưu Tập PVEP · Sản Phẩm " + code),
+                        stock: parseInt(val(3), 10) || 0,
+                        tagline: val(4) || "",
+                        specHeading: val(5) || "",
+                        desc: val(6) || "",
+                        specs: [val(7), val(8), val(9), val(10)].filter(Boolean),
+                        image: val(11) || DEFAULT_IMG
+                    });
+                });
+                if (sheetProducts.length > 0 && !localStorage.getItem(STORAGE_KEY_PRODUCTS)) {
+                    saveProductsStore(sheetProducts, true);
+                }
+            } catch (e) {}
+        };
+
+        function fetchGoogleSheetLive() {
+            try {
+                const s = document.createElement("script");
+                s.src = "https://docs.google.com/spreadsheets/d/" + GOOGLE_SHEET_ID + "/gviz/tq?tqx=out:json;responseHandler:onPvepSheetLoaded&sheet=SAN_PHAM&_=" + Date.now();
+                document.body.appendChild(s);
+            } catch (e) {}
+        }
+
+        function escapeHtml(str) {
+            return String(str == null ? "" : str).replace(/[&<>"']/g, s => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            }[s]));
+        }
+
+        // -------------------------------------------------------------------------
+        // 1. RENDER SIDEBAR BUTTONS & TEMPLATE LANDING PAGES TRÊN WEBSITE
+        // -------------------------------------------------------------------------
+        function renderAllProductViews() {
+            const products = loadProductsStore();
+            const sidebarList = document.getElementById("sidebar-product-list");
+            const dynWrapper = document.getElementById("dynamic-products-wrapper");
+
+            if (sidebarList) {
+                sidebarList.innerHTML = products.map(p => {
+                    const isAct = p.code === currentActiveProductId;
+                    const badgeCls = isAct
+                        ? "prod-badge w-full h-full rounded-full border-2 border-[#2e72bb] flex items-center justify-center text-xs font-black text-[#7db6f0] bg-gradient-to-br from-[#2e72bb]/25 to-[#131839] shadow-[0_0_15px_rgba(46,114,187,0.45)] transition-all"
+                        : "prod-badge w-full h-full rounded-full border border-[#2e72bb]/35 flex items-center justify-center text-xs font-bold text-[#94a3b8] group-hover:border-[#2e72bb] group-hover:text-[#7db6f0] transition-all bg-[#131839] shadow-sm";
+                    return `
+                        <button id="nav-prod-sp${escapeHtml(p.code)}" onclick="switchProduct('${escapeHtml(p.code)}')" class="product-nav-btn ${isAct ? 'active' : ''} group relative flex items-center justify-center w-11 h-11 rounded-full transition-all" title="Sản phẩm ${escapeHtml(p.code)} · ${escapeHtml(p.name)}">
+                            <div class="${badgeCls}">${escapeHtml(p.code)}</div>
+                            <div class="pointer-events-none absolute left-[calc(100%+14px)] top-1/2 -translate-y-1/2 px-3.5 py-2 bg-[#131839] text-[#7db6f0] border border-[#2e72bb]/40 rounded-xl whitespace-nowrap opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shadow-2xl hidden md:flex flex-col z-50">
+                                <div class="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#131839] border-l border-b border-[#2e72bb]/40 rotate-45"></div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-white">Sản Phẩm ${escapeHtml(p.code)} · Kho: ${Number(p.stock) || 0}</span>
+                                <span class="text-[12.5px] text-[#7db6f0]">${escapeHtml(p.name)}</span>
+                            </div>
+                        </button>
+                    `;
+                }).join("");
+            }
+
+            // Render Template Landing Page cho mọi sản phẩm từ 02 trở đi
+            if (dynWrapper) {
+                dynWrapper.innerHTML = products.filter(p => p.code !== "01").map(p => {
+                    const specsHtml = (p.specs || []).map(sp => {
+                        const parts = String(sp).split(":");
+                        const label = parts.length > 1 ? parts[0] : "Thông số";
+                        const val = parts.length > 1 ? parts.slice(1).join(":") : sp;
+                        return `
+                            <div class="p-4 bg-[#0e1230] border border-[#2e72bb]/25 rounded-xl">
+                                <span class="text-[#94a3b8] text-xs block mb-1">${escapeHtml(label.trim())}</span>
+                                <span class="font-bold text-white text-sm">${escapeHtml(val.trim())}</span>
+                            </div>
+                        `;
+                    }).join("");
+
+                    const isHidden = currentActiveProductId === p.code ? "" : "hidden";
+                    return `
+                        <div id="product-tpl-${escapeHtml(p.code)}" class="w-full ${isHidden} transition-opacity duration-300 py-12 px-6 lg:px-16 min-h-screen">
+                            <div class="max-w-6xl mx-auto space-y-10">
+                                <div class="text-center space-y-4 pt-6">
+                                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2e72bb]/20 border border-[#2e72bb]/40 text-[#7db6f0] text-xs font-bold uppercase tracking-wider">
+                                        <span>${escapeHtml(p.category || ('Sản Phẩm ' + p.code))}</span>
+                                    </div>
+                                    <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight font-heading">
+                                        ${escapeHtml(p.name)}
+                                    </h2>
+                                    <p class="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                                        ${escapeHtml(p.tagline)}
+                                    </p>
+                                </div>
+
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#131839] border border-[#2e72bb]/35 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                                    <div class="lg:col-span-6 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#0e1230] to-[#080b1f] rounded-2xl border border-[#2e72bb]/25 relative group">
+                                        <div class="w-72 h-80 sm:w-80 sm:h-96 relative flex items-center justify-center">
+                                            <div class="absolute inset-0 bg-[#2e72bb]/15 rounded-full blur-3xl group-hover:bg-[#13a052]/20 transition-all"></div>
+                                            <img src="${escapeHtml(p.image || DEFAULT_IMG)}" alt="${escapeHtml(p.name)}" class="max-h-full max-w-full object-contain filter drop-shadow-[0_10px_30px_rgba(46,114,187,0.35)] transition-transform duration-500 group-hover:scale-105">
+                                        </div>
+                                        <div class="mt-3 px-3.5 py-1 rounded-full bg-[#13a052]/20 border border-[#13a052]/40 text-emerald-300 text-xs font-bold">
+                                            Số lượng tồn kho: ${Number(p.stock) || 0}
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-6 space-y-6">
+                                        <div class="space-y-3">
+                                            <span class="text-xs font-bold uppercase tracking-wider text-[#7db6f0]">Thông Số Kỹ Thuật &amp; Chế Tác</span>
+                                            <h3 class="text-2xl font-bold text-white">${escapeHtml(p.specHeading)}</h3>
+                                            <p class="text-sm text-slate-300 leading-relaxed">
+                                                ${escapeHtml(p.desc)}
+                                            </p>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            ${specsHtml}
+                                        </div>
+
+                                        <div class="pt-4 flex flex-wrap gap-3">
+                                            <button onclick="switchProduct('01')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#2e72bb] to-[#13a052] text-white text-xs font-extrabold uppercase tracking-wider hover:brightness-110 transition-all shadow-lg">
+                                                ← Xem Tác Phẩm Khơi Nguồn (SP 01)
+                                            </button>
+                                            <button onclick="openAdminPortal('edit', '${escapeHtml(p.code)}')" class="px-5 py-3 rounded-xl bg-[#1b2249] border border-[#2e72bb]/40 text-[#7db6f0] text-xs font-bold uppercase tracking-wider hover:bg-[#232b5a] transition-all">
+                                                ✎ Chỉnh sửa / Kiểm kho SP ${escapeHtml(p.code)}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+            }
+
+            renderAdminProductsGrid();
+        }
+
+        function switchProduct(code) {
+            code = String(code).replace(/^sp/i, "");
+            if (code.length === 1) code = "0" + code;
+            currentActiveProductId = code;
+
+            const p1 = document.getElementById("product-01-container");
+            if (p1) p1.classList.toggle("hidden", code !== "01");
+
+            renderAllProductViews();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar && window.innerWidth < 768) sidebar.classList.add("-translate-x-full");
+        }
+
+        // -------------------------------------------------------------------------
+        // 2. CỔNG ĐĂNG NHẬP & QUẢN LÝ NỘI BỘ (TRỰC TIẾP TRÊN WEBSITE)
+        // -------------------------------------------------------------------------
+        let pendingPortalMode = "stock";
+        let pendingEditCode = null;
+
+        function isStaffAuthenticated() {
+            try {
+                const s = JSON.parse(sessionStorage.getItem(STORAGE_KEY_AUTH) || "null");
+                return s && s.username;
+            } catch (e) { return null; }
+        }
+
+        function handleStaffButtonClick() {
+            openAdminPortal("stock");
+        }
+
+        function openAdminPortal(mode, editCode) {
+            pendingPortalMode = mode || "stock";
+            pendingEditCode = editCode || null;
+            const portal = document.getElementById("pvep-admin-portal");
+            if (!portal) return;
+            portal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+
+            const staff = isStaffAuthenticated();
+            if (staff) {
+                showAdminDashboard(staff);
+            } else {
+                document.getElementById("admin-login-screen").classList.remove("hidden");
+                document.getElementById("admin-dashboard-screen").classList.add("hidden");
+                setTimeout(() => {
+                    const u = document.getElementById("admin-user");
+                    if (u) u.focus();
+                }, 60);
+            }
+        }
+
+        function closeAdminPortal() {
+            const portal = document.getElementById("pvep-admin-portal");
+            if (portal) portal.classList.add("hidden");
+            document.body.style.overflow = "";
+        }
+
+        function submitAdminLogin(ev) {
+            ev.preventDefault();
+            const u = document.getElementById("admin-user").value.trim().toLowerCase();
+            const p = document.getElementById("admin-pass").value;
+            const err = document.getElementById("admin-login-err");
+
+            const ACCOUNTS = {
+                admin:    { pass: "pvep2026", name: "Ban Tổ Chức PVEP", role: "Quản Trị Viên" },
+                nhanvien: { pass: "123456",   name: "Lễ Tân Điều Phối", role: "Nhân Viên Quản Kho" }
+            };
+
+            if (ACCOUNTS[u] && ACCOUNTS[u].pass === p) {
+                const session = { username: u, name: ACCOUNTS[u].name, role: ACCOUNTS[u].role };
+                sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(session));
+                if (err) err.classList.add("hidden");
+                document.getElementById("admin-pass").value = "";
+                showAdminDashboard(session);
+            } else if (err) {
+                err.textContent = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                err.classList.remove("hidden");
+            }
+        }
+
+        function logoutAdminPortal() {
+            sessionStorage.removeItem(STORAGE_KEY_AUTH);
+            document.getElementById("admin-dashboard-screen").classList.add("hidden");
+            document.getElementById("admin-login-screen").classList.remove("hidden");
+        }
+
+        function showAdminDashboard(staff) {
+            document.getElementById("admin-login-screen").classList.add("hidden");
+            document.getElementById("admin-dashboard-screen").classList.remove("hidden");
+            const who = document.getElementById("admin-who-label");
+            if (who && staff) who.textContent = staff.name + " · " + staff.role;
+
+            if (pendingPortalMode === "add") {
+                resetTemplateForm();
+                switchAdminTab("add");
+            } else if (pendingPortalMode === "edit" && pendingEditCode) {
+                loadProductIntoForm(pendingEditCode);
+                switchAdminTab("add");
+            } else {
+                switchAdminTab("stock");
+            }
+        }
+
+        function switchAdminTab(tab) {
+            const bStock = document.getElementById("adm-tab-btn-stock");
+            const bAdd   = document.getElementById("adm-tab-btn-add");
+            const cStock = document.getElementById("adm-tab-stock");
+            const cAdd   = document.getElementById("adm-tab-add");
+
+            if (tab === "add") {
+                bAdd.className   = "px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#2e72bb] text-white shadow transition-all";
+                bStock.className = "px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#131839] text-slate-300 hover:text-white border border-[#2e72bb]/30 transition-all";
+                cAdd.classList.remove("hidden");
+                cStock.classList.add("hidden");
+                updateLiveTemplatePreview();
+            } else {
+                bStock.className = "px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#2e72bb] text-white shadow transition-all";
+                bAdd.className   = "px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider bg-[#131839] text-slate-300 hover:text-white border border-[#2e72bb]/30 transition-all";
+                cStock.classList.remove("hidden");
+                cAdd.classList.add("hidden");
+                renderAdminProductsGrid();
+            }
+        }
+
+        // -------------------------------------------------------------------------
+        // 3. QUẢN LÝ SỐ LƯỢNG HÀNG TỒN KHO & THÊM SẢN PHẨM THEO TEMPLATE
+        // -------------------------------------------------------------------------
+        function renderAdminProductsGrid() {
+            const products = loadProductsStore();
+            const totalProdEl = document.getElementById("stat-total-products");
+            const totalStockEl = document.getElementById("stat-total-stock");
+            const grid = document.getElementById("admin-products-grid");
+
+            if (totalProdEl) totalProdEl.textContent = products.length;
+            if (totalStockEl) {
+                const sum = products.reduce((acc, item) => acc + (Number(item.stock) || 0), 0);
+                totalStockEl.textContent = sum;
+            }
+
+            if (!grid) return;
+            grid.innerHTML = products.map(p => `
+                <div class="bg-[#131839] border border-[#2e72bb]/35 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-[#2e72bb]/25 text-[#7db6f0] text-xs font-extrabold">MÃ SP ${escapeHtml(p.code)}</span>
+                            <button onclick="viewProductOnSite('${escapeHtml(p.code)}')" class="text-xs font-bold text-[#7db6f0] hover:text-white underline">Xem trang ↗</button>
+                        </div>
+                        <div class="h-40 rounded-xl bg-[#080b1f] border border-[#2e72bb]/20 flex items-center justify-center p-3 mb-3 overflow-hidden">
+                            <img src="${escapeHtml(p.image || DEFAULT_IMG)}" alt="${escapeHtml(p.name)}" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <h4 class="text-base font-extrabold text-white">${escapeHtml(p.name)}</h4>
+                        <p class="text-xs text-[#94a3b8] mt-1 line-clamp-2">${escapeHtml(p.tagline)}</p>
+                    </div>
+
+                    <div class="pt-3 border-t border-white/10 space-y-3">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs font-bold text-slate-300">Số lượng tồn kho:</span>
+                            <div class="flex items-center gap-1.5">
+                                <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-8 h-8 rounded-lg bg-[#1b2249] hover:bg-[#232b5a] text-white font-bold">−</button>
+                                <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${Number(p.stock) || 0}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-20 h-8 rounded-lg bg-[#080b1f] border border-[#13a052]/50 text-center text-emerald-300 font-extrabold text-sm">
+                                <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-8 h-8 rounded-lg bg-[#1b2249] hover:bg-[#232b5a] text-white font-bold">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="loadProductIntoForm('${escapeHtml(p.code)}'); switchAdminTab('add');" class="flex-1 py-2 rounded-xl bg-[#1b2249] hover:bg-[#232b5a] border border-[#2e72bb]/40 text-xs font-bold text-white transition-all">
+                                ✎ Sửa thông tin &amp; Ảnh
+                            </button>
+                            ${p.code !== "01" ? `<button type="button" onclick="deleteProductItem('${escapeHtml(p.code)}')" class="px-3 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-xs font-bold text-rose-300">Xoá</button>` : ""}
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function adjustStockQuick(code, delta) {
+            const list = loadProductsStore();
+            const item = list.find(x => x.code === code);
+            if (!item) return;
+            item.stock = Math.max(0, (Number(item.stock) || 0) + delta);
+            saveProductsStore(list);
+        }
+
+        function setStockDirect(code, val) {
+            const list = loadProductsStore();
+            const item = list.find(x => x.code === code);
+            if (!item) return;
+            item.stock = Math.max(0, parseInt(val, 10) || 0);
+            saveProductsStore(list);
+        }
+
+        function viewProductOnSite(code) {
+            closeAdminPortal();
+            switchProduct(code);
+        }
+
+        function deleteProductItem(code) {
+            if (!confirm("Bạn có chắc muốn xoá Sản phẩm " + code + " khỏi danh sách?")) return;
+            let list = loadProductsStore().filter(x => x.code !== code);
+            if (currentActiveProductId === code) currentActiveProductId = "01";
+            saveProductsStore(list);
+        }
+
+        function resetTemplateForm() {
+            const list = loadProductsStore();
+            const maxNum = list.reduce((m, x) => Math.max(m, parseInt(x.code, 10) || 0), 0);
+            const nextCode = String(maxNum + 1).padStart(2, "0");
+
+            document.getElementById("tpl-edit-id").value = "";
+            document.getElementById("tpl-code").value = nextCode;
+            document.getElementById("tpl-name").value = "";
+            document.getElementById("tpl-category").value = "Bộ Sưu Tập Quà Tặng PVEP · Sản Phẩm " + nextCode;
+            document.getElementById("tpl-stock").value = 100;
+            document.getElementById("tpl-image-url").value = DEFAULT_IMG;
+            document.getElementById("tpl-tagline").value = "";
+            document.getElementById("tpl-spec-heading").value = "";
+            document.getElementById("tpl-desc").value = "";
+            document.getElementById("tpl-s1").value = "Chất liệu: Cao cấp chuẩn PVEP";
+            document.getElementById("tpl-s2").value = "Kích thước: Tiêu chuẩn";
+            document.getElementById("tpl-s3").value = "Trọng lượng: Nguyên hộp";
+            document.getElementById("tpl-s4").value = "Quy cách hộp: Hộp quà sang trọng 20 năm";
+
+            document.getElementById("form-mode-badge").textContent = "Tạo Mới Từ Template Chuẩn";
+            document.getElementById("form-mode-title").textContent = "Thêm Sản Phẩm Mới (" + nextCode + ")";
+            updateLiveTemplatePreview();
+        }
+
+        function loadProductIntoForm(code) {
+            const list = loadProductsStore();
+            const p = list.find(x => x.code === code);
+            if (!p) return;
+
+            document.getElementById("tpl-edit-id").value = p.code;
+            document.getElementById("tpl-code").value = p.code;
+            document.getElementById("tpl-name").value = p.name || "";
+            document.getElementById("tpl-category").value = p.category || "";
+            document.getElementById("tpl-stock").value = Number(p.stock) || 0;
+            document.getElementById("tpl-image-url").value = p.image || DEFAULT_IMG;
+            document.getElementById("tpl-tagline").value = p.tagline || "";
+            document.getElementById("tpl-spec-heading").value = p.specHeading || "";
+            document.getElementById("tpl-desc").value = p.desc || "";
+
+            const sp = p.specs || [];
+            document.getElementById("tpl-s1").value = sp[0] || "";
+            document.getElementById("tpl-s2").value = sp[1] || "";
+            document.getElementById("tpl-s3").value = sp[2] || "";
+            document.getElementById("tpl-s4").value = sp[3] || "";
+
+            document.getElementById("form-mode-badge").textContent = "Chỉnh Sửa Sản Phẩm " + p.code;
+            document.getElementById("form-mode-title").textContent = p.name;
+            updateLiveTemplatePreview();
+        }
+
+        function handleImageFileUpload(ev) {
+            const file = ev.target.files && ev.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement("canvas");
+                    const maxDim = 900;
+                    let w = img.width, h = img.height;
+                    if (w > maxDim || h > maxDim) {
+                        if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+                        else { w = Math.round(w * maxDim / h); h = maxDim; }
+                    }
+                    canvas.width = w; canvas.height = h;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, w, h);
+                    const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+                    document.getElementById("tpl-image-url").value = dataUrl;
+                    updateLiveTemplatePreview();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateLiveTemplatePreview() {
+            const code = document.getElementById("tpl-code").value.trim() || "04";
+            const name = document.getElementById("tpl-name").value.trim() || ("Sản Phẩm Mới " + code);
+            const cat  = document.getElementById("tpl-category").value.trim() || ("Bộ Sưu Tập Quà Tặng · Sản Phẩm " + code);
+            const stk  = document.getElementById("tpl-stock").value || 0;
+            const img  = document.getElementById("tpl-image-url").value.trim() || DEFAULT_IMG;
+            const tag  = document.getElementById("tpl-tagline").value.trim() || "Thông điệp giới thiệu sản phẩm trên trang Landing Page.";
+            const sh   = document.getElementById("tpl-spec-heading").value.trim() || "Chế tác tinh xảo chuẩn PVEP";
+            const desc = document.getElementById("tpl-desc").value.trim() || "Mô tả chi tiết chất liệu và ý nghĩa biểu trưng của sản phẩm.";
+            const specs = [
+                document.getElementById("tpl-s1").value.trim(),
+                document.getElementById("tpl-s2").value.trim(),
+                document.getElementById("tpl-s3").value.trim(),
+                document.getElementById("tpl-s4").value.trim()
+            ].filter(Boolean);
+
+            document.getElementById("preview-cat").textContent = cat;
+            document.getElementById("preview-name").textContent = name;
+            document.getElementById("preview-stock-pill").textContent = "Tồn kho: " + stk;
+            document.getElementById("preview-tagline").textContent = tag;
+            document.getElementById("preview-spec-heading").textContent = sh;
+            document.getElementById("preview-desc").textContent = desc;
+            document.getElementById("preview-img").src = img;
+
+            const grid = document.getElementById("preview-specs-grid");
+            if (grid) {
+                grid.innerHTML = specs.map(s => `<div class="p-2.5 rounded-lg bg-[#0e1230] border border-[#2e72bb]/25 text-slate-200">${escapeHtml(s)}</div>`).join("");
+            }
+        }
+
+        function saveProductFromTemplate(ev) {
+            ev.preventDefault();
+            let code = document.getElementById("tpl-code").value.trim().replace(/^sp/i, "");
+            if (code.length === 1) code = "0" + code;
+
+            const newProd = {
+                code: code,
+                name: document.getElementById("tpl-name").value.trim(),
+                category: document.getElementById("tpl-category").value.trim() || ("Bộ Sưu Tập Quà Tặng · Sản Phẩm " + code),
+                stock: Math.max(0, parseInt(document.getElementById("tpl-stock").value, 10) || 0),
+                image: document.getElementById("tpl-image-url").value.trim() || DEFAULT_IMG,
+                tagline: document.getElementById("tpl-tagline").value.trim() || "Biểu trưng kỷ niệm 20 năm PVEP.",
+                specHeading: document.getElementById("tpl-spec-heading").value.trim() || "Chế tác tinh xảo & sang trọng",
+                desc: document.getElementById("tpl-desc").value.trim() || "Thiết kế độc bản kỷ niệm 20 năm PVEP.",
+                specs: [
+                    document.getElementById("tpl-s1").value.trim() || "Chất liệu: Cao cấp",
+                    document.getElementById("tpl-s2").value.trim() || "Kích thước: Tiêu chuẩn",
+                    document.getElementById("tpl-s3").value.trim() || "Trọng lượng: Nguyên khối",
+                    document.getElementById("tpl-s4").value.trim() || "Hộp bảo quản: Hộp quà PVEP 20 năm"
+                ]
+            };
+
+            const list = loadProductsStore();
+            const editId = document.getElementById("tpl-edit-id").value;
+            const idx = list.findIndex(x => x.code === (editId || code));
+            if (idx >= 0) {
+                list[idx] = Object.assign({}, list[idx], newProd);
+            } else {
+                list.push(newProd);
+            }
+
+            saveProductsStore(list);
+            closeAdminPortal();
+            switchProduct(code);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderAllProductViews();
+            resetTemplateForm();
+            fetchGoogleSheetLive();
+        });
+    </script>
+</body>
+</html>

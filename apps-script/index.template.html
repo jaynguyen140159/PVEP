@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { blue: { DEFAULT: '#2e72bb', dark: '#245a99', soft: '#e8f0fa' },
+              green: { DEFAULT: '#13a052', dark: '#0e7f40', soft: '#e6f5ec' },
+              navy: { DEFAULT: '#303c78', deep: '#1f2757' } },
+    fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] } } } }
+</script>
+<style>
+  body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; background: #f3f6fb; color: #1e293b; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3 { text-wrap: balance; } p { text-wrap: pretty; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:700; border-radius:.75rem; transition:.15s; white-space:nowrap; }
+  .btn-primary { background:#2e72bb; color:#fff; } .btn-primary:hover { background:#245a99; }
+  .btn-green { background:#13a052; color:#fff; } .btn-green:hover { background:#0e7f40; }
+  .btn-ghost { background:#fff; color:#303c78; border:1px solid #d5deee; } .btn-ghost:hover { background:#e8f0fa; }
+  .btn:disabled { opacity:.6; cursor:not-allowed; }
+  .field { width:100%; padding:.7rem .9rem; border:1px solid #cbd5e6; border-radius:.75rem; background:#fff; font-size:.9375rem; outline:none; }
+  .field:focus { border-color:#2e72bb; box-shadow:0 0 0 3px rgba(46,114,187,.18); }
+  .label { display:block; font-size:.8125rem; font-weight:600; color:#475569; margin-bottom:.35rem; }
+  .card { background:#fff; border:1px solid #e1e8f3; border-radius:1rem; box-shadow:0 1px 3px rgba(48,60,120,.06); }
+  .tab { padding:.75rem 1.1rem; font-size:.875rem; font-weight:700; color:#64748b; border-bottom:3px solid transparent; white-space:nowrap; }
+  .tab.active { color:#2e72bb; border-color:#13a052; }
+  .pcard { border:2px solid #e1e8f3; border-radius:1rem; padding:.9rem; cursor:pointer; background:#fff; transition:.15s; text-align:left; }
+  .pcard:hover { border-color:#9bbde4; } .pcard.sel { border-color:#2e72bb; background:#e8f0fa; box-shadow:0 0 0 3px rgba(46,114,187,.15); }
+  .toast { position:fixed; left:50%; bottom:1.5rem; transform:translateX(-50%); padding:.8rem 1.2rem; border-radius:.8rem; color:#fff; font-weight:600; font-size:.9rem; z-index:60; box-shadow:0 10px 30px rgba(0,0,0,.2); max-width:92vw; }
+</style>
+</head>
+<body>
+
+<!-- ============ ĐĂNG NHẬP ============ -->
+<div id="view-login" class="min-h-screen flex flex-col md:flex-row">
+  <div class="md:w-1/2 text-white p-8 md:p-14 flex flex-col justify-between" style="background:linear-gradient(145deg,#303c78 0%,#2e72bb 70%,#13a052 140%)">
+    <div class="bg-white rounded-2xl p-3 w-36 md:w-44 shadow-xl"><img src="__LOGO__" alt="PVEP 20 năm" class="w-full h-auto"></div>
+    <div class="my-10">
+      <p class="text-sm font-semibold tracking-widest uppercase text-white/80 mb-3">PVEP · 20 năm</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Hệ thống quản lý<br>quà tặng &amp; kho</h1>
+      <p class="mt-5 text-base text-white/85 max-w-md leading-relaxed">Điều phối trao quà, theo dõi tồn kho và lưu nhật ký giao nhận — dành riêng cho cán bộ, nhân viên được phân quyền.</p>
+    </div>
+    <p class="text-sm font-semibold tracking-wider text-white/80">TIÊN PHONG KHƠI NGUỒN NĂNG LƯỢNG</p>
+  </div>
+
+  <div class="md:w-1/2 flex items-center justify-center p-6 md:p-14 bg-white">
+    <form id="login-form" class="w-full max-w-sm space-y-5" autocomplete="on">
+      <div>
+        <h2 class="text-2xl font-extrabold text-navy">Đăng nhập</h2>
+        <p class="text-sm text-slate-500 mt-1">Nhập tài khoản do Ban Tổ chức cấp.</p>
+      </div>
+      <div><label class="label" for="u">Tên đăng nhập</label>
+        <input id="u" class="field" required autocomplete="username" autocapitalize="none" placeholder="Tên đăng nhập"></div>
+      <div><label class="label" for="p">Mật khẩu</label>
+        <input id="p" type="password" class="field" required autocomplete="current-password" placeholder="••••••••"></div>
+      <div id="login-err" class="hidden text-sm font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded-xl px-3 py-2"></div>
+      <button id="login-btn" class="btn btn-primary w-full py-3.5 text-base" type="submit">Đăng nhập</button>
+      <? if (backUrl) { ?>
+      <a href="<?= backUrl ?>" target="_top" class="btn btn-ghost w-full py-3 text-sm">← Về website PVEP</a>
+      <? } ?>
+    </form>
+  </div>
+</div>
+
+<!-- ============ ỨNG DỤNG ============ -->
+<div id="view-app" class="hidden min-h-screen">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <img src="__LOGO__" alt="PVEP" class="h-11 w-auto">
+        <div class="hidden sm:block min-w-0">
+          <p class="text-sm font-extrabold text-navy leading-tight truncate">Quản lý quà tặng &amp; kho</p>
+          <p class="text-xs text-slate-500 truncate">PVEP · Kỷ niệm 20 năm</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="hidden md:block text-right mr-1">
+          <p id="who-name" class="text-sm font-bold text-navy leading-tight"></p>
+          <p id="who-role" class="text-xs text-green-dark font-semibold"></p>
+        </div>
+        <? if (backUrl) { ?><a href="<?= backUrl ?>" target="_top" class="btn btn-ghost px-3 py-2 text-sm">← Về website</a><? } ?>
+        <button id="btn-logout" class="btn btn-ghost px-3 py-2 text-sm">Đăng xuất</button>
+      </div>
+    </div>
+    <nav class="max-w-6xl mx-auto px-4 flex gap-1 overflow-x-auto">
+      <button class="tab active" data-tab="pos">🎁 Trao quà</button>
+      <button class="tab" data-tab="stock">📦 Tồn kho &amp; sản phẩm</button>
+      <button class="tab" data-tab="log">📜 Nhật ký giao nhận</button>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <div id="loading" class="text-center text-slate-500 py-16">Đang tải dữ liệu…</div>
+
+    <!-- Trao quà -->
+    <section id="tab-pos" class="hidden">
+      <div class="grid lg:grid-cols-5 gap-6">
+        <div class="lg:col-span-3">
+          <h3 class="text-base font-extrabold text-navy mb-3">1. Chọn quà tặng</h3>
+          <div id="pos-products" class="grid sm:grid-cols-2 gap-3"></div>
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="text-base font-extrabold text-navy mb-3">2. Thông tin người nhận</h3>
+          <div class="card p-5 space-y-4">
+            <div><label class="label">Người nhận / Khách mời *</label><input id="f-receiver" class="field" placeholder="VD: Ông Nguyễn Văn A"></div>
+            <div><label class="label">Chức vụ / Đơn vị</label><input id="f-dept" class="field" placeholder="VD: Lãnh đạo PVN"></div>
+            <div><label class="label">Số lượng</label>
+              <div class="flex">
+                <button type="button" id="q-minus" class="btn btn-ghost rounded-r-none w-11">−</button>
+                <input id="f-qty" type="number" min="1" value="1" class="field rounded-none text-center font-bold">
+                <button type="button" id="q-plus" class="btn btn-ghost rounded-l-none w-11">+</button>
+              </div></div>
+            <div><label class="label">Ghi chú</label><input id="f-note" class="field" placeholder="VD: Trao tại lễ kỷ niệm"></div>
+            <button id="btn-dispatch" class="btn btn-green w-full py-3.5 text-base">✓ Xác nhận trao quà</button>
+            <p class="text-xs text-slate-500">Hệ thống tự trừ tồn kho và ghi vào nhật ký giao nhận.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tồn kho -->
+    <section id="tab-stock" class="hidden space-y-6">
+      <div class="card overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-blue-soft text-navy text-left">
+            <tr><th class="p-3">Mã</th><th class="p-3">Sản phẩm</th><th class="p-3">Danh mục</th><th class="p-3 text-center">Đã trao</th><th class="p-3 text-center">Tồn kho</th><th class="p-3"></th></tr>
+          </thead>
+          <tbody id="stock-body"></tbody>
+        </table>
+      </div>
+      <div class="card p-5">
+        <h3 class="text-base font-extrabold text-navy mb-4">+ Thêm sản phẩm mới</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
+          <div class="lg:col-span-2"><label class="label">Tên sản phẩm *</label><input id="n-name" class="field"></div>
+          <div><label class="label">Danh mục</label><input id="n-cat" class="field" placeholder="Quà tặng"></div>
+          <div><label class="label">Tồn kho ban đầu</label><input id="n-stock" type="number" min="0" value="0" class="field"></div>
+          <button id="btn-add" class="btn btn-primary py-3">Thêm sản phẩm</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nhật ký -->
+    <section id="tab-log" class="hidden">
+      <div id="log-list" class="space-y-3"></div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script>
+(function () {
+  var TOKEN = sessionStorage.getItem('pvep_token') || '';
+  var STATE = { products: [], orders: [], sel: null };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+
+  function call(fn) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return new Promise(function (resolve, reject) {
+      var r = google.script.run.withSuccessHandler(resolve).withFailureHandler(reject);
+      r[fn].apply(r, args);
+    });
+  }
+  function toast(msg, ok) {
+    var t = $('toast'); t.textContent = msg;
+    t.style.background = ok === false ? '#be123c' : '#13a052';
+    t.classList.remove('hidden'); clearTimeout(toast._t);
+    toast._t = setTimeout(function () { t.classList.add('hidden'); }, 3500);
+  }
+  function errMsg(e) {
+    var m = (e && e.message) ? e.message : String(e);
+    return m.replace(/^Error:\s*/, '');
+  }
+  function expired(e) {
+    if (errMsg(e).indexOf('SESSION_EXPIRED') >= 0) {
+      sessionStorage.removeItem('pvep_token'); TOKEN = '';
+      showLogin('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.'); return true;
+    }
+    return false;
+  }
+
+  function showLogin(msg) {
+    $('view-app').classList.add('hidden'); $('view-login').classList.remove('hidden');
+    var e = $('login-err');
+    if (msg) { e.textContent = msg; e.classList.remove('hidden'); } else { e.classList.add('hidden'); }
+  }
+  function showApp() { $('view-login').classList.add('hidden'); $('view-app').classList.remove('hidden'); }
+
+  /* ---- login ---- */
+  $('login-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var b = $('login-btn'); b.disabled = true; b.textContent = 'Đang xác thực…';
+    call('login', $('u').value, $('p').value).then(function (r) {
+      b.disabled = false; b.textContent = 'Đăng nhập';
+      if (!r.ok) { showLogin(r.message); return; }
+      TOKEN = r.token; sessionStorage.setItem('pvep_token', TOKEN);
+      $('p').value = ''; boot();
+    }).catch(function (e) { b.disabled = false; b.textContent = 'Đăng nhập'; showLogin(errMsg(e)); });
+  });
+  $('btn-logout').addEventListener('click', function () {
+    call('logout', TOKEN).catch(function () {});
+    sessionStorage.removeItem('pvep_token'); TOKEN = ''; showLogin('');
+  });
+
+  /* ---- tabs ---- */
+  document.querySelectorAll('.tab').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('active', x === b); });
+      ['pos', 'stock', 'log'].forEach(function (t) { $('tab-' + t).classList.toggle('hidden', t !== b.dataset.tab); });
+    });
+  });
+
+  /* ---- data ---- */
+  function boot() {
+    showApp(); $('loading').classList.remove('hidden');
+    ['pos', 'stock', 'log'].forEach(function (t) { $('tab-' + t).classList.add('hidden'); });
+    call('getData', TOKEN).then(function (d) {
+      STATE.products = d.products; STATE.orders = d.orders;
+      $('who-name').textContent = d.user.name; $('who-role').textContent = d.user.role;
+      $('loading').classList.add('hidden');
+      var active = document.querySelector('.tab.active').dataset.tab;
+      $('tab-' + active).classList.remove('hidden');
+      if (!STATE.sel && d.products.length) STATE.sel = d.products[0].id;
+      render();
+    }).catch(function (e) { if (!expired(e)) { $('loading').textContent = 'Lỗi: ' + errMsg(e); } });
+  }
+  function reload() {
+    return call('getData', TOKEN).then(function (d) { STATE.products = d.products; STATE.orders = d.orders; render(); });
+  }
+
+  function render() {
+    $('pos-products').innerHTML = STATE.products.map(function (p) {
+      var out = p.stock <= 0;
+      return '<button type="button" class="pcard' + (p.id === STATE.sel ? ' sel' : '') + '" data-id="' + esc(p.id) + '"' + (out ? ' style="opacity:.55"' : '') + '>' +
+        '<span class="text-xs font-bold text-blue">' + esc(p.id) + ' · ' + esc(p.category) + '</span>' +
+        '<span class="block font-bold text-navy mt-1 leading-snug">' + esc(p.name) + '</span>' +
+        '<span class="flex justify-between mt-3 text-sm"><span class="text-slate-500">Tồn kho</span>' +
+        '<span class="font-extrabold ' + (out ? 'text-rose-600' : 'text-green-dark') + '">' + (out ? 'Hết hàng' : p.stock) + '</span></span></button>';
+    }).join('');
+    document.querySelectorAll('.pcard').forEach(function (c) {
+      c.addEventListener('click', function () { STATE.sel = c.dataset.id; render(); });
+    });
+
+    $('stock-body').innerHTML = STATE.products.map(function (p) {
+      return '<tr class="border-t border-slate-100"><td class="p-3 font-bold text-blue">' + esc(p.id) + '</td>' +
+        '<td class="p-3 font-semibold text-navy">' + esc(p.name) + '</td>' +
+        '<td class="p-3 text-slate-600">' + esc(p.category) + '</td>' +
+        '<td class="p-3 text-center">' + p.sold + '</td>' +
+        '<td class="p-3 text-center"><input type="number" min="0" value="' + p.stock + '" data-stock="' + esc(p.id) + '" class="field text-center font-bold" style="width:6rem"></td>' +
+        '<td class="p-3 text-right"><button class="btn btn-primary px-4 py-2 text-xs" data-save="' + esc(p.id) + '">Lưu</button></td></tr>';
+    }).join('');
+    document.querySelectorAll('[data-save]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var id = b.dataset.save; var v = document.querySelector('[data-stock="' + id + '"]').value;
+        b.disabled = true;
+        call('updateProduct', TOKEN, { id: id, stock: v }).then(function () { toast('Đã cập nhật tồn kho ' + id); return reload(); })
+          .catch(function (e) { if (!expired(e)) toast(errMsg(e), false); }).then(function () { b.disabled = false; });
+      });
+    });
+
+    $('log-list').innerHTML = STATE.orders.length ? STATE.orders.map(function (o) {
+      return '<div class="card p-4"><div class="flex justify-between text-sm"><span class="font-extrabold text-blue">#' + esc(o.id) + '</span><span class="text-slate-500">' + esc(o.time) + '</span></div>' +
+        '<p class="mt-1 font-semibold text-navy">' + esc(o.receiver) + '</p>' +
+        '<p class="text-sm text-slate-600">' + esc(o.items) + '</p>' +
+        '<p class="text-xs text-slate-500 mt-1">Phụ trách: ' + esc(o.staff) + (o.note ? ' · ' + esc(o.note) : '') + '</p></div>';
+    }).join('') : '<p class="text-slate-500">Chưa có giao dịch nào.</p>';
+  }
+
+  /* ---- actions ---- */
+  $('q-minus').addEventListener('click', function () { $('f-qty').value = Math.max(1, (+$('f-qty').value || 1) - 1); });
+  $('q-plus').addEventListener('click', function () { $('f-qty').value = (+$('f-qty').value || 1) + 1; });
+
+  $('btn-dispatch').addEventListener('click', function () {
+    var b = this;
+    if (!STATE.sel) { toast('Hãy chọn một sản phẩm.', false); return; }
+    if (!$('f-receiver').value.trim()) { toast('Vui lòng nhập tên người nhận.', false); return; }
+    b.disabled = true; b.textContent = 'Đang ghi nhận…';
+    call('dispatchGift', TOKEN, { productId: STATE.sel, qty: $('f-qty').value, receiver: $('f-receiver').value,
+                                  dept: $('f-dept').value, note: $('f-note').value })
+      .then(function (r) {
+        toast('Đã trao quà · mã ' + r.orderId + ' · tồn còn ' + r.remaining);
+        ['f-receiver', 'f-dept', 'f-note'].forEach(function (i) { $(i).value = ''; }); $('f-qty').value = 1;
+        return reload();
+      })
+      .catch(function (e) { if (!expired(e)) toast(errMsg(e), false); })
+      .then(function () { b.disabled = false; b.textContent = '✓ Xác nhận trao quà'; });
+  });
+
+  $('btn-add').addEventListener('click', function () {
+    var b = this; b.disabled = true;
+    call('addProduct', TOKEN, { name: $('n-name').value, category: $('n-cat').value, stock: $('n-stock').value })
+      .then(function (r) { toast('Đã thêm sản phẩm ' + r.id); $('n-name').value = ''; $('n-cat').value = ''; $('n-stock').value = 0; return reload(); })
+      .catch(function (e) { if (!expired(e)) toast(errMsg(e), false); })
+      .then(function () { b.disabled = false; });
+  });
+
+  /* ---- start ---- */
+  if (TOKEN) boot(); else showLogin('');
+})();
+</script>
+</body>
+</html>
