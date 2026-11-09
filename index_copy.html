@@ -5074,6 +5074,22 @@ window.MESH_DATA = {
             renderAllProductViews();
             applySingleProductLockUI();
             fetchGoogleSheetLive();
+
+            // Tự động mở cổng Admin nếu URL có hash #admin hoặc query ?admin
+            const hash = window.location.hash.toLowerCase();
+            const urlParams = new URLSearchParams(window.location.search);
+            if (hash === "#admin" || hash === "#admin-view" || urlParams.has("admin")) {
+                setTimeout(openAdminPortal, 100);
+            }
+        });
+
+        window.addEventListener("hashchange", () => {
+            const hash = window.location.hash.toLowerCase();
+            if (hash === "#admin" || hash === "#admin-view") {
+                openAdminPortal();
+            } else if (hash === "" || hash === "#hero") {
+                closeAdminPortal();
+            }
         });
     </script>
 </body>
