@@ -3177,53 +3177,53 @@ window.MESH_DATA = {
                 <!-- Nội dung các View Quản Trị -->
                 <div class="flex-1 max-w-7xl w-full mx-auto px-6 py-6 space-y-6">
                     
-                    <!-- 4 Ô KPI TỔNG QUAN CHUẨN ADMIN DASHBOARD -->
+                    <!-- 4 Ô KPI TỔNG QUAN CHUẨN ĐỊNH MỨC KHO & CẤP PHÁT -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- KPI 1 -->
+                        <!-- KPI 1: Định mức đầu kỳ -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Danh Mục Ấn Phẩm</span>
-                                <span id="stat-total-products" class="text-3xl font-black text-[#303c78] mt-1.5 block">3</span>
-                                <span class="text-xs text-slate-500 mt-1 block">Mã sản phẩm đang hoạt động</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Định Mức Đầu Kỳ</span>
+                                <span id="stat-opening-stock" class="text-3xl font-black text-[#303c78] mt-1.5 block">50</span>
+                                <span class="text-xs text-slate-500 mt-1 block">Tổng phần quà ban đầu</span>
                             </div>
                             <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-[#303c78] flex items-center justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                             </div>
                         </div>
 
-                        <!-- KPI 2 -->
+                        <!-- KPI 2: Đã Cấp Phát -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Tổng Tồn Kho</span>
-                                <span id="stat-total-stock" class="text-3xl font-black text-[#13a052] mt-1.5 block">350</span>
-                                <span class="text-xs text-slate-500 mt-1 block">Tổng số lượng quà hiện có</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Đã Cấp Phát / Trao</span>
+                                <span id="stat-dispatched-stock" class="text-3xl font-black text-[#2e72bb] mt-1.5 block">0</span>
+                                <span id="stat-dispatched-pct" class="text-xs text-[#2e72bb] font-bold mt-1 block">0% định mức sự kiện</span>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#2e72bb] flex items-center justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- KPI 3: Còn khả dụng -->
+                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Còn Khả Dụng</span>
+                                <span id="stat-total-stock" class="text-3xl font-black text-[#13a052] mt-1.5 block">50</span>
+                                <span class="text-xs text-slate-500 mt-1 block">Sẵn sàng trao tại quầy</span>
                             </div>
                             <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-[#13a052] flex items-center justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             </div>
                         </div>
 
-                        <!-- KPI 3 -->
+                        <!-- KPI 4: Trạng thái & Bảo vệ -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Tình Trạng Kho</span>
-                                <span id="stat-stock-health" class="text-xl font-black text-[#2e72bb] mt-2 block">100% Sẵn sàng</span>
-                                <span id="stat-stock-sub" class="text-xs text-slate-500 mt-1.5 block">Không có mã nào hết hàng</span>
-                            </div>
-                            <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-[#2e72bb] flex items-center justify-center">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                        </div>
-
-                        <!-- KPI 4 -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Cơ Chế Lưu Kho</span>
-                                <span id="stat-last-updated" class="text-xl font-black text-[#0f172a] mt-2 block">Xác Nhận An Toàn</span>
-                                <span class="text-xs text-[#2e72bb] font-semibold mt-1.5 block">🛡 Chống xung đột đa người nhập</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Trạng Thái &amp; Bảo Vệ</span>
+                                <span id="stat-stock-health" class="text-xl font-black text-[#13a052] mt-2 block">100% Sẵn sàng</span>
+                                <span id="stat-stock-sub" class="text-xs text-[#2e72bb] font-semibold mt-1.5 block">🛡 Chống đụng độ đa người nhập</span>
                             </div>
                             <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-slate-600 flex items-center justify-center">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             </div>
                         </div>
                     </div>
@@ -3240,6 +3240,10 @@ window.MESH_DATA = {
                                     <p class="text-xs text-slate-500 mt-0.5">Bấm nút <strong class="text-[#0f172a]">− / +</strong> hoặc gõ số lượng, sau đó bấm <strong class="text-[#13a052]">"Xác nhận &amp; Lưu kho"</strong> để kiểm tra xung đột đồng thời và lưu an toàn.</p>
                                 </div>
                                 <div class="flex items-center gap-2">
+                                    <button type="button" onclick="exportStockAuditReportCsv()" class="px-3.5 py-1.5 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-black shadow-sm transition-all inline-flex items-center gap-1.5" title="Tải file báo cáo đối soát dạng Excel / CSV">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                        <span>Xuất Báo Cáo Excel</span>
+                                    </button>
                                     <div class="inline-flex rounded-xl bg-[#f1f5f9] p-1 border border-slate-200">
                                         <button type="button" id="btn-layout-table" onclick="setAdminLayoutMode('table')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-[#303c78] shadow-sm transition-colors">
                                             ☰ Dạng Bảng
@@ -3256,12 +3260,16 @@ window.MESH_DATA = {
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-[#f8fafc] border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
-                                            <th class="py-3.5 px-3.5">Mã SP</th>
-                                            <th class="py-3.5 px-3.5">Ấn Phẩm Quà Tặng</th>
-                                            <th class="py-3.5 px-3.5">Trạng Thái Kho</th>
-                                            <th class="py-3.5 px-3.5 text-center">Điều Chỉnh Số Lượng Tồn Kho</th>
-                                            <th class="py-3.5 px-3.5 text-center">QR &amp; Link (1 SP)</th>
-                                            <th class="py-3.5 px-3.5 text-right">Thao Tác</th>
+                                            <th class="py-3.5 px-3">Mã SKU</th>
+                                            <th class="py-3.5 px-3">Ấn Phẩm Quà Tặng</th>
+                                            <th class="py-3.5 px-2 text-center">ĐVT</th>
+                                            <th class="py-3.5 px-2 text-center">Đầu Kỳ</th>
+                                            <th class="py-3.5 px-2 text-center">Đã Cấp (-)</th>
+                                            <th class="py-3.5 px-2 text-center">Khả Dụng</th>
+                                            <th class="py-3.5 px-3">Trạng Thái Kho</th>
+                                            <th class="py-3.5 px-3 text-center">Điều Phối Kho</th>
+                                            <th class="py-3.5 px-3 text-center">QR &amp; Link</th>
+                                            <th class="py-3.5 px-3 text-right admin-only-feature">Quản Trị</th>
                                         </tr>
                                     </thead>
                                     <tbody id="admin-products-tbody" class="divide-y divide-slate-200 text-sm"></tbody>
@@ -3296,12 +3304,18 @@ window.MESH_DATA = {
                         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
                             <div class="flex items-center justify-between border-b border-slate-200 pb-4">
                                 <div>
-                                    <h3 class="text-base font-black text-[#303c78] uppercase tracking-tight">Lịch Sử Thay Đổi Tồn Kho Gần Đây</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Hệ thống tự động ghi lại các thao tác điều chỉnh số lượng hàng và chỉnh sửa thông tin.</p>
+                                    <h3 class="text-base font-black text-[#303c78] uppercase tracking-tight">Lịch Sử Thay Đổi &amp; Đối Soát Cấp Phát Quà Tặng</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Hệ thống tự động lưu vết toàn bộ giao dịch cấp phát/nhập kho, tài khoản nhân viên và thời gian thực hiện.</p>
                                 </div>
-                                <button type="button" onclick="clearStockLogs()" class="px-3.5 py-2 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 text-xs font-bold text-slate-600 transition-colors">
-                                    Xoá lịch sử tạm
-                                </button>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" onclick="exportStockAuditReportCsv()" class="px-3.5 py-2 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-black shadow-sm transition-colors inline-flex items-center gap-1.5">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                        <span>Tải File Báo Cáo (.CSV)</span>
+                                    </button>
+                                    <button type="button" onclick="clearStockLogs()" class="admin-only-feature px-3.5 py-2 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 text-xs font-bold text-slate-600 transition-colors">
+                                        Xoá lịch sử tạm
+                                    </button>
+                                </div>
                             </div>
                             <div id="admin-logs-list" class="space-y-2.5"></div>
                         </div>
@@ -3612,6 +3626,10 @@ window.MESH_DATA = {
                 code: "01",
                 name: "Tác phẩm Khơi Nguồn",
                 category: "Tác Phẩm Biểu Trưng Kỷ Niệm 20 Năm PVEP",
+                unit: "Tác phẩm",
+                openingStock: 50,
+                inboundStock: 0,
+                dispatchedStock: 0,
                 stock: 50,
                 tagline: "Khơi tầng địa chất. Kiến tạo giá trị nguồn. Vươn mình bền vững.",
                 specHeading: "Đá trầm tích nguyên khối & Đồng nghệ thuật",
@@ -3650,7 +3668,22 @@ window.MESH_DATA = {
                 const raw = localStorage.getItem(STORAGE_KEY_PRODUCTS);
                 if (raw) {
                     const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) && parsed.length > 0) return parsed.filter(p => p.code === "01");
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        return parsed.filter(p => p.code === "01").map(p => {
+                            const curStock = Number(p.stock) || 0;
+                            const opening = p.openingStock != null ? Number(p.openingStock) : curStock;
+                            const inbound = Number(p.inboundStock) || 0;
+                            const totalIn = opening + inbound;
+                            const dispatched = totalIn > curStock ? (totalIn - curStock) : (Number(p.dispatchedStock) || 0);
+                            return Object.assign({}, p, {
+                                unit: p.unit || "Tác phẩm",
+                                openingStock: opening,
+                                inboundStock: inbound,
+                                dispatchedStock: dispatched,
+                                stock: curStock
+                            });
+                        });
+                    }
                 }
             } catch (e) {}
             return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
@@ -4151,6 +4184,12 @@ window.MESH_DATA = {
             if (role && staff) role.textContent = "● " + staff.role;
             if (av && staff) av.textContent = staff.initials || "AD";
 
+            // Phân quyền theo vai trò (RBAC): Admin vs Nhân viên Quản kho
+            const isAdmin = staff && (staff.username === "admin" || (staff.role && staff.role.toLowerCase().includes("quản trị")));
+            document.querySelectorAll(".admin-only-feature").forEach(el => {
+                el.style.display = isAdmin ? "" : "none";
+            });
+
             switchAdminView("inventory");
             renderAdminProductsGrid();
             renderAdminQrCenter();
@@ -4220,7 +4259,6 @@ window.MESH_DATA = {
         function renderAdminProductsGrid() {
             const allProducts = loadProductsStore();
             const totalProdEl = document.getElementById("stat-total-products");
-            const totalStockEl = document.getElementById("stat-total-stock");
             const navBadgeProd = document.getElementById("nav-badge-products");
             const healthEl = document.getElementById("stat-stock-health");
             const healthSub = document.getElementById("stat-stock-sub");
@@ -4228,14 +4266,31 @@ window.MESH_DATA = {
             if (totalProdEl) totalProdEl.textContent = String(allProducts.length).padStart(2, "0");
             if (navBadgeProd) navBadgeProd.textContent = allProducts.length;
 
-            // Tính tổng tồn kho tính cả các chỉnh sửa đang chờ lưu
-            if (totalStockEl) {
-                const sum = allProducts.reduce((acc, item) => {
-                    const st = stagedStockChanges[item.code];
-                    const num = (st !== undefined) ? st.stagedStock : (Number(item.stock) || 0);
-                    return acc + num;
-                }, 0);
-                totalStockEl.textContent = sum.toLocaleString("vi-VN");
+            // Tính toán tổng số lượng theo chuẩn 5 cột định mức kho vận
+            const openingSum = allProducts.reduce((acc, p) => acc + (Number(p.openingStock) || Number(p.stock) || 0), 0);
+            const availSum = allProducts.reduce((acc, p) => {
+                const st = stagedStockChanges[p.code];
+                return acc + ((st !== undefined) ? st.stagedStock : (Number(p.stock) || 0));
+            }, 0);
+            const dispatchedSum = allProducts.reduce((acc, p) => {
+                const curStock = (stagedStockChanges[p.code] !== undefined) ? stagedStockChanges[p.code].stagedStock : (Number(p.stock) || 0);
+                const opening = Number(p.openingStock) || curStock;
+                const inbound = Number(p.inboundStock) || 0;
+                const totalIn = opening + inbound;
+                return acc + (totalIn > curStock ? (totalIn - curStock) : (Number(p.dispatchedStock) || 0));
+            }, 0);
+
+            const openingEl = document.getElementById("stat-opening-stock");
+            const dispatchedEl = document.getElementById("stat-dispatched-stock");
+            const dispatchedPctEl = document.getElementById("stat-dispatched-pct");
+            const totalStockEl = document.getElementById("stat-total-stock");
+
+            if (openingEl) openingEl.textContent = openingSum.toLocaleString("vi-VN");
+            if (dispatchedEl) dispatchedEl.textContent = dispatchedSum.toLocaleString("vi-VN");
+            if (totalStockEl) totalStockEl.textContent = availSum.toLocaleString("vi-VN");
+            if (dispatchedPctEl && openingSum > 0) {
+                const pct = Math.round((dispatchedSum / openingSum) * 100);
+                dispatchedPctEl.textContent = pct + "% định mức sự kiện";
             }
 
             // Đánh giá tình trạng kho
@@ -4280,51 +4335,72 @@ window.MESH_DATA = {
                 return matchQ && matchStatus;
             });
 
-            // 1. Render Table Body
+            // 1. Render Table Body (Chuẩn 5 cột định mức kho vận + RBAC)
             const tbody = document.getElementById("admin-products-tbody");
             if (tbody) {
                 if (filtered.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="6" class="py-10 text-center text-xs text-slate-400 font-semibold">Không tìm thấy sản phẩm nào khớp bộ lọc.</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="10" class="py-10 text-center text-xs text-slate-400 font-semibold">Không tìm thấy sản phẩm nào khớp bộ lọc.</td></tr>`;
                 } else {
                     tbody.innerHTML = filtered.map(p => {
                         const staged = stagedStockChanges[p.code];
                         const isStaged = (staged !== undefined);
                         const displayStock = isStaged ? staged.stagedStock : (Number(p.stock) || 0);
+                        const opening = Number(p.openingStock) || displayStock;
+                        const inbound = Number(p.inboundStock) || 0;
+                        const totalIn = opening + inbound;
+                        const dispatched = totalIn > displayStock ? (totalIn - displayStock) : (Number(p.dispatchedStock) || 0);
                         const st = getStockStatusMeta(displayStock);
+
                         return `
                             <tr class="hover:bg-[#f8fafc] transition-colors ${isStaged ? 'bg-amber-50/40' : ''}">
-                                <td class="py-3.5 px-3.5 whitespace-nowrap">
+                                <td class="py-3.5 px-3 whitespace-nowrap">
                                     <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 text-[#303c78] font-black text-xs">
                                         #${escapeHtml(p.code)}
                                     </span>
                                 </td>
-                                <td class="py-3.5 px-3.5">
+                                <td class="py-3.5 px-3">
                                     <div class="flex items-center gap-3">
                                         <div class="w-12 h-12 rounded-xl bg-[#f8fafc] border border-slate-200 p-1.5 flex items-center justify-center shrink-0">
                                             <img src="${escapeHtml(p.image || DEFAULT_IMG)}" alt="${escapeHtml(p.name)}" class="max-h-full max-w-full object-contain rounded">
                                         </div>
-                                        <div class="min-w-0 max-w-[210px]">
+                                        <div class="min-w-0 max-w-[190px]">
                                             <div class="font-black text-[#0f172a] text-sm truncate">${escapeHtml(p.name)}</div>
                                             <div class="text-xs text-[#2e72bb] font-semibold mt-0.5 truncate">${escapeHtml(p.category)}</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-3.5 whitespace-nowrap">
+                                <td class="py-3.5 px-2 text-center whitespace-nowrap">
+                                    <span class="px-2 py-0.5 rounded-lg bg-slate-100 border border-slate-200 font-bold text-xs text-slate-700">
+                                        ${escapeHtml(p.unit || "Tác phẩm")}
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-2 text-center whitespace-nowrap font-bold text-slate-700 text-sm">
+                                    ${opening}
+                                </td>
+                                <td class="py-3.5 px-2 text-center whitespace-nowrap">
+                                    <span class="font-black text-xs text-[#2e72bb] bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                                        ${dispatched}
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-2 text-center whitespace-nowrap font-black text-base ${displayStock <= 0 ? 'text-red-600' : 'text-[#13a052]'}">
+                                    ${displayStock}
+                                </td>
+                                <td class="py-3.5 px-3 whitespace-nowrap">
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-bold ${st.badgeCls}">
                                         <span class="w-1.5 h-1.5 rounded-full ${st.barCls}"></span>
                                         <span>${st.label}</span>
                                     </span>
-                                    <div class="w-24 h-1.5 rounded-full bg-slate-100 mt-1.5 overflow-hidden">
+                                    <div class="w-20 h-1.5 rounded-full bg-slate-100 mt-1.5 overflow-hidden">
                                         <div class="h-full ${st.barCls} rounded-full" style="width:${st.pct}%"></div>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-3.5 whitespace-nowrap">
+                                <td class="py-3.5 px-3 whitespace-nowrap">
                                     <div class="flex items-center justify-center gap-1">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -10)" class="px-2 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold transition-colors" title="Giảm 10">-10</button>
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-7 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-black text-sm transition-colors" title="Giảm 1">−</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -10)" class="px-2 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold transition-colors" title="Cấp phát 10 phần quà">-10</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-7 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-black text-sm transition-colors" title="Cấp phát 1 phần quà">−</button>
                                         <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-16 h-8 rounded-lg ${isStaged ? 'bg-amber-50 border-2 border-amber-500 text-amber-900 font-black' : 'bg-white border-2 border-[#13a052]/40 text-[#13a052] font-black'} text-center text-sm focus:outline-none">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-7 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-black text-sm transition-colors" title="Tăng 1">+</button>
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 10)" class="px-2 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold transition-colors" title="Tăng 10">+10</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-7 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-black text-sm transition-colors" title="Nhập thêm 1">+</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 10)" class="px-2 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold transition-colors" title="Nhập thêm 10">+10</button>
                                     </div>
                                     ${isStaged ? `
                                         <div class="flex items-center justify-center gap-1.5 mt-1.5">
@@ -4335,23 +4411,20 @@ window.MESH_DATA = {
                                         </div>
                                     ` : ''}
                                 </td>
-                                <td class="py-3.5 px-3.5 whitespace-nowrap text-center">
+                                <td class="py-3.5 px-3 whitespace-nowrap text-center">
                                     <div class="inline-flex items-center gap-1.5">
                                         <button type="button" onclick="openProductQrModal('${escapeHtml(p.code)}')" class="px-2.5 py-1.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold transition-colors">
-                                            📱 Mã QR
+                                            📱 QR
                                         </button>
                                         <button type="button" onclick="copySingleProductUrl('${escapeHtml(p.code)}')" class="px-2.5 py-1.5 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#303c78] transition-colors" title="Sao chép link chỉ xem 1 SP">
                                             📋 Link
                                         </button>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-3.5 whitespace-nowrap text-right">
+                                <td class="py-3.5 px-3 whitespace-nowrap text-right admin-only-feature">
                                     <div class="inline-flex items-center justify-end gap-1.5">
                                         <button type="button" onclick="openEditDrawer('${escapeHtml(p.code)}')" class="px-2.5 py-1.5 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#0f172a] transition-colors">
                                             ✎ Sửa
-                                        </button>
-                                        <button type="button" onclick="viewProductOnSite('${escapeHtml(p.code)}')" class="px-2.5 py-1.5 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#2e72bb] transition-colors">
-                                            ↗ Xem
                                         </button>
                                     </div>
                                 </td>
@@ -4368,12 +4441,17 @@ window.MESH_DATA = {
                     const staged = stagedStockChanges[p.code];
                     const isStaged = (staged !== undefined);
                     const displayStock = isStaged ? staged.stagedStock : (Number(p.stock) || 0);
+                    const opening = Number(p.openingStock) || displayStock;
+                    const inbound = Number(p.inboundStock) || 0;
+                    const totalIn = opening + inbound;
+                    const dispatched = totalIn > displayStock ? (totalIn - displayStock) : (Number(p.dispatchedStock) || 0);
                     const st = getStockStatusMeta(displayStock);
+
                     return `
                         <div class="bg-white border ${isStaged ? 'border-amber-400 bg-amber-50/20' : 'border-slate-200'} rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-sm">
                             <div>
                                 <div class="flex items-center justify-between gap-2 mb-3">
-                                    <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-[#303c78] text-xs font-extrabold">MÃ SP #${escapeHtml(p.code)}</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-[#303c78] text-xs font-extrabold">MÃ SKU #${escapeHtml(p.code)}</span>
                                     <span class="px-2.5 py-0.5 rounded-full border text-xs font-bold ${st.badgeCls}">${st.label}</span>
                                 </div>
                                 <div class="h-40 rounded-xl bg-[#f8fafc] border border-slate-200 flex items-center justify-center p-3 mb-3 overflow-hidden">
@@ -4381,15 +4459,30 @@ window.MESH_DATA = {
                                 </div>
                                 <h4 class="text-base font-black text-[#0f172a]">${escapeHtml(p.name)}</h4>
                                 <p class="text-xs text-slate-500 mt-1 line-clamp-2">${escapeHtml(p.tagline)}</p>
+
+                                <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-100 text-center text-xs">
+                                    <div class="p-2 rounded-xl bg-[#f8fafc] border border-slate-200">
+                                        <span class="text-[10px] text-slate-400 font-bold block uppercase">Đầu Kỳ</span>
+                                        <span class="font-black text-slate-700 mt-0.5 block">${opening}</span>
+                                    </div>
+                                    <div class="p-2 rounded-xl bg-blue-50 border border-blue-200">
+                                        <span class="text-[10px] text-[#2e72bb] font-bold block uppercase">Đã Cấp</span>
+                                        <span class="font-black text-[#2e72bb] mt-0.5 block">${dispatched}</span>
+                                    </div>
+                                    <div class="p-2 rounded-xl bg-emerald-50 border border-emerald-200">
+                                        <span class="text-[10px] text-[#13a052] font-bold block uppercase">Khả Dụng</span>
+                                        <span class="font-black text-[#13a052] mt-0.5 block">${displayStock}</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="pt-3 border-t border-slate-100 space-y-3">
                                 <div class="flex items-center justify-between gap-2">
-                                    <span class="text-xs font-bold text-slate-700">Tồn kho:</span>
+                                    <span class="text-xs font-bold text-slate-700">Điều phối:</span>
                                     <div class="flex items-center gap-1.5">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-bold">−</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-bold" title="Cấp phát 1">−</button>
                                         <input type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-20 h-8 rounded-lg ${isStaged ? 'bg-amber-50 border-2 border-amber-500 text-amber-900' : 'bg-white border border-emerald-300 text-[#13a052]'} text-center font-black text-sm">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-bold">+</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-8 h-8 rounded-lg bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-[#0f172a] font-bold" title="Nhập thêm 1">+</button>
                                     </div>
                                 </div>
 
@@ -4404,7 +4497,7 @@ window.MESH_DATA = {
                                     <button type="button" onclick="openProductQrModal('${escapeHtml(p.code)}')" class="flex-1 py-2 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold transition-colors">
                                         📱 Mã QR &amp; Link
                                     </button>
-                                    <button type="button" onclick="openEditDrawer('${escapeHtml(p.code)}')" class="px-3.5 py-2 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#303c78] transition-colors">
+                                    <button type="button" onclick="openEditDrawer('${escapeHtml(p.code)}')" class="admin-only-feature px-3.5 py-2 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#303c78] transition-colors">
                                         ✎ Sửa
                                     </button>
                                 </div>
@@ -4413,6 +4506,71 @@ window.MESH_DATA = {
                     `;
                 }).join("");
             }
+        }
+
+        // =========================================================================
+        // XUẤT BÁO CÁO ĐỐI SOÁT KHO & CẤP PHÁT QUÀ TẶNG (.CSV / EXCEL UTF-8)
+        // =========================================================================
+        function exportStockAuditReportCsv() {
+            const products = loadProductsStore();
+            const logs = loadStockLogs();
+            const now = new Date();
+            const dateStr = now.toLocaleDateString("vi-VN").replace(/\//g, "-");
+            const timeStr = now.toLocaleTimeString("vi-VN");
+
+            let csv = "\uFEFF"; // UTF-8 BOM chuẩn hiển thị tiếng Việt có dấu trong Excel
+            csv += "========================================================================\n";
+            csv += "BÁO CÁO ĐỐI SOÁT ĐỊNH MỨC & CẤP PHÁT QUÀ TẶNG - KỶ NIỆM 20 NĂM PVEP\n";
+            csv += `Thời gian xuất báo cáo: ${timeStr} ngày ${dateStr}\n`;
+            const staff = isStaffAuthenticated();
+            csv += `Người lập báo cáo: ${staff ? staff.name : 'Ban Tổ Chức PVEP'} (${staff ? staff.role : 'Admin'})\n`;
+            csv += "========================================================================\n\n";
+
+            // 1. BẢNG TỔNG HỢP TỒN KHO & ĐỊNH MỨC
+            csv += "1. BẢNG TỔNG HỢP ĐỊNH MỨC & HIỆN TRẠNG KHO QUÀ TẶNG\n";
+            csv += "Mã SKU,Tên Ấn Phẩm Quà Tặng,Phân Loại,Đơn Vị Tính,Tồn Đầu Kỳ,Tổng Nhập (+),Đã Cấp Phát (-),Còn Khả Dụng,Tình Trạng Kho,Tỷ Lệ Đã Trao (%)\n";
+
+            products.forEach(p => {
+                const staged = stagedStockChanges[p.code];
+                const curStock = staged ? staged.stagedStock : (Number(p.stock) || 0);
+                const opening = Number(p.openingStock) || curStock;
+                const inbound = Number(p.inboundStock) || 0;
+                const totalAvail = opening + inbound;
+                const dispatched = totalAvail > curStock ? (totalAvail - curStock) : (Number(p.dispatchedStock) || 0);
+                const pct = totalAvail > 0 ? Math.round((dispatched / totalAvail) * 100) : 0;
+                const st = getStockStatusMeta(curStock).label;
+
+                csv += `"#${p.code}","${(p.name || '').replace(/"/g, '""')}","${(p.category || '').replace(/"/g, '""')}","${p.unit || 'Tác phẩm'}",${opening},${inbound},${dispatched},${curStock},"${st}","${pct}%"\n`;
+            });
+
+            csv += "\n";
+            // 2. BẢNG CHI TIẾT NHẬT KÝ GIAO DỊCH
+            csv += "2. BẢNG CHI TIẾT NHẬT KÝ THAO TÁC & CẤP PHÁT ĐỐI SOÁT\n";
+            csv += "Thời Gian,Mã SKU,Mặt Hàng,Loại Giao Dịch,Biến Động Số Lượng,Tồn Trước,Tồn Sau,Nhân Viên Thực Hiện,Ghi Chú Đối Soát\n";
+
+            if (logs.length === 0) {
+                csv += "Chưa có giao dịch biến động nào trong phiên ghi nhận này.,,,,,,,\n";
+            } else {
+                logs.forEach(l => {
+                    const delta = (Number(l.newVal) || 0) - (Number(l.oldVal) || 0);
+                    const deltaStr = delta > 0 ? `+${delta}` : String(delta);
+                    const typeStr = delta > 0 ? "Nhập kho" : (delta < 0 ? "Cấp phát quà" : "Kiểm kê");
+                    const prod = products.find(x => x.code === l.code);
+                    const prodName = prod ? prod.name : ("Sản phẩm #" + l.code);
+                    csv += `"${l.time || ''}","#${l.code || ''}","${prodName.replace(/"/g, '""')}","${typeStr}","${deltaStr}",${l.oldVal || 0},${l.newVal || 0},"${(l.actor || '').replace(/"/g, '""')}","${(l.action || '').replace(/"/g, '""')}"\n`;
+                });
+            }
+
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `Bao_Cao_Doi_Soat_Kho_PVEP_20_Nam_${dateStr.replace(/-/g, '')}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showAutoSaveToast("✓ Đã xuất file báo cáo đối soát Excel (.CSV) thành công!");
         }
 
         function renderAdminQrCenter() {
