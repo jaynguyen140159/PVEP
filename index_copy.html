@@ -3205,7 +3205,7 @@ window.MESH_DATA = {
                 <div class="flex-1 max-w-7xl w-full mx-auto px-6 py-6 space-y-6">
                     
                     <!-- 4 Ô KPI TỔNG QUAN CHUẨN ĐỊNH MỨC KHO & CẤP PHÁT -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div id="adm-kpi-row" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <!-- KPI 1: Định mức đầu kỳ -->
                         <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-sm flex items-start justify-between">
                             <div class="min-w-0">
@@ -3294,19 +3294,19 @@ window.MESH_DATA = {
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-[#f8fafc] border-b border-slate-200 text-[11px] font-black uppercase tracking-wider text-slate-500 select-none">
-                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[52px] min-w-[52px]" title="Chọn đưa vào Tờ Trình">
+                                            <th class="py-3 px-1.5 text-center whitespace-nowrap w-[34px]" title="Chọn đưa vào Tờ Trình">
                                                 <input id="adm-select-all-proposal" type="checkbox" onchange="toggleSelectAllForProposal(this.checked)" class="w-4 h-4 rounded border-slate-300 text-[#303c78] cursor-pointer accent-[#303c78]">
                                             </th>
-                                            <th class="py-3.5 px-3 whitespace-nowrap w-[88px] min-w-[88px]">Mã SKU</th>
-                                            <th class="py-3.5 px-3.5 whitespace-nowrap min-w-[230px]">Ấn Phẩm Quà Tặng</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[90px] min-w-[90px]">ĐVT</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[90px] min-w-[90px]">Đầu Kỳ</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[95px] min-w-[95px]">Đã Cấp (-)</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[95px] min-w-[95px]">Khả Dụng</th>
-                                            <th class="py-3.5 px-3 whitespace-nowrap w-[145px] min-w-[145px]">Trạng Thái Kho</th>
-                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[250px] min-w-[250px]">Điều Phối Kho</th>
-                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[165px] min-w-[165px]">Mã QR &amp; Link</th>
-                                            <th class="py-3.5 px-3.5 text-right whitespace-nowrap w-[105px] min-w-[105px] admin-only-feature">Quản Trị</th>
+                                            <th class="py-3 px-1.5 whitespace-nowrap">SKU</th>
+                                            <th class="py-3 px-2 whitespace-nowrap min-w-[140px]">Ấn Phẩm Quà Tặng</th>
+                                            <th class="py-3 px-1 text-center whitespace-nowrap">ĐVT</th>
+                                            <th class="py-3 px-1 text-center whitespace-nowrap">Đầu Kỳ</th>
+                                            <th class="py-3 px-1 text-center whitespace-nowrap">Đã Cấp</th>
+                                            <th class="py-3 px-1 text-center whitespace-nowrap">Khả Dụng</th>
+                                            <th class="py-3 px-1.5 whitespace-nowrap">Trạng Thái</th>
+                                            <th class="py-3 px-1.5 text-center whitespace-nowrap">Điều Phối Kho</th>
+                                            <th class="py-3 px-1.5 text-center whitespace-nowrap">QR &amp; Link</th>
+                                            <th class="py-3 px-2 text-right whitespace-nowrap admin-only-feature">Quản Trị</th>
                                         </tr>
                                     </thead>
                                     <tbody id="admin-products-tbody" class="divide-y divide-slate-200 text-sm"></tbody>
@@ -3325,13 +3325,13 @@ window.MESH_DATA = {
                         <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
                             <!-- Cột trái (5/12): Biểu mẫu thông tin & Danh sách quà đề xuất -->
                             <div class="xl:col-span-5 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm space-y-5">
-                                <div class="flex items-center justify-between gap-3 border-b border-slate-200 pb-4">
-                                    <div>
-                                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#2e72bb] block">Phiếu Đề Xuất Xuất Kho</span>
-                                        <h3 class="text-base font-black text-[#0f172a] mt-0.5">Thông Tin Tờ Trình Ký Duyệt</h3>
+                                <div class="flex items-center justify-between gap-2 border-b border-slate-200 pb-4">
+                                    <div class="min-w-0">
+                                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#2e72bb] block whitespace-nowrap">Phiếu Đề Xuất Xuất Kho</span>
+                                        <h3 class="text-base font-black text-[#0f172a] mt-0.5 whitespace-nowrap">Thông Tin Tờ Trình Ký Duyệt</h3>
                                     </div>
-                                    <button type="button" onclick="switchAdminView('inventory')" class="h-8 px-3 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 text-xs font-bold text-[#303c78] whitespace-nowrap transition-colors">
-                                        ← Chọn thêm từ Kho
+                                    <button type="button" onclick="switchAdminView('inventory')" class="h-8 px-3 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 text-xs font-bold text-[#303c78] whitespace-nowrap shrink-0 transition-colors">
+                                        ← Kho quà
                                     </button>
                                 </div>
 
@@ -3372,14 +3372,14 @@ window.MESH_DATA = {
                                 </div>
 
                                 <!-- Danh sách sản phẩm trong tờ trình -->
-                                <div class="pt-3 border-t border-slate-200 space-y-3">
-                                    <div class="flex items-center justify-between gap-2">
-                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] whitespace-nowrap">Ấn Phẩm Đề Xuất Xuất Kho</span>
-                                        <div class="flex items-center gap-1.5">
-                                            <select id="prop-add-select" class="h-8 px-2.5 rounded-lg bg-[#f8fafc] border border-slate-300 text-xs font-bold text-[#0f172a] max-w-[165px]">
+                                <div class="pt-3 border-t border-slate-200 space-y-2.5">
+                                    <div class="space-y-2">
+                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] block whitespace-nowrap">Ấn Phẩm Đề Xuất Xuất Kho</span>
+                                        <div class="flex items-center gap-2">
+                                            <select id="prop-add-select" class="flex-1 min-w-0 h-9 px-2.5 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-bold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
                                             </select>
-                                            <button type="button" onclick="addProposalItemFromDropdown()" class="h-8 px-2.5 rounded-lg bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold whitespace-nowrap transition-colors">
-                                                + Thêm
+                                            <button type="button" onclick="addProposalItemFromDropdown()" class="h-9 px-3.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold whitespace-nowrap shrink-0 transition-colors">
+                                                + Thêm SP
                                             </button>
                                         </div>
                                     </div>
@@ -3402,12 +3402,12 @@ window.MESH_DATA = {
 
                             <!-- Cột phải (7/12): Bản xem trước chuẩn A4 Hành Chính -->
                             <div class="xl:col-span-7 space-y-3">
-                                <div class="bg-white border border-slate-200/90 rounded-2xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#13a052]"></span>
-                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] whitespace-nowrap">Xem Trước Bản In Chuẩn A4 (Trình Sếp Ký Duyệt)</span>
+                                <div class="bg-white border border-slate-200/90 rounded-2xl px-5 py-3 flex items-center justify-between gap-3 shadow-sm">
+                                    <div class="flex items-center gap-2 min-w-0">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#13a052] shrink-0"></span>
+                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] whitespace-nowrap truncate">Xem Trước Bản In A4</span>
                                     </div>
-                                    <button type="button" onclick="printProposalA4Document()" class="h-8 px-3.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold inline-flex items-center gap-1.5 whitespace-nowrap transition-colors">
+                                    <button type="button" onclick="printProposalA4Document()" class="h-8 px-3.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 transition-colors">
                                         <span>🖨️ In / Lưu PDF ngay</span>
                                     </button>
                                 </div>
@@ -4407,8 +4407,10 @@ window.MESH_DATA = {
 
             const bc = document.getElementById("adm-breadcrumb-current");
             const pt = document.getElementById("adm-page-title");
+            const kpiRow = document.getElementById("adm-kpi-row");
             if (bc && titles[view]) bc.textContent = titles[view][0];
             if (pt && titles[view]) pt.textContent = titles[view][1];
+            if (kpiRow) kpiRow.classList.toggle("hidden", view === "proposal");
 
             if (view === "proposal") {
                 initProposalFormDefaults();
@@ -4550,85 +4552,79 @@ window.MESH_DATA = {
 
                         return `
                             <tr class="hover:bg-[#f8fafc]/80 transition-colors border-b border-slate-100 ${isStaged ? 'bg-amber-50/50' : (isPickedProposal ? 'bg-blue-50/40' : '')}">
-                                <td class="py-3.5 px-3 text-center whitespace-nowrap">
+                                <td class="py-3 px-1.5 text-center whitespace-nowrap">
                                     <input type="checkbox" ${isPickedProposal ? 'checked' : ''} onchange="toggleProductForProposal('${escapeHtml(p.code)}', this.checked)" class="w-4 h-4 rounded border-slate-300 text-[#303c78] cursor-pointer accent-[#303c78]" title="Chọn đưa vào Tờ Trình Ký Duyệt">
                                 </td>
-                                <td class="py-3.5 px-3 whitespace-nowrap">
-                                    <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 text-[#303c78] font-black text-xs shadow-2xs">
+                                <td class="py-3 px-1.5 whitespace-nowrap">
+                                    <span class="inline-flex items-center justify-center px-2 py-1 rounded-lg bg-slate-100 border border-slate-200 text-[#303c78] font-black text-xs">
                                         #${escapeHtml(p.code)}
                                     </span>
                                 </td>
-                                <td class="py-3.5 px-3.5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-12 h-12 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 shadow-2xs">
-                                            <img src="${escapeHtml(p.image || DEFAULT_IMG)}" alt="${escapeHtml(p.name)}" class="max-h-full max-w-full object-contain rounded-lg">
+                                <td class="py-3 px-2">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-9 h-9 rounded-lg bg-white border border-slate-200 p-0.5 flex items-center justify-center shrink-0">
+                                            <img src="${escapeHtml(p.image || DEFAULT_IMG)}" alt="${escapeHtml(p.name)}" class="max-h-full max-w-full object-contain rounded">
                                         </div>
-                                        <div class="min-w-0 max-w-[280px]">
-                                            <div class="font-extrabold text-[#0f172a] text-sm leading-snug truncate" title="${escapeHtml(p.name)}">${escapeHtml(p.name)}</div>
-                                            <div class="text-xs text-[#2e72bb] font-bold mt-0.5 truncate">${escapeHtml(p.category)}</div>
+                                        <div class="min-w-0 max-w-[130px]">
+                                            <div class="font-extrabold text-[#0f172a] text-xs leading-snug truncate" title="${escapeHtml(p.name)}">${escapeHtml(p.name)}</div>
+                                            <div class="text-[11px] text-[#2e72bb] font-bold mt-0.5 truncate">${escapeHtml(p.category)}</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-2 text-center whitespace-nowrap">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 font-bold text-xs text-slate-700">
+                                <td class="py-3 px-1 text-center whitespace-nowrap">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-lg bg-slate-100 border border-slate-200 font-bold text-[11px] text-slate-700">
                                         ${escapeHtml(p.unit || "Tác phẩm")}
                                     </span>
                                 </td>
-                                <td class="py-3.5 px-2 text-center whitespace-nowrap font-extrabold text-slate-700 text-sm">
+                                <td class="py-3 px-1 text-center whitespace-nowrap font-extrabold text-slate-700 text-xs tabular-nums">
                                     ${opening}
                                 </td>
-                                <td class="py-3.5 px-2 text-center whitespace-nowrap">
-                                    <span class="inline-flex items-center justify-center min-w-[36px] font-black text-xs text-[#2e72bb] bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                                <td class="py-3 px-1 text-center whitespace-nowrap">
+                                    <span class="inline-flex items-center justify-center min-w-[28px] font-black text-xs text-[#2e72bb] bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-200 tabular-nums">
                                         ${dispatched}
                                     </span>
                                 </td>
-                                <td class="py-3.5 px-2 text-center whitespace-nowrap">
-                                    <span class="inline-flex items-center justify-center min-w-[42px] font-black text-sm px-2.5 py-1 rounded-lg border ${displayStock <= 0 ? 'bg-red-50 text-red-600 border-red-200' : 'bg-emerald-50 text-[#13a052] border-emerald-200'}">
+                                <td class="py-3 px-1 text-center whitespace-nowrap">
+                                    <span class="inline-flex items-center justify-center min-w-[32px] font-black text-xs px-2 py-0.5 rounded-lg border tabular-nums ${displayStock <= 0 ? 'bg-red-50 text-red-600 border-red-200' : 'bg-emerald-50 text-[#13a052] border-emerald-200'}">
                                         ${displayStock}
                                     </span>
                                 </td>
-                                <td class="py-3.5 px-3 whitespace-nowrap">
-                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-bold ${st.badgeCls}">
+                                <td class="py-3 px-1.5 whitespace-nowrap">
+                                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-[11px] font-bold ${st.badgeCls}">
                                         <span class="w-1.5 h-1.5 rounded-full ${st.barCls}"></span>
                                         <span>${st.label}</span>
                                     </span>
-                                    <div class="w-24 h-1.5 rounded-full bg-slate-100 mt-1.5 overflow-hidden border border-slate-200/50">
-                                        <div class="h-full ${st.barCls} rounded-full" style="width:${st.pct}%"></div>
-                                    </div>
                                 </td>
-                                <td class="py-3.5 px-3 whitespace-nowrap text-center">
-                                    <div class="inline-flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -10)" class="h-8 px-2 rounded-lg bg-slate-50 hover:bg-slate-200 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all whitespace-nowrap" title="Cấp phát 10 phần">-10</button>
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-7 h-8 rounded-lg bg-slate-50 hover:bg-slate-200 active:scale-95 border border-slate-200 text-[#0f172a] text-sm font-black transition-all flex items-center justify-center" title="Cấp phát 1 phần">−</button>
-                                        <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-14 h-8 rounded-lg ${isStaged ? 'bg-amber-50 border-2 border-amber-500 text-amber-900' : 'bg-white border border-slate-300 text-[#13a052]'} text-center text-sm font-black focus:outline-none focus:ring-2 focus:ring-[#2e72bb]/20">
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-7 h-8 rounded-lg bg-slate-50 hover:bg-slate-200 active:scale-95 border border-slate-200 text-[#0f172a] text-sm font-black transition-all flex items-center justify-center" title="Nhập thêm 1">+</button>
-                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 10)" class="h-8 px-2 rounded-lg bg-slate-50 hover:bg-slate-200 active:scale-95 border border-slate-200 text-slate-700 text-xs font-bold transition-all whitespace-nowrap" title="Nhập thêm 10">+10</button>
+                                <td class="py-3 px-1.5 whitespace-nowrap text-center">
+                                    <div class="inline-flex items-center gap-1 bg-[#f8fafc] p-0.5 rounded-xl border border-slate-200">
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -10)" class="h-7 px-1.5 rounded-lg bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 text-[11px] font-bold transition-all whitespace-nowrap" title="Cấp phát 10 phần">-10</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-6 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-200 text-[#0f172a] text-xs font-black transition-all flex items-center justify-center" title="Cấp phát 1 phần">−</button>
+                                        <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-11 h-7 rounded-lg ${isStaged ? 'bg-amber-50 border-2 border-amber-500 text-amber-900' : 'bg-white border border-slate-300 text-[#13a052]'} text-center text-xs font-black focus:outline-none">
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-6 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-200 text-[#0f172a] text-xs font-black transition-all flex items-center justify-center" title="Nhập thêm 1">+</button>
+                                        <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 10)" class="h-7 px-1.5 rounded-lg bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 text-[11px] font-bold transition-all whitespace-nowrap" title="Nhập thêm 10">+10</button>
                                     </div>
                                     ${isStaged ? `
-                                        <div class="flex items-center justify-center gap-1.5 mt-1.5 whitespace-nowrap">
-                                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-bold">
+                                        <div class="flex items-center justify-center gap-1 mt-1 whitespace-nowrap">
+                                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[10.5px] font-bold">
                                                 <span>Chờ lưu: ${staged.initialStock} → ${staged.stagedStock} (${staged.delta > 0 ? '+'+staged.delta : staged.delta})</span>
                                             </span>
-                                            <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="w-5 h-5 rounded-full bg-slate-200 hover:bg-red-500 hover:text-white text-slate-600 text-[10px] font-black flex items-center justify-center transition-colors" title="Hủy thay đổi này">✕</button>
+                                            <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="w-4 h-4 rounded-full bg-slate-200 hover:bg-red-500 hover:text-white text-slate-600 text-[10px] font-black flex items-center justify-center transition-colors" title="Hủy thay đổi này">✕</button>
                                         </div>
                                     ` : ''}
                                 </td>
-                                <td class="py-3.5 px-3 whitespace-nowrap text-center">
-                                    <div class="inline-flex items-center gap-1.5 whitespace-nowrap">
-                                        <button type="button" onclick="openProductQrModal('${escapeHtml(p.code)}')" class="h-8 px-3 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] active:scale-95 text-white text-xs font-bold transition-all shadow-2xs inline-flex items-center gap-1.5 whitespace-nowrap">
-                                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                                            <span>Mã QR</span>
+                                <td class="py-3 px-1.5 whitespace-nowrap text-center">
+                                    <div class="inline-flex items-center gap-1 whitespace-nowrap">
+                                        <button type="button" onclick="openProductQrModal('${escapeHtml(p.code)}')" class="h-7 px-2 rounded-lg bg-[#2e72bb] hover:bg-[#303c78] text-white text-[11px] font-bold transition-all inline-flex items-center gap-1 whitespace-nowrap">
+                                            <span>QR</span>
                                         </button>
-                                        <button type="button" onclick="copySingleProductUrl('${escapeHtml(p.code)}')" class="h-8 px-2.5 rounded-xl bg-white hover:bg-slate-100 active:scale-95 border border-slate-200 text-xs font-bold text-slate-700 transition-all inline-flex items-center gap-1 whitespace-nowrap shadow-2xs" title="Sao chép link trực tiếp 1 SP">
-                                            <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                        <button type="button" onclick="copySingleProductUrl('${escapeHtml(p.code)}')" class="h-7 px-2 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-[11px] font-bold text-slate-700 transition-all inline-flex items-center gap-1 whitespace-nowrap" title="Sao chép link trực tiếp 1 SP">
                                             <span>Link</span>
                                         </button>
                                     </div>
                                 </td>
-                                <td class="py-3.5 px-3.5 whitespace-nowrap text-right admin-only-feature">
-                                    <button type="button" onclick="openEditDrawer('${escapeHtml(p.code)}')" class="h-8 px-3 rounded-xl bg-white hover:bg-slate-100 active:scale-95 border border-slate-200 hover:border-slate-300 text-xs font-bold text-slate-700 transition-all inline-flex items-center gap-1.5 whitespace-nowrap shadow-2xs">
-                                        <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                                        <span>Sửa</span>
+                                <td class="py-3 px-2 whitespace-nowrap text-right admin-only-feature">
+                                    <button type="button" onclick="openEditDrawer('${escapeHtml(p.code)}')" class="h-7 px-2 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-[11px] font-bold text-slate-700 transition-all inline-flex items-center gap-1 whitespace-nowrap">
+                                        <span>✎ Sửa</span>
                                     </button>
                                 </td>
                             </tr>
