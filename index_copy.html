@@ -2977,160 +2977,181 @@ window.MESH_DATA = {
         </div>
 
         <!-- =========================================================================
-             MÀN HÌNH 1: ĐĂNG NHẬP HỆ THỐNG ADMIN (Nền trắng phẳng, chuẩn Enterprise)
+             MÀN HÌNH 1: ĐĂNG NHẬP HỆ THỐNG ADMIN (Executive PVEP Deep Navy + White Surface)
              ========================================================================= -->
         <div id="admin-login-screen" class="min-h-screen flex flex-col lg:flex-row bg-white">
-            <!-- Cột trái: Nhận diện Hệ thống Quản trị PVEP -->
-            <div class="lg:w-5/12 p-8 sm:p-14 flex flex-col justify-between bg-[#f8fafc] border-b lg:border-b-0 lg:border-r border-slate-200">
+            <!-- Cột trái: Nhận diện Hệ thống Quản trị PVEP (Deep Navy) -->
+            <div class="lg:w-5/12 p-8 sm:p-14 flex flex-col justify-between bg-[#0f172a] text-white border-b lg:border-b-0 lg:border-r border-slate-800">
                 <div class="flex items-center gap-4">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-2 w-20 shadow-sm shrink-0">
+                    <div class="bg-white rounded-2xl p-2 w-16 h-16 flex items-center justify-center shadow-sm shrink-0">
                         <img src="data:image/jpeg;base64,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" alt="PVEP 20 Năm" class="w-full h-auto object-contain">
                     </div>
                     <div>
-                        <span class="text-xs font-extrabold uppercase tracking-widest text-[#2e72bb] block">PETROVIETNAM PVEP</span>
-                        <span class="text-base font-black text-[#303c78]">PVEP Admin Control Center</span>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-[#60a5fa] block whitespace-nowrap">PETROVIETNAM PVEP</span>
+                        <span class="text-base font-black text-white tracking-tight block whitespace-nowrap">PVEP Admin Control Center</span>
                     </div>
                 </div>
 
-                <div class="my-10 space-y-5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-bold uppercase tracking-wider text-[#13a052]">
-                        <span class="w-2 h-2 rounded-full bg-[#13a052]"></span>
-                        <span>Cổng Quản Trị Nội Bộ</span>
+                <div class="my-10 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-wider text-[#34d399] whitespace-nowrap">
+                        <span class="w-2 h-2 rounded-full bg-[#34d399]"></span>
+                        <span>Cổng Quản Trị Điều Phối Kho</span>
                     </div>
-                    <h1 class="text-3xl sm:text-4xl font-black text-[#303c78] leading-tight">
-                        Hệ Thống Quản Trị Kho &amp; Ấn Phẩm Quà Tặng
+                    <h1 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+                        Hệ Thống Quản Trị Kho &amp; Trình Duyệt Quà Tặng
                     </h1>
-                    <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-                        Bảng điều khiển dành riêng cho Quản trị viên &amp; Nhân viên điều phối: Kiểm soát số lượng tồn kho theo thời gian thực, cấp phát Mã QR riêng cho từng đại biểu và theo dõi nhật ký xuất nhập kho.
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+                        Kiểm soát định mức tồn kho thời gian thực, lập Tờ trình xuất quà chuẩn A4 trình Lãnh đạo ký duyệt, cấp phát Mã QR đơn lẻ và đối soát nhật ký minh bạch.
                     </p>
-                    <div class="grid grid-cols-2 gap-3 pt-2">
-                        <div class="p-3.5 rounded-2xl bg-white border border-slate-200">
-                            <span class="text-xs font-extrabold text-[#303c78] block">⚡ Tự động lưu 1 chạm</span>
-                            <span class="text-xs text-slate-500 mt-0.5 block">Cập nhật số lượng tức thì</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-xs font-extrabold text-white block whitespace-nowrap">📄 Tờ Trình Ký Duyệt A4</span>
+                            <span class="text-xs text-slate-400 mt-1 block">Chọn quà &amp; xuất bản in trình Lãnh đạo</span>
                         </div>
-                        <div class="p-3.5 rounded-2xl bg-white border border-slate-200">
-                            <span class="text-xs font-extrabold text-[#13a052] block">📱 QR Khoá Đơn Lẻ</span>
-                            <span class="text-xs text-slate-500 mt-0.5 block">Mỗi mã quà 1 Landing Page</span>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <span class="text-xs font-extrabold text-[#34d399] block whitespace-nowrap">🛡 Bảo Vệ Đa Người Nhập</span>
+                            <span class="text-xs text-slate-400 mt-1 block">Chống đụng độ số lượng &amp; lưu đối soát</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-slate-200">
-                    <span class="font-bold tracking-wider uppercase text-[#303c78]">TIÊN PHONG KHƠI NGUỒN NĂNG LƯỢNG</span>
-                    <span>PVEP 20 Năm</span>
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-5 border-t border-white/10 gap-3">
+                    <span class="font-bold tracking-wider uppercase text-slate-300 whitespace-nowrap">TIÊN PHONG KHƠI NGUỒN NĂNG LƯỢNG</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white font-bold whitespace-nowrap">PVEP 20 Năm</span>
                 </div>
             </div>
 
             <!-- Cột phải: Biểu mẫu Đăng nhập Admin -->
-            <div class="lg:w-7/12 flex items-center justify-center p-6 sm:p-14 bg-white">
+            <div class="lg:w-7/12 flex items-center justify-center p-6 sm:p-14 bg-[#f8fafc]">
                 <div class="w-full max-w-md bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
                     <div>
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2e72bb]">Đăng Nhập Quản Trị</span>
-                        <h2 class="text-2xl font-black text-[#0f172a] mt-1">Xác thực Tài khoản Admin</h2>
-                        <p class="text-sm text-slate-500 mt-1">Nhập thông tin tài khoản được cấp quyền để truy cập bảng điều khiển.</p>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2e72bb]">Xác Thực Nội Bộ</span>
+                        <h2 class="text-2xl font-black text-[#0f172a] mt-1">Đăng nhập Hệ thống</h2>
+                        <p class="text-sm text-slate-500 mt-1">Chọn nhanh vai trò vận hành hoặc nhập tài khoản được cấp quyền.</p>
+                    </div>
+
+                    <!-- Thẻ chọn nhanh tài khoản theo vai trò (RBAC) -->
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <button type="button" onclick="quickFillLogin('admin','pvep2026')" class="p-3 rounded-2xl bg-[#f8fafc] hover:bg-blue-50 border border-slate-200 hover:border-[#2e72bb] text-left transition-all">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-[#303c78] block whitespace-nowrap">Quản Trị Viên</span>
+                            <span class="text-xs text-slate-500 mt-0.5 block font-mono whitespace-nowrap">admin / pvep2026</span>
+                        </button>
+                        <button type="button" onclick="quickFillLogin('nhanvien','123456')" class="p-3 rounded-2xl bg-[#f8fafc] hover:bg-emerald-50 border border-slate-200 hover:border-[#13a052] text-left transition-all">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-[#13a052] block whitespace-nowrap">Nhân Viên Kho</span>
+                            <span class="text-xs text-slate-500 mt-0.5 block font-mono whitespace-nowrap">nhanvien / 123456</span>
+                        </button>
                     </div>
 
                     <form id="pvep-login-form" onsubmit="submitAdminLogin(event)" class="space-y-4">
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Tài khoản</label>
-                            <input id="admin-user" type="text" required autocomplete="username" placeholder="Nhập tài khoản (VD: admin)" class="w-full px-4 py-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-[#0f172a] text-sm font-medium focus:border-[#2e72bb] focus:bg-white focus:outline-none">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Tài khoản</label>
+                            <input id="admin-user" type="text" required autocomplete="username" placeholder="Nhập tài khoản (VD: admin)" class="w-full h-11 px-4 rounded-xl bg-[#f8fafc] border border-slate-300 text-[#0f172a] text-sm font-medium focus:border-[#2e72bb] focus:bg-white focus:ring-2 focus:ring-[#2e72bb]/15 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Mật khẩu</label>
-                            <input id="admin-pass" type="password" required autocomplete="current-password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-[#0f172a] text-sm font-medium focus:border-[#2e72bb] focus:bg-white focus:outline-none">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Mật khẩu</label>
+                            <input id="admin-pass" type="password" required autocomplete="current-password" placeholder="••••••••" class="w-full h-11 px-4 rounded-xl bg-[#f8fafc] border border-slate-300 text-[#0f172a] text-sm font-medium focus:border-[#2e72bb] focus:bg-white focus:ring-2 focus:ring-[#2e72bb]/15 focus:outline-none">
                         </div>
 
                         <div id="admin-login-err" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-bold text-center"></div>
 
-                        <button type="submit" class="w-full py-3.5 rounded-xl bg-[#303c78] hover:bg-[#2e72bb] text-white font-extrabold text-sm uppercase tracking-wider shadow-sm transition-colors">
-                            Truy Cập Bảng Điều Khiển →
+                        <button type="submit" class="w-full h-12 rounded-xl bg-[#0f172a] hover:bg-[#303c78] text-white font-extrabold text-sm tracking-wide shadow-sm transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <span>Truy Cập Bảng Điều Khiển</span>
+                            <span aria-hidden="true">→</span>
                         </button>
                     </form>
 
-                    <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
-                        <button type="button" onclick="closeAdminPortal()" class="inline-flex items-center gap-2 text-sm font-bold text-[#2e72bb] hover:text-[#303c78] transition-colors">
-                            <span>← Quay về Website</span>
+                    <div class="pt-4 border-t border-slate-200 flex items-center justify-between gap-3">
+                        <button type="button" onclick="closeAdminPortal()" class="inline-flex items-center gap-2 text-xs font-bold text-[#2e72bb] hover:text-[#303c78] transition-colors whitespace-nowrap">
+                            <span>← Quay về Landing Page</span>
                         </button>
-                        <span class="text-xs text-slate-500">TK: <code class="text-[#0f172a] font-bold">admin</code> / <code class="text-[#0f172a] font-bold">pvep2026</code></span>
+                        <span class="text-[11px] font-semibold text-slate-400 whitespace-nowrap">PVEP 20 Năm · Nội bộ</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- =========================================================================
-             MÀN HÌNH 2: BẢNG ĐIỀU KHIỂN ADMIN HIỆN ĐẠI (SIDEBAR + TOPBAR + DATA TABLE)
+             MÀN HÌNH 2: BẢNG ĐIỀU KHIỂN ADMIN HIỆN ĐẠI (DEEP NAVY SIDEBAR + EXECUTIVE SURFACE)
              ========================================================================= -->
-        <div id="admin-dashboard-screen" class="hidden min-h-screen flex flex-col lg:flex-row bg-[#f8fafc]">
+        <div id="admin-dashboard-screen" class="hidden min-h-screen flex flex-col lg:flex-row bg-[#f1f5f9]">
             
-            <!-- SIDEBAR BÊN TRÁI CỦA TRANG ADMIN -->
-            <aside class="w-full lg:w-72 bg-white border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col justify-between shrink-0 lg:min-h-screen lg:sticky lg:top-0">
+            <!-- SIDEBAR BÊN TRÁI CỦA TRANG ADMIN (PVEP Deep Navy) -->
+            <aside class="w-full lg:w-72 bg-[#0f172a] text-slate-200 border-b lg:border-b-0 lg:border-r border-slate-800 flex flex-col justify-between shrink-0 lg:min-h-screen lg:sticky lg:top-0">
                 <div>
                     <!-- Logo & Tên Hệ Thống Admin -->
-                    <div class="p-5 border-b border-slate-200 flex items-center justify-between lg:justify-start gap-3">
+                    <div class="p-5 border-b border-white/10 flex items-center justify-between lg:justify-start gap-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 shadow-sm">
+                            <div class="w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm">
                                 <img src="data:image/jpeg;base64,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" alt="PVEP" class="max-h-full object-contain">
                             </div>
                             <div>
                                 <div class="flex items-center gap-1.5">
-                                    <span class="text-sm font-black text-[#303c78] tracking-tight">PVEP ADMIN</span>
-                                    <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#13a052] border border-emerald-200 text-[10px] font-extrabold">PRO</span>
+                                    <span class="text-sm font-black text-white tracking-tight whitespace-nowrap">PVEP ADMIN</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-[#13a052] text-white text-[10px] font-extrabold whitespace-nowrap">20 NĂM</span>
                                 </div>
-                                <span class="text-xs text-slate-500 font-medium block">Quản trị Kho &amp; Quà tặng</span>
+                                <span class="text-xs text-slate-400 font-medium block whitespace-nowrap">Quản trị Kho &amp; Trình duyệt</span>
                             </div>
                         </div>
-                        <button onclick="closeAdminPortal()" class="lg:hidden px-3 py-1.5 rounded-lg bg-[#f1f5f9] text-xs font-bold text-[#0f172a]">
+                        <button onclick="closeAdminPortal()" class="lg:hidden px-3 py-1.5 rounded-lg bg-white/10 text-xs font-bold text-white whitespace-nowrap">
                             ← Web
                         </button>
                     </div>
 
                     <!-- Menu Điều Hướng Admin -->
-                    <div class="p-3.5 space-y-1">
-                        <span class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block">Danh Mục Quản Trị</span>
+                    <div class="p-3.5 space-y-1.5">
+                        <span class="px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block whitespace-nowrap">Danh Mục Vận Hành</span>
                         
-                        <button id="adm-nav-inventory" onclick="switchAdminView('inventory')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold bg-[#303c78] text-white transition-colors">
+                        <button id="adm-nav-inventory" onclick="switchAdminView('inventory')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold bg-[#2e72bb] text-white transition-colors shadow-sm whitespace-nowrap">
                             <span class="flex items-center gap-2.5 whitespace-nowrap">
                                 <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                                 <span>Quản Lý Kho &amp; Sản Phẩm</span>
                             </span>
-                            <span id="nav-badge-products" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-white/20 text-white shrink-0">3</span>
+                            <span id="nav-badge-products" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-white/20 text-white shrink-0">1</span>
                         </button>
 
-                        <button id="adm-nav-qrcenter" onclick="switchAdminView('qrcenter')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-[#f1f5f9] hover:text-[#0f172a] transition-colors">
+                        <button id="adm-nav-proposal" onclick="switchAdminView('proposal')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap">
+                            <span class="flex items-center gap-2.5 whitespace-nowrap">
+                                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <span>Trình Duyệt Xuất Quà</span>
+                            </span>
+                            <span id="nav-badge-proposal" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-400/20 text-amber-300 border border-amber-400/30 shrink-0 whitespace-nowrap">0 chọn</span>
+                        </button>
+
+                        <button id="adm-nav-qrcenter" onclick="switchAdminView('qrcenter')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap">
                             <span class="flex items-center gap-2.5 whitespace-nowrap">
                                 <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
                                 <span>Mã QR &amp; Link Quà Tặng</span>
                             </span>
-                            <span class="text-[10px] font-bold text-[#13a052] whitespace-nowrap shrink-0">1 SP/QR</span>
+                            <span class="text-[10px] font-bold text-[#34d399] whitespace-nowrap shrink-0">1 SP/QR</span>
                         </button>
 
-                        <button id="adm-nav-logs" onclick="switchAdminView('logs')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-[#f1f5f9] hover:text-[#0f172a] transition-colors">
+                        <button id="adm-nav-logs" onclick="switchAdminView('logs')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap">
                             <span class="flex items-center gap-2.5 whitespace-nowrap">
                                 <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 <span>Nhật Ký Cập Nhật Kho</span>
                             </span>
-                            <span id="nav-badge-logs" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 shrink-0">Mới</span>
+                            <span id="nav-badge-logs" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-slate-300 shrink-0">Mới</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Khối Thông Tin Nhân Viên & Điều Hướng Nhanh Ở Đáy Sidebar -->
-                <div class="p-4 border-t border-slate-200 space-y-3 bg-[#f8fafc]">
-                    <div class="flex items-center gap-3 p-2.5 rounded-xl bg-white border border-slate-200">
-                        <div class="w-9 h-9 rounded-lg bg-[#303c78] text-white flex items-center justify-center font-black text-xs shrink-0" id="admin-avatar-initials">
+                <div class="p-4 border-t border-white/10 space-y-3 bg-white/5">
+                    <div class="flex items-center gap-3 p-2.5 rounded-xl bg-white/10 border border-white/10">
+                        <div class="w-9 h-9 rounded-lg bg-[#2e72bb] text-white flex items-center justify-center font-black text-xs shrink-0" id="admin-avatar-initials">
                             AD
                         </div>
                         <div class="min-w-0 flex-1">
-                            <p id="admin-who-label" class="text-xs font-extrabold text-[#0f172a] truncate">Ban Tổ Chức PVEP</p>
-                            <p id="admin-role-label" class="text-[11px] font-semibold text-[#13a052] truncate">● Quản Trị Viên</p>
+                            <p id="admin-who-label" class="text-xs font-extrabold text-white truncate">Ban Tổ Chức PVEP</p>
+                            <p id="admin-role-label" class="text-[11px] font-semibold text-[#34d399] truncate">● Quản Trị Viên</p>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="closeAdminPortal()" class="py-2 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-[#0f172a] text-xs font-bold transition-colors text-center">
+                        <button onclick="closeAdminPortal()" class="h-9 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-bold transition-colors text-center whitespace-nowrap flex items-center justify-center">
                             ← Website
                         </button>
-                        <button onclick="logoutAdminPortal()" class="py-2 px-3 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-600 text-xs font-bold transition-colors text-center">
+                        <button onclick="logoutAdminPortal()" class="h-9 px-3 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/30 text-rose-200 text-xs font-bold transition-colors text-center whitespace-nowrap flex items-center justify-center">
                             Đăng xuất
                         </button>
                     </div>
@@ -3141,10 +3162,10 @@ window.MESH_DATA = {
             <div class="flex-1 flex flex-col min-w-0">
                 
                 <!-- Top Header Bar của Admin -->
-                <header class="sticky top-0 z-30 bg-white border-b border-slate-200 px-6 py-4">
+                <header class="sticky top-0 z-30 bg-white border-b border-slate-200/90 px-6 py-4">
                     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
                         <div>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 font-semibold">
+                            <div class="flex items-center gap-2 text-xs text-slate-400 font-semibold whitespace-nowrap">
                                 <span>Hệ thống Admin</span>
                                 <span>/</span>
                                 <span id="adm-breadcrumb-current" class="text-[#2e72bb] font-bold">Quản lý Kho &amp; Sản phẩm</span>
@@ -3152,23 +3173,29 @@ window.MESH_DATA = {
                             <h2 id="adm-page-title" class="text-lg sm:text-xl font-black text-[#0f172a] mt-0.5">Bảng Điều Khiển Tồn Kho &amp; Ấn Phẩm</h2>
                         </div>
 
-                        <!-- Cụm Trạng Thái Tự Động Lưu & Tìm Kiếm -->
-                        <div class="flex flex-wrap items-center gap-3">
+                        <!-- Cụm Tìm Kiếm, Đồng Bộ & Nút Lập Tờ Trình -->
+                        <div class="flex flex-wrap items-center gap-2.5">
                             <div class="relative">
-                                <input id="adm-search-input" type="text" oninput="renderAdminProductsGrid()" placeholder="Tìm mã SP, tên quà tặng..." class="w-56 sm:w-64 pl-9 pr-3.5 py-2 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-medium text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                <input id="adm-search-input" type="text" oninput="renderAdminProductsGrid()" placeholder="Tìm mã SP, tên quà tặng..." class="w-48 sm:w-56 h-9 pl-9 pr-3.5 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-medium text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
                                 <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             </div>
 
-                            <select id="adm-filter-status" onchange="renderAdminProductsGrid()" class="px-3 py-2 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-bold text-slate-700 focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                            <select id="adm-filter-status" onchange="renderAdminProductsGrid()" class="h-9 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-bold text-slate-700 focus:bg-white focus:border-[#2e72bb] focus:outline-none">
                                 <option value="all">Tất cả trạng thái kho</option>
                                 <option value="ready">Còn hàng (&gt; 20)</option>
                                 <option value="low">Sắp hết (1 - 20)</option>
                                 <option value="out">Hết hàng (0)</option>
                             </select>
 
-                            <button type="button" onclick="refreshStockFromRemote(true)" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-[#303c78] text-xs font-bold transition-colors shadow-sm" title="Làm mới tồn kho từ máy chủ Google Sheet">
-                                <svg id="refresh-spinner" class="w-3.5 h-3.5 text-[#2e72bb]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                                <span>Làm mới từ Google Sheet</span>
+                            <button type="button" onclick="refreshStockFromRemote(true)" class="h-9 inline-flex items-center gap-2 px-3.5 rounded-xl bg-[#f8fafc] hover:bg-slate-100 border border-slate-300 text-[#303c78] text-xs font-bold transition-colors shadow-sm whitespace-nowrap" title="Làm mới tồn kho từ máy chủ Google Sheet">
+                                <svg id="refresh-spinner" class="w-3.5 h-3.5 text-[#2e72bb] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                <span>Làm mới Sheet</span>
+                            </button>
+
+                            <button id="topbar-proposal-btn" type="button" onclick="openProposalBuilderFromSelection()" class="h-9 px-4 rounded-xl bg-[#303c78] hover:bg-[#1e293b] text-white text-xs font-extrabold inline-flex items-center gap-2 whitespace-nowrap shadow-sm transition-all" title="Lập Tờ Trình A4 trình Lãnh đạo ký duyệt xuất kho">
+                                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <span>Lập Tờ Trình</span>
+                                <span id="topbar-proposal-count" class="px-1.5 py-0.5 rounded-md bg-white/20 text-[11px] font-black">0</span>
                             </button>
                         </div>
                     </div>
@@ -3180,49 +3207,53 @@ window.MESH_DATA = {
                     <!-- 4 Ô KPI TỔNG QUAN CHUẨN ĐỊNH MỨC KHO & CẤP PHÁT -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <!-- KPI 1: Định mức đầu kỳ -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Định Mức Đầu Kỳ</span>
-                                <span id="stat-opening-stock" class="text-3xl font-black text-[#303c78] mt-1.5 block">50</span>
-                                <span class="text-xs text-slate-500 mt-1 block">Tổng phần quà ban đầu</span>
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-sm flex items-start justify-between">
+                            <div class="min-w-0">
+                                <div class="h-1 w-10 rounded-full bg-[#303c78] mb-3"></div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block whitespace-nowrap">Định Mức Đầu Kỳ</span>
+                                <span id="stat-opening-stock" class="text-3xl font-black text-[#303c78] mt-1 block tabular-nums">50</span>
+                                <span class="text-xs text-slate-500 mt-1 block whitespace-nowrap">Tổng phần quà ban đầu</span>
                             </div>
-                            <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-[#303c78] flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-[#303c78] flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                             </div>
                         </div>
 
                         <!-- KPI 2: Đã Cấp Phát -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Đã Cấp Phát / Trao</span>
-                                <span id="stat-dispatched-stock" class="text-3xl font-black text-[#2e72bb] mt-1.5 block">0</span>
-                                <span id="stat-dispatched-pct" class="text-xs text-[#2e72bb] font-bold mt-1 block">0% định mức sự kiện</span>
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-sm flex items-start justify-between">
+                            <div class="min-w-0">
+                                <div class="h-1 w-10 rounded-full bg-[#2e72bb] mb-3"></div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block whitespace-nowrap">Đã Cấp Phát / Trao</span>
+                                <span id="stat-dispatched-stock" class="text-3xl font-black text-[#2e72bb] mt-1 block tabular-nums">0</span>
+                                <span id="stat-dispatched-pct" class="text-xs text-[#2e72bb] font-bold mt-1 block whitespace-nowrap">0% định mức sự kiện</span>
                             </div>
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#2e72bb] flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-[#2e72bb] flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
                             </div>
                         </div>
 
                         <!-- KPI 3: Còn khả dụng -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Còn Khả Dụng</span>
-                                <span id="stat-total-stock" class="text-3xl font-black text-[#13a052] mt-1.5 block">50</span>
-                                <span class="text-xs text-slate-500 mt-1 block">Sẵn sàng trao tại quầy</span>
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-sm flex items-start justify-between">
+                            <div class="min-w-0">
+                                <div class="h-1 w-10 rounded-full bg-[#13a052] mb-3"></div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block whitespace-nowrap">Còn Khả Dụng</span>
+                                <span id="stat-total-stock" class="text-3xl font-black text-[#13a052] mt-1 block tabular-nums">50</span>
+                                <span class="text-xs text-slate-500 mt-1 block whitespace-nowrap">Sẵn sàng trao tại quầy</span>
                             </div>
-                            <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-[#13a052] flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-[#13a052] flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             </div>
                         </div>
 
                         <!-- KPI 4: Trạng thái & Bảo vệ -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start justify-between">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Trạng Thái &amp; Bảo Vệ</span>
-                                <span id="stat-stock-health" class="text-xl font-black text-[#13a052] mt-2 block">100% Sẵn sàng</span>
-                                <span id="stat-stock-sub" class="text-xs text-[#2e72bb] font-semibold mt-1.5 block">🛡 Chống đụng độ đa người nhập</span>
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-sm flex items-start justify-between">
+                            <div class="min-w-0">
+                                <div class="h-1 w-10 rounded-full bg-slate-700 mb-3"></div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block whitespace-nowrap">Trạng Thái &amp; Bảo Vệ</span>
+                                <span id="stat-stock-health" class="text-xl font-black text-[#13a052] mt-1.5 block whitespace-nowrap">100% Sẵn sàng</span>
+                                <span id="stat-stock-sub" class="text-xs text-[#2e72bb] font-semibold mt-1.5 block whitespace-nowrap">🛡 Chống đụng độ đa người</span>
                             </div>
-                            <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-slate-600 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-[#f8fafc] border border-slate-200 text-slate-600 flex items-center justify-center shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             </div>
                         </div>
@@ -3232,23 +3263,26 @@ window.MESH_DATA = {
                          VIEW 1: BẢNG QUẢN TRỊ KHO & SẢN PHẨM (MẶC ĐỊNH)
                          =============================================================== -->
                     <div id="adm-view-inventory" class="space-y-4">
-                        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                        <div class="bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden">
                             <!-- Thanh tiêu đề bảng & nút đổi chế độ Bảng / Thẻ -->
                             <div class="px-6 py-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 bg-white">
                                 <div>
                                     <h3 class="text-sm font-black uppercase tracking-wider text-[#303c78]">Danh Sách Ấn Phẩm &amp; Điều Phối Tồn Kho</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Bấm nút <strong class="text-[#0f172a]">− / +</strong> hoặc gõ số lượng, sau đó bấm <strong class="text-[#13a052]">"Xác nhận &amp; Lưu kho"</strong> để kiểm tra xung đột đồng thời và lưu an toàn.</p>
+                                    <p class="text-xs text-slate-500 mt-0.5">Tick chọn sản phẩm để <strong class="text-[#303c78]">Lập Tờ Trình ký duyệt A4</strong>, hoặc bấm <strong class="text-[#0f172a]">− / +</strong> để điều chỉnh tồn kho an toàn.</p>
                                 </div>
-                                <div class="flex items-center gap-2">
-                                    <button type="button" onclick="exportStockAuditReportCsv()" class="px-3.5 py-1.5 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-black shadow-sm transition-all inline-flex items-center gap-1.5" title="Tải file báo cáo đối soát dạng Excel / CSV">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <button type="button" onclick="openProposalBuilderFromSelection()" class="h-9 px-3.5 rounded-xl bg-[#303c78] hover:bg-[#1e293b] text-white text-xs font-extrabold shadow-sm transition-all inline-flex items-center gap-1.5 whitespace-nowrap" title="Chuyển sang trình duyệt A4 với các sản phẩm đã tick">
+                                        <span>📄 Trình Duyệt Mục Đã Chọn</span>
+                                    </button>
+                                    <button type="button" onclick="exportStockAuditReportCsv()" class="h-9 px-3.5 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-black shadow-sm transition-all inline-flex items-center gap-1.5 whitespace-nowrap" title="Tải file báo cáo đối soát dạng Excel / CSV">
+                                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                         <span>Xuất Báo Cáo Excel</span>
                                     </button>
                                     <div class="inline-flex rounded-xl bg-[#f1f5f9] p-1 border border-slate-200">
-                                        <button type="button" id="btn-layout-table" onclick="setAdminLayoutMode('table')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-[#303c78] shadow-sm transition-colors">
+                                        <button type="button" id="btn-layout-table" onclick="setAdminLayoutMode('table')" class="h-7 px-3 rounded-lg text-xs font-bold bg-white text-[#303c78] shadow-sm transition-colors whitespace-nowrap">
                                             ☰ Dạng Bảng
                                         </button>
-                                        <button type="button" id="btn-layout-grid" onclick="setAdminLayoutMode('grid')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-[#0f172a] transition-colors">
+                                        <button type="button" id="btn-layout-grid" onclick="setAdminLayoutMode('grid')" class="h-7 px-3 rounded-lg text-xs font-bold text-slate-600 hover:text-[#0f172a] transition-colors whitespace-nowrap">
                                             ⊞ Dạng Thẻ
                                         </button>
                                     </div>
@@ -3260,16 +3294,19 @@ window.MESH_DATA = {
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-[#f8fafc] border-b border-slate-200 text-[11px] font-black uppercase tracking-wider text-slate-500 select-none">
-                                            <th class="py-3.5 px-3.5 whitespace-nowrap w-[90px] min-w-[90px]">Mã SKU</th>
-                                            <th class="py-3.5 px-3.5 whitespace-nowrap min-w-[240px]">Ấn Phẩm Quà Tặng</th>
+                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[52px] min-w-[52px]" title="Chọn đưa vào Tờ Trình">
+                                                <input id="adm-select-all-proposal" type="checkbox" onchange="toggleSelectAllForProposal(this.checked)" class="w-4 h-4 rounded border-slate-300 text-[#303c78] cursor-pointer accent-[#303c78]">
+                                            </th>
+                                            <th class="py-3.5 px-3 whitespace-nowrap w-[88px] min-w-[88px]">Mã SKU</th>
+                                            <th class="py-3.5 px-3.5 whitespace-nowrap min-w-[230px]">Ấn Phẩm Quà Tặng</th>
                                             <th class="py-3.5 px-2 text-center whitespace-nowrap w-[90px] min-w-[90px]">ĐVT</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[95px] min-w-[95px]">Đầu Kỳ</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[100px] min-w-[100px]">Đã Cấp (-)</th>
-                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[100px] min-w-[100px]">Khả Dụng</th>
-                                            <th class="py-3.5 px-3 whitespace-nowrap w-[150px] min-w-[150px]">Trạng Thái Kho</th>
-                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[260px] min-w-[260px]">Điều Phối Kho</th>
-                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[170px] min-w-[170px]">Mã QR &amp; Link</th>
-                                            <th class="py-3.5 px-3.5 text-right whitespace-nowrap w-[110px] min-w-[110px] admin-only-feature">Quản Trị</th>
+                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[90px] min-w-[90px]">Đầu Kỳ</th>
+                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[95px] min-w-[95px]">Đã Cấp (-)</th>
+                                            <th class="py-3.5 px-2 text-center whitespace-nowrap w-[95px] min-w-[95px]">Khả Dụng</th>
+                                            <th class="py-3.5 px-3 whitespace-nowrap w-[145px] min-w-[145px]">Trạng Thái Kho</th>
+                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[250px] min-w-[250px]">Điều Phối Kho</th>
+                                            <th class="py-3.5 px-3 text-center whitespace-nowrap w-[165px] min-w-[165px]">Mã QR &amp; Link</th>
+                                            <th class="py-3.5 px-3.5 text-right whitespace-nowrap w-[105px] min-w-[105px] admin-only-feature">Quản Trị</th>
                                         </tr>
                                     </thead>
                                     <tbody id="admin-products-tbody" class="divide-y divide-slate-200 text-sm"></tbody>
@@ -3278,6 +3315,118 @@ window.MESH_DATA = {
 
                             <!-- Chế độ 1B: Lưới Thẻ Sản Phẩm (Grid View) -->
                             <div id="admin-products-grid" class="hidden p-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+                        </div>
+                    </div>
+
+                    <!-- ===============================================================
+                         VIEW 1.5 (MỚI): LẬP TỜ TRÌNH & BẢN IN A4 TRÌNH LÃNH ĐẠO KÝ DUYỆT
+                         =============================================================== -->
+                    <div id="adm-view-proposal" class="hidden space-y-6">
+                        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+                            <!-- Cột trái (5/12): Biểu mẫu thông tin & Danh sách quà đề xuất -->
+                            <div class="xl:col-span-5 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm space-y-5">
+                                <div class="flex items-center justify-between gap-3 border-b border-slate-200 pb-4">
+                                    <div>
+                                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#2e72bb] block">Phiếu Đề Xuất Xuất Kho</span>
+                                        <h3 class="text-base font-black text-[#0f172a] mt-0.5">Thông Tin Tờ Trình Ký Duyệt</h3>
+                                    </div>
+                                    <button type="button" onclick="switchAdminView('inventory')" class="h-8 px-3 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 text-xs font-bold text-[#303c78] whitespace-nowrap transition-colors">
+                                        ← Chọn thêm từ Kho
+                                    </button>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-600 mb-1">Số / Mã Tờ Trình</label>
+                                        <input id="prop-code" type="text" oninput="renderProposalLivePreview()" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-extrabold text-[#303c78] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-600 mb-1">Ngày lập / Dự kiến xuất</label>
+                                        <input id="prop-date" type="date" oninput="renderProposalLivePreview()" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-bold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-600 mb-1">Kính gửi (Lãnh đạo phê duyệt)</label>
+                                        <input id="prop-recipient-boss" type="text" oninput="renderProposalLivePreview()" value="Ban Lãnh Đạo Tổng Công ty PVEP" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-semibold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div>
+                                            <label class="block text-xs font-bold text-slate-600 mb-1">Đơn vị / Phòng đề xuất</label>
+                                            <input id="prop-dept" type="text" oninput="renderProposalLivePreview()" value="Ban Truyền thông &amp; VHDN" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-semibold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-bold text-slate-600 mb-1">Người lập tờ trình</label>
+                                            <input id="prop-requester" type="text" oninput="renderProposalLivePreview()" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-semibold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-600 mb-1">Mục đích / Sự kiện tặng quà</label>
+                                        <input id="prop-purpose" type="text" oninput="renderProposalLivePreview()" value="Xuất ấn phẩm quà tặng phục vụ sự kiện Kỷ niệm 20 năm thành lập PVEP" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-semibold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-600 mb-1">Đối tượng / Đoàn đại biểu nhận quà</label>
+                                        <input id="prop-target-guests" type="text" oninput="renderProposalLivePreview()" value="Đoàn Đại biểu Lãnh đạo, Khách mời VIP &amp; Đối tác chiến lược" class="w-full h-10 px-3 rounded-xl bg-[#f8fafc] border border-slate-300 text-xs font-semibold text-[#0f172a] focus:bg-white focus:border-[#2e72bb] focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <!-- Danh sách sản phẩm trong tờ trình -->
+                                <div class="pt-3 border-t border-slate-200 space-y-3">
+                                    <div class="flex items-center justify-between gap-2">
+                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] whitespace-nowrap">Ấn Phẩm Đề Xuất Xuất Kho</span>
+                                        <div class="flex items-center gap-1.5">
+                                            <select id="prop-add-select" class="h-8 px-2.5 rounded-lg bg-[#f8fafc] border border-slate-300 text-xs font-bold text-[#0f172a] max-w-[165px]">
+                                            </select>
+                                            <button type="button" onclick="addProposalItemFromDropdown()" class="h-8 px-2.5 rounded-lg bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold whitespace-nowrap transition-colors">
+                                                + Thêm
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div id="proposal-selected-items-list" class="space-y-2.5"></div>
+                                </div>
+
+                                <!-- Nút Hành Động Chính -->
+                                <div class="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                    <button type="button" onclick="printProposalA4Document()" class="h-11 px-4 rounded-xl bg-[#0f172a] hover:bg-[#303c78] text-white text-xs font-extrabold shadow-sm transition-colors inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                        <span>In Bản Trình Ký (A4)</span>
+                                    </button>
+                                    <button type="button" onclick="saveCurrentProposal()" class="h-11 px-4 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-extrabold shadow-sm transition-colors inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                                        <span>Lưu Tờ Trình Chờ Duyệt</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Cột phải (7/12): Bản xem trước chuẩn A4 Hành Chính -->
+                            <div class="xl:col-span-7 space-y-3">
+                                <div class="bg-white border border-slate-200/90 rounded-2xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#13a052]"></span>
+                                        <span class="text-xs font-black uppercase tracking-wider text-[#303c78] whitespace-nowrap">Xem Trước Bản In Chuẩn A4 (Trình Sếp Ký Duyệt)</span>
+                                    </div>
+                                    <button type="button" onclick="printProposalA4Document()" class="h-8 px-3.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold inline-flex items-center gap-1.5 whitespace-nowrap transition-colors">
+                                        <span>🖨️ In / Lưu PDF ngay</span>
+                                    </button>
+                                </div>
+
+                                <div id="proposal-a4-preview" class="bg-white border border-slate-300 shadow-md rounded-xl p-8 sm:p-10 text-[#0f172a]">
+                                    <!-- Nội dung bản in A4 được render động bởi renderProposalLivePreview() -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Danh sách Lịch Sử Tờ Trình Đã Lưu -->
+                        <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm space-y-4">
+                            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+                                <div>
+                                    <h3 class="text-sm font-black uppercase tracking-wider text-[#303c78]">Danh Sách Tờ Trình Đã Lập &amp; Trạng Thái Ký Duyệt</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Sau khi Lãnh đạo ký duyệt bản in, bấm <strong class="text-[#13a052]">"✓ Sếp đã ký → Trừ kho"</strong> để hệ thống trừ tồn kho thực tế và ghi vào Nhật ký kiểm toán.</p>
+                                </div>
+                            </div>
+                            <div id="proposal-history-list" class="space-y-2.5"></div>
                         </div>
                     </div>
 
@@ -3619,7 +3768,9 @@ window.MESH_DATA = {
         const STORAGE_KEY_PRODUCTS = "pvep_products_v5";
         const STORAGE_KEY_AUTH = "pvep_staff_auth_v3";
         const STORAGE_KEY_LOGS = "pvep_stock_logs_v1";
+        const STORAGE_KEY_PROPOSALS = "pvep_proposals_v1";
         const DEFAULT_IMG = "https://res.cloudinary.com/b2nf1kma/image/upload/v1792728707/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn-3.png";
+        let proposalSelection = {};
 
         const DEFAULT_PRODUCTS = [
             {
@@ -4202,6 +4353,13 @@ window.MESH_DATA = {
             document.getElementById("admin-login-screen").classList.remove("hidden");
         }
 
+        function quickFillLogin(u, p) {
+            const uEl = document.getElementById("admin-user");
+            const pEl = document.getElementById("admin-pass");
+            if (uEl) uEl.value = u;
+            if (pEl) pEl.value = p;
+        }
+
         function showAdminDashboard(staff) {
             document.getElementById("admin-login-screen").classList.add("hidden");
             document.getElementById("admin-dashboard-screen").classList.remove("hidden");
@@ -4222,12 +4380,15 @@ window.MESH_DATA = {
             renderAdminProductsGrid();
             renderAdminQrCenter();
             renderStockLogs();
+            updateProposalSelectionBadges();
+            renderProposalHistory();
         }
 
         function switchAdminView(view) {
-            const views = ["inventory", "qrcenter", "logs"];
+            const views = ["inventory", "proposal", "qrcenter", "logs"];
             const titles = {
                 inventory: ["Quản lý Kho & Sản phẩm", "Bảng Điều Khiển Tồn Kho & Ấn Phẩm"],
+                proposal:  ["Trình Duyệt Xuất Quà", "Lập Tờ Trình & Bản In A4 Trình Lãnh Đạo Ký Duyệt"],
                 qrcenter:  ["Mã QR & Link Quà Tặng", "Trung Tâm Cấp Phát Mã QR & Link Riêng"],
                 logs:      ["Nhật ký Cập nhật Kho", "Lịch Sử Xuất Nhập & Điều Chỉnh Tồn Kho"]
             };
@@ -4239,8 +4400,8 @@ window.MESH_DATA = {
                 if (panel) panel.classList.toggle("hidden", !isAct);
                 if (navBtn) {
                     navBtn.className = isAct
-                        ? "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold bg-[#303c78] text-white transition-colors shadow-sm"
-                        : "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-[#f1f5f9] hover:text-[#0f172a] transition-colors";
+                        ? "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold bg-[#2e72bb] text-white transition-colors shadow-sm whitespace-nowrap"
+                        : "w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap";
                 }
             });
 
@@ -4248,6 +4409,13 @@ window.MESH_DATA = {
             const pt = document.getElementById("adm-page-title");
             if (bc && titles[view]) bc.textContent = titles[view][0];
             if (pt && titles[view]) pt.textContent = titles[view][1];
+
+            if (view === "proposal") {
+                initProposalFormDefaults();
+                renderProposalSelectedItems();
+                renderProposalLivePreview();
+                renderProposalHistory();
+            }
         }
 
         function setAdminLayoutMode(mode) {
@@ -4367,11 +4535,12 @@ window.MESH_DATA = {
             const tbody = document.getElementById("admin-products-tbody");
             if (tbody) {
                 if (filtered.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="10" class="py-10 text-center text-xs text-slate-400 font-semibold">Không tìm thấy sản phẩm nào khớp bộ lọc.</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="11" class="py-10 text-center text-xs text-slate-400 font-semibold">Không tìm thấy sản phẩm nào khớp bộ lọc.</td></tr>`;
                 } else {
                     tbody.innerHTML = filtered.map(p => {
                         const staged = stagedStockChanges[p.code];
                         const isStaged = (staged !== undefined);
+                        const isPickedProposal = Boolean(proposalSelection[p.code]);
                         const displayStock = isStaged ? staged.stagedStock : (Number(p.stock) || 0);
                         const opening = Number(p.openingStock) || displayStock;
                         const inbound = Number(p.inboundStock) || 0;
@@ -4380,8 +4549,11 @@ window.MESH_DATA = {
                         const st = getStockStatusMeta(displayStock);
 
                         return `
-                            <tr class="hover:bg-[#f8fafc]/80 transition-colors border-b border-slate-100 ${isStaged ? 'bg-amber-50/50' : ''}">
-                                <td class="py-3.5 px-3.5 whitespace-nowrap">
+                            <tr class="hover:bg-[#f8fafc]/80 transition-colors border-b border-slate-100 ${isStaged ? 'bg-amber-50/50' : (isPickedProposal ? 'bg-blue-50/40' : '')}">
+                                <td class="py-3.5 px-3 text-center whitespace-nowrap">
+                                    <input type="checkbox" ${isPickedProposal ? 'checked' : ''} onchange="toggleProductForProposal('${escapeHtml(p.code)}', this.checked)" class="w-4 h-4 rounded border-slate-300 text-[#303c78] cursor-pointer accent-[#303c78]" title="Chọn đưa vào Tờ Trình Ký Duyệt">
+                                </td>
+                                <td class="py-3.5 px-3 whitespace-nowrap">
                                     <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 text-[#303c78] font-black text-xs shadow-2xs">
                                         #${escapeHtml(p.code)}
                                     </span>
@@ -5067,6 +5239,475 @@ window.MESH_DATA = {
 
             saveProductsStore(list, false, "Đã lưu cập nhật thông tin SP " + code);
             closeEditDrawer();
+        }
+
+        // =========================================================================
+        // 6. TÍNH NĂNG LẬP TỜ TRÌNH & XUẤT BẢN IN A4 TRÌNH LÃNH ĐẠO KÝ DUYỆT
+        // =========================================================================
+        function toggleProductForProposal(code, checked) {
+            if (checked) {
+                if (!proposalSelection[code]) {
+                    proposalSelection[code] = { qty: 1, note: "Kèm hộp quà cao cấp" };
+                }
+            } else {
+                delete proposalSelection[code];
+            }
+            updateProposalSelectionBadges();
+            renderAdminProductsGrid();
+        }
+
+        function toggleSelectAllForProposal(checked) {
+            const products = loadProductsStore();
+            if (checked) {
+                products.forEach(p => {
+                    if (!proposalSelection[p.code]) {
+                        proposalSelection[p.code] = { qty: 1, note: "Kèm hộp quà cao cấp" };
+                    }
+                });
+            } else {
+                proposalSelection = {};
+            }
+            updateProposalSelectionBadges();
+            renderAdminProductsGrid();
+        }
+
+        function updateProposalSelectionBadges() {
+            const count = Object.keys(proposalSelection).length;
+            const navBadge = document.getElementById("nav-badge-proposal");
+            const topCount = document.getElementById("topbar-proposal-count");
+            if (navBadge) navBadge.textContent = count + " chọn";
+            if (topCount) topCount.textContent = count;
+        }
+
+        function openProposalBuilderFromSelection() {
+            const products = loadProductsStore();
+            if (Object.keys(proposalSelection).length === 0 && products.length > 0) {
+                // Tự động chọn sẵn sản phẩm đầu tiên để bản xem trước A4 hiển thị ngay
+                proposalSelection[products[0].code] = { qty: 1, note: "Kèm hộp quà cao cấp" };
+                updateProposalSelectionBadges();
+                renderAdminProductsGrid();
+            }
+            switchAdminView("proposal");
+        }
+
+        function initProposalFormDefaults() {
+            const codeEl = document.getElementById("prop-code");
+            const dateEl = document.getElementById("prop-date");
+            const reqEl  = document.getElementById("prop-requester");
+            const addSel = document.getElementById("prop-add-select");
+
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = String(now.getMonth() + 1).padStart(2, "0");
+            const d = String(now.getDate()).padStart(2, "0");
+
+            if (dateEl && !dateEl.value) dateEl.value = `${y}-${m}-${d}`;
+            if (codeEl && !codeEl.value) {
+                const seq = String(loadProposalsStore().length + 1).padStart(2, "0");
+                codeEl.value = `TT-PVEP-${y}${m}${d}-${seq}`;
+            }
+            if (reqEl && !reqEl.value) {
+                const staff = isStaffAuthenticated();
+                reqEl.value = staff ? staff.name : "Ban Tổ Chức PVEP";
+            }
+            if (addSel) {
+                const products = loadProductsStore();
+                addSel.innerHTML = products.map(p => `<option value="${escapeHtml(p.code)}">#${escapeHtml(p.code)} - ${escapeHtml(p.name)} (Còn: ${Number(p.stock) || 0})</option>`).join("");
+            }
+        }
+
+        function addProposalItemFromDropdown() {
+            const sel = document.getElementById("prop-add-select");
+            if (!sel || !sel.value) return;
+            const code = sel.value;
+            if (!proposalSelection[code]) {
+                proposalSelection[code] = { qty: 1, note: "Kèm hộp quà cao cấp" };
+            } else {
+                proposalSelection[code].qty += 1;
+            }
+            updateProposalSelectionBadges();
+            renderProposalSelectedItems();
+            renderProposalLivePreview();
+            renderAdminProductsGrid();
+        }
+
+        function updateProposalItemQty(code, val) {
+            if (!proposalSelection[code]) return;
+            const n = Math.max(1, parseInt(val, 10) || 1);
+            proposalSelection[code].qty = n;
+            renderProposalSelectedItems();
+            renderProposalLivePreview();
+        }
+
+        function updateProposalItemNote(code, val) {
+            if (!proposalSelection[code]) return;
+            proposalSelection[code].note = val;
+            renderProposalLivePreview();
+        }
+
+        function removeProposalItem(code) {
+            delete proposalSelection[code];
+            updateProposalSelectionBadges();
+            renderProposalSelectedItems();
+            renderProposalLivePreview();
+            renderAdminProductsGrid();
+        }
+
+        function quickSelectPrimaryForProposal() {
+            const products = loadProductsStore();
+            if (products.length > 0) {
+                proposalSelection[products[0].code] = { qty: 1, note: "Kèm hộp quà cao cấp" };
+                updateProposalSelectionBadges();
+                renderProposalSelectedItems();
+                renderProposalLivePreview();
+                renderAdminProductsGrid();
+            }
+        }
+
+        function renderProposalSelectedItems() {
+            const box = document.getElementById("proposal-selected-items-list");
+            if (!box) return;
+            const products = loadProductsStore();
+            const codes = Object.keys(proposalSelection);
+
+            if (codes.length === 0) {
+                box.innerHTML = `
+                    <div class="p-5 rounded-2xl bg-[#f8fafc] border border-dashed border-slate-300 text-center space-y-2.5">
+                        <p class="text-xs text-slate-500 font-semibold">Chưa có ấn phẩm nào được chọn vào tờ trình.</p>
+                        <button type="button" onclick="quickSelectPrimaryForProposal()" class="h-8 px-3.5 rounded-xl bg-[#2e72bb] hover:bg-[#303c78] text-white text-xs font-bold whitespace-nowrap transition-colors">
+                            + Chọn nhanh Tác phẩm Khơi Nguồn (#01)
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            box.innerHTML = codes.map(code => {
+                const p = products.find(x => x.code === code);
+                if (!p) return "";
+                const item = proposalSelection[code];
+                const avail = Number(p.stock) || 0;
+                const overStock = item.qty > avail;
+
+                return `
+                    <div class="p-3.5 rounded-2xl bg-[#f8fafc] border ${overStock ? 'border-rose-300 bg-rose-50/40' : 'border-slate-200'} space-y-2.5">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded-lg bg-white border border-slate-200 text-[#303c78] font-black text-[11px] whitespace-nowrap">#${escapeHtml(p.code)}</span>
+                                    <span class="text-xs font-extrabold text-[#0f172a] truncate">${escapeHtml(p.name)}</span>
+                                </div>
+                                <span class="text-[11px] font-semibold ${overStock ? 'text-rose-600' : 'text-slate-500'} block mt-0.5">
+                                    Tồn kho khả dụng: <strong>${avail}</strong> ${escapeHtml(p.unit || "Tác phẩm")} ${overStock ? ' (⚠️ Vượt tồn kho!)' : ''}
+                                </span>
+                            </div>
+                            <button type="button" onclick="removeProposalItem('${escapeHtml(code)}')" class="w-7 h-7 rounded-lg bg-white hover:bg-rose-50 border border-slate-200 text-slate-400 hover:text-rose-600 text-xs font-black flex items-center justify-center shrink-0 transition-colors" title="Bỏ khỏi tờ trình">✕</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center">
+                            <div class="sm:col-span-5 flex items-center gap-1">
+                                <button type="button" onclick="updateProposalItemQty('${escapeHtml(code)}', ${item.qty - 1})" class="w-8 h-8 rounded-lg bg-white hover:bg-slate-100 border border-slate-300 text-xs font-black shrink-0">−</button>
+                                <input type="number" min="1" value="${item.qty}" onchange="updateProposalItemQty('${escapeHtml(code)}', this.value)" class="w-full h-8 rounded-lg bg-white border border-slate-300 text-center text-xs font-black text-[#303c78]">
+                                <button type="button" onclick="updateProposalItemQty('${escapeHtml(code)}', ${item.qty + 1})" class="w-8 h-8 rounded-lg bg-white hover:bg-slate-100 border border-slate-300 text-xs font-black shrink-0">+</button>
+                            </div>
+                            <div class="sm:col-span-7">
+                                <input type="text" value="${escapeHtml(item.note || '')}" oninput="updateProposalItemNote('${escapeHtml(code)}', this.value)" placeholder="Ghi chú kèm theo..." class="w-full h-8 px-2.5 rounded-lg bg-white border border-slate-300 text-xs text-[#0f172a]">
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function gatherCurrentProposalData() {
+            const products = loadProductsStore();
+            const codes = Object.keys(proposalSelection);
+            const items = codes.map(code => {
+                const p = products.find(x => x.code === code);
+                if (!p) return null;
+                return {
+                    code: p.code,
+                    name: p.name,
+                    unit: p.unit || "Tác phẩm",
+                    avail: Number(p.stock) || 0,
+                    qty: Number(proposalSelection[code].qty) || 1,
+                    note: proposalSelection[code].note || ""
+                };
+            }).filter(Boolean);
+
+            const dateVal = document.getElementById("prop-date")?.value || "";
+            return {
+                id: "PROP_" + Date.now(),
+                code: document.getElementById("prop-code")?.value.trim() || "TT-PVEP-01",
+                date: dateVal,
+                recipientBoss: document.getElementById("prop-recipient-boss")?.value.trim() || "Ban Lãnh Đạo Tổng Công ty PVEP",
+                dept: document.getElementById("prop-dept")?.value.trim() || "Ban Truyền thông & VHDN",
+                requester: document.getElementById("prop-requester")?.value.trim() || "Ban Tổ Chức PVEP",
+                purpose: document.getElementById("prop-purpose")?.value.trim() || "Xuất ấn phẩm quà tặng phục vụ sự kiện",
+                targetGuests: document.getElementById("prop-target-guests")?.value.trim() || "Đoàn Đại biểu & Khách mời VIP",
+                items: items,
+                status: "pending",
+                createdAt: new Date().toLocaleString("vi-VN")
+            };
+        }
+
+        function formatVnDateText(dateStr) {
+            if (!dateStr || !dateStr.includes("-")) {
+                const n = new Date();
+                return `ngày ${String(n.getDate()).padStart(2, "0")} tháng ${String(n.getMonth() + 1).padStart(2, "0")} năm ${n.getFullYear()}`;
+            }
+            const parts = dateStr.split("-");
+            return `ngày ${parts[2]} tháng ${parts[1]} năm ${parts[0]}`;
+        }
+
+        function buildProposalA4InnerHtml(data) {
+            const totalQty = data.items.reduce((acc, it) => acc + (Number(it.qty) || 0), 0);
+            const rowsHtml = data.items.length > 0
+                ? data.items.map((it, idx) => `
+                    <tr>
+                        <td style="border:1px solid #334155;padding:7px 8px;text-align:center;">${idx + 1}</td>
+                        <td style="border:1px solid #334155;padding:7px 8px;text-align:center;font-weight:700;">#${escapeHtml(it.code)}</td>
+                        <td style="border:1px solid #334155;padding:7px 10px;font-weight:700;">${escapeHtml(it.name)}</td>
+                        <td style="border:1px solid #334155;padding:7px 8px;text-align:center;">${escapeHtml(it.unit)}</td>
+                        <td style="border:1px solid #334155;padding:7px 8px;text-align:center;">${it.avail}</td>
+                        <td style="border:1px solid #334155;padding:7px 8px;text-align:center;font-weight:800;color:#0f172a;">${it.qty}</td>
+                        <td style="border:1px solid #334155;padding:7px 10px;">${escapeHtml(it.note || "")}</td>
+                    </tr>
+                `).join("")
+                : `<tr><td colspan="7" style="border:1px solid #334155;padding:14px;text-align:center;color:#64748b;font-style:italic;">Chưa chọn sản phẩm nào trong tờ trình này.</td></tr>`;
+
+            return `
+                <div style="font-family:'Times New Roman','Be Vietnam Pro',serif;color:#0f172a;line-height:1.5;font-size:13px;">
+                    <!-- Quốc hiệu & Tiêu ngữ hành chính -->
+                    <table style="width:100%;border-collapse:collapse;margin-bottom:18px;">
+                        <tr>
+                            <td style="width:50%;vertical-align:top;text-align:center;padding-right:10px;">
+                                <div style="font-size:11px;font-weight:600;text-transform:uppercase;">TẬP ĐOÀN CÔNG NGHIỆP - NĂNG LƯỢNG QUỐC GIA</div>
+                                <div style="font-size:12px;font-weight:800;text-transform:uppercase;margin-top:2px;">TỔNG CÔNG TY THĂM DÒ KHAI THÁC DẦU KHÍ (PVEP)</div>
+                                <div style="width:90px;height:1px;background:#0f172a;margin:6px auto;"></div>
+                                <div style="font-size:12px;margin-top:4px;">Số: <strong>${escapeHtml(data.code)}</strong></div>
+                            </td>
+                            <td style="width:50%;vertical-align:top;text-align:center;padding-left:10px;">
+                                <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                                <div style="font-size:12px;font-weight:700;margin-top:2px;">Độc lập - Tự do - Hạnh phúc</div>
+                                <div style="width:120px;height:1px;background:#0f172a;margin:6px auto;"></div>
+                                <div style="font-size:12px;font-style:italic;margin-top:4px;">Hà Nội, ${formatVnDateText(data.date)}</div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Tiêu đề Tờ trình -->
+                    <div style="text-align:center;margin:20px 0 18px 0;">
+                        <div style="font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.03em;color:#0f172a;">TỜ TRÌNH ĐỀ XUẤT XUẤT KHO QUÀ TẶNG</div>
+                        <div style="font-size:13px;font-style:italic;margin-top:4px;color:#334155;">(V/v: Cấp phát ấn phẩm quà tặng phục vụ đối ngoại &amp; sự kiện PVEP)</div>
+                    </div>
+
+                    <!-- Kính gửi & Thông tin chung -->
+                    <div style="margin-bottom:14px;font-size:13px;">
+                        <p style="margin:4px 0;"><strong>Kính gửi:</strong> ${escapeHtml(data.recipientBoss)}</p>
+                        <p style="margin:4px 0;"><strong>Đơn vị / Bộ phận đề xuất:</strong> ${escapeHtml(data.dept)}</p>
+                        <p style="margin:4px 0;"><strong>Người lập tờ trình:</strong> ${escapeHtml(data.requester)}</p>
+                        <p style="margin:4px 0;"><strong>Mục đích xuất kho:</strong> ${escapeHtml(data.purpose)}</p>
+                        <p style="margin:4px 0;"><strong>Đối tượng / Khách mời nhận quà:</strong> ${escapeHtml(data.targetGuests)}</p>
+                    </div>
+
+                    <p style="margin:10px 0;">Kính trình Ban Lãnh đạo xem xét và phê duyệt xuất kho các ấn phẩm quà tặng theo danh mục chi tiết dưới đây:</p>
+
+                    <!-- Bảng danh mục quà tặng -->
+                    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px;">
+                        <thead>
+                            <tr style="background:#f1f5f9;">
+                                <th style="border:1px solid #334155;padding:8px 6px;text-align:center;width:40px;">STT</th>
+                                <th style="border:1px solid #334155;padding:8px 6px;text-align:center;width:72px;">Mã SKU</th>
+                                <th style="border:1px solid #334155;padding:8px 10px;text-align:left;">Tên Ấn Phẩm Quà Tặng</th>
+                                <th style="border:1px solid #334155;padding:8px 6px;text-align:center;width:76px;">ĐVT</th>
+                                <th style="border:1px solid #334155;padding:8px 6px;text-align:center;width:70px;">Tồn kho</th>
+                                <th style="border:1px solid #334155;padding:8px 6px;text-align:center;width:78px;">SL đề xuất</th>
+                                <th style="border:1px solid #334155;padding:8px 10px;text-align:left;">Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHtml}
+                            <tr style="background:#f8fafc;font-weight:800;">
+                                <td colspan="5" style="border:1px solid #334155;padding:8px 10px;text-align:right;">TỔNG CỘNG SỐ LƯỢNG ĐỀ XUẤT XUẤT KHO:</td>
+                                <td style="border:1px solid #334155;padding:8px 6px;text-align:center;font-size:14px;">${totalQty}</td>
+                                <td style="border:1px solid #334155;padding:8px 10px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin:12px 0 24px 0;">Bộ phận đề xuất cam kết sử dụng đúng mục đích, trao tặng đúng đối tượng và thực hiện đối soát đầy đủ trên hệ thống sau khi hoàn tất cấp phát. Kính trình Lãnh đạo xem xét phê duyệt./.</p>
+
+                    <!-- Khối 3 chữ ký -->
+                    <table style="width:100%;border-collapse:collapse;margin-top:24px;text-align:center;font-size:12.5px;">
+                        <tr>
+                            <td style="width:33.33%;vertical-align:top;padding:0 6px;">
+                                <div style="font-weight:800;text-transform:uppercase;">NGƯỜI LẬP PHIẾU</div>
+                                <div style="font-style:italic;font-size:11.5px;color:#475569;">(Ký, ghi rõ họ tên)</div>
+                                <div style="height:68px;"></div>
+                                <div style="font-weight:700;">${escapeHtml(data.requester)}</div>
+                            </td>
+                            <td style="width:33.33%;vertical-align:top;padding:0 6px;">
+                                <div style="font-weight:800;text-transform:uppercase;">PHỤ TRÁCH KHO / TRƯỞNG BỘ PHẬN</div>
+                                <div style="font-style:italic;font-size:11.5px;color:#475569;">(Ký, ghi rõ họ tên)</div>
+                                <div style="height:68px;"></div>
+                                <div style="font-weight:700;">.........................................</div>
+                            </td>
+                            <td style="width:33.33%;vertical-align:top;padding:0 6px;">
+                                <div style="font-weight:800;text-transform:uppercase;">LÃNH ĐẠO PHÊ DUYỆT</div>
+                                <div style="font-style:italic;font-size:11.5px;color:#475569;">(Ký duyệt &amp; đóng dấu)</div>
+                                <div style="height:68px;"></div>
+                                <div style="font-weight:700;">.........................................</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderProposalLivePreview() {
+            const box = document.getElementById("proposal-a4-preview");
+            if (!box) return;
+            const data = gatherCurrentProposalData();
+            box.innerHTML = buildProposalA4InnerHtml(data);
+        }
+
+        function printProposalA4Document(savedProposalId) {
+            let data = null;
+            if (savedProposalId) {
+                data = loadProposalsStore().find(x => x.id === savedProposalId);
+            }
+            if (!data) {
+                data = gatherCurrentProposalData();
+            }
+            if (!data || !data.items || data.items.length === 0) {
+                alert("Vui lòng chọn ít nhất 1 sản phẩm trước khi in bản trình duyệt!");
+                return;
+            }
+
+            const htmlBody = buildProposalA4InnerHtml(data);
+            const win = window.open("", "_blank", "width=900,height=1100");
+            if (win) {
+                win.document.write(`<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tờ Trình Xuất Kho - ${escapeHtml(data.code)}</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 18mm; }
+body { margin: 0; padding: 0; background: #ffffff; color: #0f172a; }
+@media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>${htmlBody}</body>
+</html>`);
+                win.document.close();
+                win.focus();
+                setTimeout(() => { win.print(); }, 250);
+            } else {
+                // Fallback nếu trình duyệt chặn popup
+                showAutoSaveToast("Trình duyệt đang chặn cửa sổ in mới — hãy cho phép Pop-up hoặc bấm Ctrl/Cmd + P.");
+            }
+        }
+
+        function loadProposalsStore() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY_PROPOSALS);
+                if (raw) return JSON.parse(raw) || [];
+            } catch (e) {}
+            return [];
+        }
+
+        function saveCurrentProposal() {
+            const data = gatherCurrentProposalData();
+            if (!data.items || data.items.length === 0) {
+                alert("Vui lòng chọn ít nhất 1 ấn phẩm quà tặng để lưu tờ trình!");
+                return;
+            }
+            const list = loadProposalsStore();
+            list.unshift(data);
+            localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(list.slice(0, 50)));
+            addStockLog(`Lập tờ trình xuất kho ${data.code}`, data.items.map(i => i.code).join(","), 0, data.items.reduce((a, b) => a + b.qty, 0));
+            renderProposalHistory();
+            showAutoSaveToast(`✓ Đã lưu tờ trình ${data.code} vào danh sách chờ duyệt!`);
+
+            // Tăng mã tờ trình cho lần lập tiếp theo
+            const codeEl = document.getElementById("prop-code");
+            if (codeEl) {
+                const now = new Date();
+                const seq = String(list.length + 1).padStart(2, "0");
+                codeEl.value = `TT-PVEP-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,"0")}${String(now.getDate()).padStart(2,"0")}-${seq}`;
+                renderProposalLivePreview();
+            }
+        }
+
+        function approveAndDeductProposal(proposalId) {
+            const proposals = loadProposalsStore();
+            const propIdx = proposals.findIndex(x => x.id === proposalId);
+            if (propIdx < 0) return;
+            const prop = proposals[propIdx];
+            if (prop.status === "approved") return;
+
+            const products = loadProductsStore();
+            for (const it of prop.items) {
+                const pIdx = products.findIndex(p => p.code === it.code);
+                if (pIdx >= 0) {
+                    const oldVal = Number(products[pIdx].stock) || 0;
+                    const newVal = Math.max(0, oldVal - (Number(it.qty) || 0));
+                    products[pIdx].stock = newVal;
+                    addStockLog(`Xuất kho theo Tờ trình đã duyệt (${prop.code})`, it.code, oldVal, newVal);
+                }
+            }
+
+            prop.status = "approved";
+            prop.approvedAt = new Date().toLocaleString("vi-VN");
+            localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(proposals));
+            saveProductsStore(products, false, `✓ Đã duyệt tờ trình ${prop.code} & trừ tồn kho thành công!`);
+            renderProposalHistory();
+            renderProposalLivePreview();
+        }
+
+        function renderProposalHistory() {
+            const box = document.getElementById("proposal-history-list");
+            if (!box) return;
+            const list = loadProposalsStore();
+            if (list.length === 0) {
+                box.innerHTML = `<div class="p-6 text-center text-xs text-slate-400 font-semibold bg-[#f8fafc] rounded-2xl border border-slate-200">Chưa có tờ trình nào được lưu. Chọn sản phẩm và bấm "Lưu Tờ Trình Chờ Duyệt" để theo dõi.</div>`;
+                return;
+            }
+
+            box.innerHTML = list.map(prop => {
+                const isApproved = prop.status === "approved";
+                const totalQty = (prop.items || []).reduce((a, b) => a + (Number(b.qty) || 0), 0);
+                const itemsText = (prop.items || []).map(i => `#${i.code} (${i.qty} ${i.unit})`).join(", ");
+
+                return `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4 rounded-2xl bg-[#f8fafc] border border-slate-200 hover:border-slate-300 transition-colors">
+                        <div class="min-w-0 space-y-1">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded-lg bg-white border border-slate-200 text-[#303c78] font-black text-xs whitespace-nowrap">${escapeHtml(prop.code)}</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold whitespace-nowrap ${isApproved ? 'bg-emerald-50 text-[#13a052] border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}">
+                                    ${isApproved ? '✓ Đã duyệt &amp; Xuất kho' : '⏳ Chờ Sếp ký duyệt'}
+                                </span>
+                                <span class="text-xs text-slate-500 whitespace-nowrap">${escapeHtml(prop.createdAt || '')}</span>
+                            </div>
+                            <div class="text-xs font-bold text-[#0f172a]">${escapeHtml(prop.purpose)}</div>
+                            <div class="text-xs text-slate-600">Sản phẩm: <strong>${escapeHtml(itemsText)}</strong> · Tổng: <strong>${totalQty}</strong> · Người lập: ${escapeHtml(prop.requester)}</div>
+                        </div>
+
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button type="button" onclick="printProposalA4Document('${escapeHtml(prop.id)}')" class="h-8 px-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-xs font-bold text-[#303c78] whitespace-nowrap transition-colors">
+                                🖨️ In lại A4
+                            </button>
+                            ${!isApproved ? `
+                                <button type="button" onclick="approveAndDeductProposal('${escapeHtml(prop.id)}')" class="h-8 px-3 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-extrabold whitespace-nowrap transition-colors">
+                                    ✓ Sếp đã ký → Trừ kho
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join("");
         }
 
         document.addEventListener("DOMContentLoaded", () => {
