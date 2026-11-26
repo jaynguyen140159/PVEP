@@ -2973,7 +2973,7 @@ window.MESH_DATA = {
         <!-- Thông báo Tự Động Lưu (Toast) -->
         <div id="auto-save-toast" class="fixed bottom-6 right-6 z-[140] hidden items-center gap-2.5 px-4 py-3 rounded-xl bg-[#0f172a] text-white text-xs font-bold shadow-xl border border-slate-700">
             <span class="w-2 h-2 rounded-full bg-[#13a052]"></span>
-            <span id="auto-save-toast-text">Đã tự động lưu thay đổi tồn kho</span>
+            <span id="auto-save-toast-text">Đã lưu thay đổi tồn kho</span>
         </div>
 
         <!-- =========================================================================
@@ -3033,29 +3033,17 @@ window.MESH_DATA = {
                     <div>
                         <span class="text-[11px] font-bold uppercase tracking-wider text-[#2E72BB]">Xác Thực Nội Bộ</span>
                         <h2 class="text-2xl font-bold text-slate-900 tracking-tight mt-1">Đăng nhập Hệ thống</h2>
-                        <p class="text-sm text-slate-500 mt-1">Chọn nhanh vai trò vận hành hoặc nhập tài khoản được cấp quyền.</p>
-                    </div>
-
-                    <!-- Thẻ chọn nhanh tài khoản theo vai trò (RBAC) -->
-                    <div class="grid grid-cols-2 gap-2.5">
-                        <button type="button" onclick="quickFillLogin('admin','pvep2026')" class="p-3 rounded-xl bg-[#F8FAFC] hover:bg-[#EEF4FB] border border-slate-200 hover:border-[#2E72BB]/50 text-left transition-colors">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-[#1E3A5F] block whitespace-nowrap">Quản Trị Viên</span>
-                            <span class="text-xs text-slate-500 mt-0.5 block font-mono whitespace-nowrap">admin / pvep2026</span>
-                        </button>
-                        <button type="button" onclick="quickFillLogin('nhanvien','123456')" class="p-3 rounded-xl bg-[#F8FAFC] hover:bg-[#EEF4FB] border border-slate-200 hover:border-[#2E72BB]/50 text-left transition-colors">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-700 block whitespace-nowrap">Nhân Viên Kho</span>
-                            <span class="text-xs text-slate-500 mt-0.5 block font-mono whitespace-nowrap">nhanvien / 123456</span>
-                        </button>
+                        <p class="text-sm text-slate-500 mt-1">Nhập tên đăng nhập và mật khẩu nội bộ được cấp quyền.</p>
                     </div>
 
                     <form id="pvep-login-form" onsubmit="submitAdminLogin(event)" class="space-y-4">
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Tài khoản</label>
-                            <input id="admin-user" type="text" required autocomplete="username" placeholder="Nhập tài khoản (VD: admin)" class="w-full h-10 px-3.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm font-medium focus:border-[#2E72BB] focus:ring-2 focus:ring-[#2E72BB]/15 focus:outline-none">
+                            <input id="admin-user" type="text" required autocomplete="username" placeholder="Nhập tên đăng nhập" class="w-full h-10 px-3.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm font-medium focus:border-[#2E72BB] focus:ring-2 focus:ring-[#2E72BB]/15 focus:outline-none">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Mật khẩu</label>
-                            <input id="admin-pass" type="password" required autocomplete="current-password" placeholder="••••••••" class="w-full h-10 px-3.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm font-medium focus:border-[#2E72BB] focus:ring-2 focus:ring-[#2E72BB]/15 focus:outline-none">
+                            <input id="admin-pass" type="password" required autocomplete="current-password" placeholder="Nhập mật khẩu" class="w-full h-10 px-3.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm font-medium focus:border-[#2E72BB] focus:ring-2 focus:ring-[#2E72BB]/15 focus:outline-none">
                         </div>
 
                         <div id="admin-login-err" class="hidden p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 text-xs font-semibold text-center"></div>
@@ -3622,22 +3610,23 @@ window.MESH_DATA = {
     <!-- ===============================================================
          THANH NỔI BÁO CÁC SẢN PHẨM ĐANG CHỜ LƯU (STAGED STOCK BAR)
          =============================================================== -->
-    <div id="staged-stock-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[135] hidden w-[92%] max-w-2xl bg-white border-2 border-[#2e72bb] shadow-2xl rounded-3xl p-4 sm:p-5 flex-col sm:flex-row items-center justify-between gap-4">
+    <div id="staged-stock-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[135] hidden w-[92%] max-w-2xl bg-white border border-[#1E3A5F]/20 shadow-xl rounded-2xl p-4 flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-3 w-full sm:w-auto">
-            <div class="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-200 text-[#2e72bb] flex items-center justify-center shrink-0">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-[#B45309] flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
             </div>
-            <div>
-                <div id="staged-stock-summary" class="text-sm font-black text-[#0f172a]">Đang có 1 sản phẩm thay đổi số lượng (Chưa lưu)</div>
-                <div class="text-xs text-slate-500 mt-0.5">Bấm nút xác nhận bên phải để kiểm tra xung đột và lưu vào hệ thống.</div>
+            <div class="min-w-0">
+                <div id="staged-stock-summary" class="text-sm font-bold text-slate-900">Đang có 1 sản phẩm thay đổi số lượng (Chưa lưu)</div>
+                <div class="text-xs text-slate-500 mt-0.5">Thay đổi chưa được lưu vào kho cho đến khi bạn bấm xác nhận.</div>
             </div>
         </div>
-        <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end shrink-0">
-            <button type="button" onclick="cancelAllStagedChanges()" class="px-3.5 py-2.5 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-xs font-bold text-slate-700 transition-colors">
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end shrink-0">
+            <button type="button" onclick="cancelAllStagedChanges()" class="h-9 px-3.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-xs font-medium text-slate-700 transition-colors whitespace-nowrap">
                 Hủy thay đổi
             </button>
-            <button type="button" onclick="openStockConfirmModal()" class="px-5 py-2.5 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2">
-                <span>✓ Xác Nhận &amp; Lưu Kho</span>
+            <button type="button" onclick="openStockConfirmModal()" class="h-9 px-4 rounded-lg bg-[#1E3A5F] hover:bg-[#152943] text-white text-xs font-semibold shadow-xs transition-colors inline-flex items-center gap-1.5 whitespace-nowrap">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Xác Nhận &amp; Lưu Kho</span>
             </button>
         </div>
     </div>
@@ -3645,58 +3634,61 @@ window.MESH_DATA = {
     <!-- ===============================================================
          MODAL 1: XÁC NHẬN CẬP NHẬT TỒN KHO TRƯỚC KHI LƯU
          =============================================================== -->
-    <div id="confirm-stock-modal" class="hidden fixed inset-0 z-[150] bg-slate-900/60 flex items-center justify-center p-4">
-        <div class="bg-white border border-slate-200 rounded-3xl max-w-xl w-full p-6 sm:p-7 shadow-2xl space-y-5">
+    <div id="confirm-stock-modal" class="hidden fixed inset-0 z-[150] bg-slate-900/50 flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-5">
             <!-- Header -->
-            <div class="flex items-start justify-between border-b border-slate-200 pb-4">
+            <div class="flex items-start justify-between border-b border-slate-200/80 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#13a052] flex items-center justify-center shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <div class="w-10 h-10 rounded-xl bg-[#EEF4FB] border border-[#2E72BB]/20 text-[#1E3A5F] flex items-center justify-center shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-lg font-black text-[#303c78]">Xác Nhận Cập Nhật Số Lượng Kho</h3>
-                        <p class="text-xs text-slate-500 mt-0.5">Vui lòng kiểm tra lại số liệu trước khi hệ thống chính thức cập nhật.</p>
+                        <h3 class="text-base font-bold text-slate-900">Xác Nhận Cập Nhật Số Lượng Kho</h3>
+                        <p class="text-xs text-slate-500 mt-0.5">Kiểm tra lại số liệu thay đổi trước khi chính thức ghi nhận vào hệ thống.</p>
                     </div>
                 </div>
-                <button type="button" onclick="closeStockConfirmModal()" class="w-8 h-8 rounded-full bg-[#f8fafc] hover:bg-slate-200 border border-slate-200 text-slate-500 font-black text-sm flex items-center justify-center">✕</button>
+                <button type="button" onclick="closeStockConfirmModal()" class="w-8 h-8 rounded-lg bg-transparent hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
             </div>
 
             <!-- Nhân viên & Thời gian -->
-            <div class="bg-[#f8fafc] border border-slate-200 rounded-2xl p-3.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div class="bg-[#F8FAFC] border border-slate-200/80 rounded-xl p-3 flex flex-wrap items-center justify-between gap-2 text-xs">
                 <div class="flex items-center gap-2">
                     <span class="text-slate-500">Nhân viên thực hiện:</span>
-                    <span id="confirm-modal-staff-name" class="font-black text-[#0f172a]">Admin PVEP</span>
+                    <span id="confirm-modal-staff-name" class="font-semibold text-slate-900">Admin PVEP</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="text-slate-500">Thời gian:</span>
-                    <span id="confirm-modal-time" class="font-bold text-[#303c78]">--:--:--</span>
+                    <span id="confirm-modal-time" class="font-semibold text-[#1E3A5F] tabular-nums">--:--:--</span>
                 </div>
             </div>
 
             <!-- Danh sách các sản phẩm thay đổi -->
             <div class="space-y-2">
-                <span class="text-xs font-black uppercase tracking-wider text-slate-400 block">Danh Sách Điều Chỉnh Tồn Kho</span>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block">Danh Sách Điều Chỉnh Tồn Kho</span>
                 <div id="confirm-modal-items" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
             </div>
 
             <!-- Hộp lưu ý chống đụng độ đồng thời -->
-            <div class="p-3.5 rounded-2xl bg-blue-50 border border-blue-200 text-xs text-[#2e72bb] space-y-1">
-                <div class="font-bold flex items-center gap-1.5">
-                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span>Cơ chế bảo vệ khi nhiều người cùng nhập:</span>
+            <div class="p-3.5 rounded-xl bg-[#EEF4FB] border border-[#2E72BB]/20 text-xs text-[#1E3A5F] space-y-1">
+                <div class="font-semibold flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-[#2E72BB] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Cơ chế bảo vệ khi nhiều người cùng nhập</span>
                 </div>
                 <div class="text-[11.5px] text-slate-600 leading-relaxed">
-                    Hệ thống sẽ tự động kiểm tra số lượng kho thực tế mới nhất trước khi ghi nhận. Nếu có nhân viên khác vừa cập nhật cùng thời điểm, hệ thống sẽ cảnh báo xung đột và hướng dẫn bạn gộp số liệu để không bị mất mát dữ liệu!
+                    Hệ thống tự động kiểm tra tồn kho thực tế mới nhất trước khi ghi nhận để tránh ghi đè nhầm khi có nhiều người cập nhật đồng thời.
                 </div>
             </div>
 
             <!-- Nút thao tác -->
-            <div class="flex items-center justify-end gap-3 pt-2 border-t border-slate-200">
-                <button type="button" onclick="closeStockConfirmModal()" class="px-4 py-2.5 rounded-xl bg-[#f1f5f9] hover:bg-slate-200 border border-slate-300 text-xs font-bold text-slate-700 transition-colors">
-                    Xem lại / Đóng
+            <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-slate-200/80">
+                <button type="button" onclick="closeStockConfirmModal()" class="h-9 px-4 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-xs font-medium text-slate-700 transition-colors whitespace-nowrap">
+                    Quay lại
                 </button>
-                <button id="btn-do-confirm-save" type="button" onclick="executeSafeStockCommit()" class="px-5 py-2.5 rounded-xl bg-[#13a052] hover:bg-emerald-700 text-white text-xs font-extrabold shadow-md hover:shadow-lg transition-all flex items-center gap-2">
-                    <span>✓ Đồng Ý &amp; Lưu Vào Kho</span>
+                <button id="btn-do-confirm-save" type="button" onclick="executeSafeStockCommit()" class="h-9 px-4 rounded-lg bg-[#1E3A5F] hover:bg-[#152943] text-white text-xs font-semibold shadow-xs transition-colors inline-flex items-center gap-1.5 whitespace-nowrap">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span>Xác Nhận Lưu Vào Kho</span>
                 </button>
             </div>
         </div>
@@ -3705,53 +3697,53 @@ window.MESH_DATA = {
     <!-- ===============================================================
          MODAL 2: CẢNH BÁO ĐỤNG ĐỘ DỮ LIỆU ĐỒNG THỜI & GIẢI QUYẾT XUNG ĐỘT
          =============================================================== -->
-    <div id="stock-conflict-modal" class="hidden fixed inset-0 z-[160] bg-slate-900/70 flex items-center justify-center p-4">
-        <div class="bg-white border-2 border-amber-400 rounded-3xl max-w-xl w-full p-6 sm:p-7 shadow-2xl space-y-5">
+    <div id="stock-conflict-modal" class="hidden fixed inset-0 z-[160] bg-slate-900/60 flex items-center justify-center p-4">
+        <div class="bg-white border border-amber-300 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-5">
             <!-- Header -->
-            <div class="flex items-center gap-3 border-b border-slate-200 pb-4">
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-300 text-amber-600 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <div class="flex items-center gap-3 border-b border-slate-200/80 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-[#B45309] flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 </div>
                 <div>
-                    <span class="text-xs font-extrabold uppercase tracking-wider text-amber-600 block">Cảnh Báo Đụng Độ Dữ Liệu Đồng Thời</span>
-                    <h3 class="text-lg font-black text-[#0f172a]">Kho Hàng Vừa Được Nhân Viên Khác Cập Nhật!</h3>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-[#B45309] block">Cảnh Báo Đụng Độ Dữ Liệu Đồng Thời</span>
+                    <h3 class="text-base font-bold text-slate-900">Kho Hàng Vừa Được Nhân Viên Khác Cập Nhật</h3>
                 </div>
             </div>
 
             <p class="text-xs text-slate-600 leading-relaxed">
-                Trong lúc bạn đang thao tác, một nhân viên khác đã vừa lưu số lượng tồn kho mới lên hệ thống. Dưới đây là bảng so sánh số liệu:
+                Trong lúc bạn đang thao tác, một nhân viên khác vừa lưu số lượng tồn kho mới lên hệ thống. Dưới đây là bảng so sánh số liệu:
             </p>
 
             <!-- Chi tiết so sánh xung đột -->
-            <div id="conflict-modal-details" class="space-y-3 bg-[#f8fafc] border border-slate-200 rounded-2xl p-4 text-xs"></div>
+            <div id="conflict-modal-details" class="space-y-3 bg-[#F8FAFC] border border-slate-200/80 rounded-xl p-4 text-xs"></div>
 
             <!-- 3 Lựa chọn giải quyết -->
-            <div class="space-y-2.5">
-                <span class="text-xs font-black uppercase tracking-wider text-[#303c78] block">Chọn Phương Thức Xử Lý:</span>
+            <div class="space-y-2">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block">Chọn Phương Thức Xử Lý</span>
                 
                 <!-- Lựa chọn 1: Delta Merge (Khuyên dùng) -->
-                <button type="button" onclick="resolveConflictWithDeltaMerge()" class="w-full text-left p-3.5 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border-2 border-[#13a052] transition-colors flex items-start gap-3">
-                    <span class="w-6 h-6 rounded-full bg-[#13a052] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+                <button type="button" onclick="resolveConflictWithDeltaMerge()" class="w-full text-left p-3.5 rounded-xl bg-emerald-50/70 hover:bg-emerald-50 border border-emerald-300 transition-colors flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-[#0F8A4B] text-white flex items-center justify-center font-semibold text-xs shrink-0 mt-0.5">1</span>
                     <div>
-                        <div class="text-xs font-black text-[#13a052]">Khuyên dùng: Hợp nhất mức chênh lệch (Delta Merge)</div>
-                        <div class="text-[11.5px] text-slate-600 mt-0.5">Cộng/trừ mức thay đổi của bạn vào số lượng thực tế mới nhất. Cả số liệu của bạn và đồng nghiệp đều được bảo toàn trọn vẹn.</div>
+                        <div class="text-xs font-semibold text-[#0F8A4B]">Khuyên dùng: Hợp nhất mức chênh lệch (Delta Merge)</div>
+                        <div class="text-[11.5px] text-slate-600 mt-0.5">Cộng/trừ mức thay đổi của bạn vào số lượng thực tế mới nhất để bảo toàn cả hai thao tác.</div>
                     </div>
                 </button>
 
                 <!-- Lựa chọn 2: Ghi đè tuyệt đối -->
-                <button type="button" onclick="resolveConflictWithOverwrite()" class="w-full text-left p-3 rounded-2xl bg-white hover:bg-slate-50 border border-slate-300 transition-colors flex items-start gap-3">
-                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+                <button type="button" onclick="resolveConflictWithOverwrite()" class="w-full text-left p-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 transition-colors flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-semibold text-xs shrink-0 mt-0.5">2</span>
                     <div>
-                        <div class="text-xs font-bold text-slate-800">Ghi đè giá trị bạn đã nhập (Force Overwrite)</div>
+                        <div class="text-xs font-semibold text-slate-800">Ghi đè giá trị bạn đã nhập</div>
                         <div class="text-[11.5px] text-slate-500 mt-0.5">Lưu số lượng chính xác bạn vừa nhập, bỏ qua thay đổi của người khác.</div>
                     </div>
                 </button>
 
                 <!-- Lựa chọn 3: Hủy bỏ & Tải lại -->
-                <button type="button" onclick="resolveConflictWithReload()" class="w-full text-left p-3 rounded-2xl bg-white hover:bg-slate-50 border border-slate-300 transition-colors flex items-start gap-3">
-                    <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+                <button type="button" onclick="resolveConflictWithReload()" class="w-full text-left p-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 transition-colors flex items-start gap-3">
+                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-semibold text-xs shrink-0 mt-0.5">3</span>
                     <div>
-                        <div class="text-xs font-bold text-slate-800">Hủy thay đổi &amp; Tải lại số liệu mới nhất (Cancel &amp; Reload)</div>
+                        <div class="text-xs font-semibold text-slate-800">Hủy thay đổi &amp; Tải lại số liệu mới nhất</div>
                         <div class="text-[11.5px] text-slate-500 mt-0.5">Giữ nguyên số liệu đồng nghiệp vừa cập nhật và tải lại màn hình.</div>
                     </div>
                 </button>
@@ -4350,15 +4342,14 @@ window.MESH_DATA = {
         function logoutAdminPortal() {
             sessionStorage.removeItem(STORAGE_KEY_AUTH);
             updateStaffStatusIndicator();
-            document.getElementById("admin-dashboard-screen").classList.add("hidden");
-            document.getElementById("admin-login-screen").classList.remove("hidden");
-        }
-
-        function quickFillLogin(u, p) {
             const uEl = document.getElementById("admin-user");
             const pEl = document.getElementById("admin-pass");
-            if (uEl) uEl.value = u;
-            if (pEl) pEl.value = p;
+            const err = document.getElementById("admin-login-err");
+            if (uEl) uEl.value = "";
+            if (pEl) pEl.value = "";
+            if (err) err.classList.add("hidden");
+            document.getElementById("admin-dashboard-screen").classList.add("hidden");
+            document.getElementById("admin-login-screen").classList.remove("hidden");
         }
 
         function showAdminDashboard(staff) {
@@ -4600,15 +4591,16 @@ window.MESH_DATA = {
                                 <td class="py-3.5 px-2 whitespace-nowrap text-center">
                                     <div class="inline-flex items-center rounded-lg border ${isStaged ? 'border-amber-400 bg-amber-50/40' : 'border-slate-200 bg-white'} overflow-hidden h-7 shadow-2xs">
                                         <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-7 h-7 hover:bg-slate-100 text-slate-600 text-sm font-semibold border-r border-slate-200 transition-colors flex items-center justify-center" title="Cấp phát 1 phần">−</button>
-                                        <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-11 h-7 bg-transparent text-center text-xs font-bold tabular-nums ${isStaged ? 'text-amber-900' : 'text-slate-900'} focus:outline-none focus:bg-[#EEF4FB]/50">
+                                        <input id="quick-stock-${escapeHtml(p.code)}" type="number" min="0" value="${displayStock}" oninput="onStockInputTyping('${escapeHtml(p.code)}', this.value)" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-11 h-7 bg-transparent text-center text-xs font-bold tabular-nums ${isStaged ? 'text-amber-900' : 'text-slate-900'} focus:outline-none focus:bg-[#EEF4FB]/50">
                                         <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-7 h-7 hover:bg-slate-100 text-slate-600 text-sm font-semibold border-l border-slate-200 transition-colors flex items-center justify-center" title="Nhập thêm 1">+</button>
                                     </div>
                                     ${isStaged ? `
-                                        <div class="flex items-center justify-center gap-1 mt-1.5 whitespace-nowrap">
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-50 text-[#B45309] border border-amber-200 text-[10.5px] font-semibold">
-                                                Chờ lưu: ${staged.initialStock} → ${staged.stagedStock} (${staged.delta > 0 ? '+'+staged.delta : staged.delta})
+                                        <div class="flex items-center justify-center gap-1 mt-1 whitespace-nowrap">
+                                            <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-amber-50 text-[#B45309] border border-amber-200 text-[10px] font-semibold tabular-nums">
+                                                ${staged.initialStock} → ${staged.stagedStock} (${staged.delta > 0 ? '+'+staged.delta : staged.delta})
                                             </span>
-                                            <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="w-4 h-4 rounded-full bg-slate-200 hover:bg-rose-500 hover:text-white text-slate-600 text-[10px] font-bold flex items-center justify-center transition-colors" title="Hủy thay đổi này">✕</button>
+                                            <button type="button" onclick="openStockConfirmModal()" class="px-2 py-0.5 rounded bg-[#1E3A5F] hover:bg-[#152943] text-white text-[10px] font-semibold whitespace-nowrap transition-colors" title="Xác nhận &amp; lưu thay đổi">Lưu</button>
+                                            <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="w-4 h-4 rounded bg-slate-200 hover:bg-rose-500 hover:text-white text-slate-600 text-[10px] font-bold flex items-center justify-center transition-colors" title="Hủy thay đổi này">✕</button>
                                         </div>
                                     ` : ''}
                                 </td>
@@ -4683,15 +4675,18 @@ window.MESH_DATA = {
                                     <span class="text-xs font-medium text-slate-600">Điều phối:</span>
                                     <div class="inline-flex items-center rounded-lg border border-slate-200 bg-white overflow-hidden h-8">
                                         <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', -1)" class="w-8 h-8 hover:bg-slate-100 text-slate-600 font-semibold border-r border-slate-200" title="Cấp phát 1">−</button>
-                                        <input type="number" min="0" value="${displayStock}" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-16 h-8 bg-transparent text-center font-bold text-xs tabular-nums text-slate-900 focus:outline-none">
+                                        <input type="number" min="0" value="${displayStock}" oninput="onStockInputTyping('${escapeHtml(p.code)}', this.value)" onchange="setStockDirect('${escapeHtml(p.code)}', this.value)" class="w-16 h-8 bg-transparent text-center font-bold text-xs tabular-nums text-slate-900 focus:outline-none">
                                         <button type="button" onclick="adjustStockQuick('${escapeHtml(p.code)}', 1)" class="w-8 h-8 hover:bg-slate-100 text-slate-600 font-semibold border-l border-slate-200" title="Nhập thêm 1">+</button>
                                     </div>
                                 </div>
 
                                 ${isStaged ? `
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-amber-50 border border-amber-200 text-xs">
-                                        <span class="text-[#B45309] font-semibold">Chờ lưu: ${staged.initialStock} → ${staged.stagedStock} (${staged.delta > 0 ? '+'+staged.delta : staged.delta})</span>
-                                        <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="px-2 py-0.5 rounded bg-white border border-amber-200 text-slate-600 hover:text-rose-600 text-[11px] font-semibold">Hủy</button>
+                                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs">
+                                        <span class="text-[#B45309] font-semibold tabular-nums">Chờ lưu: ${staged.initialStock} → ${staged.stagedStock} (${staged.delta > 0 ? '+'+staged.delta : staged.delta})</span>
+                                        <div class="flex items-center gap-1.5 shrink-0">
+                                            <button type="button" onclick="openStockConfirmModal()" class="px-2.5 py-1 rounded-md bg-[#1E3A5F] hover:bg-[#152943] text-white text-[11px] font-semibold whitespace-nowrap transition-colors">Xác nhận lưu</button>
+                                            <button type="button" onclick="cancelSingleStagedChange('${escapeHtml(p.code)}')" class="px-2 py-1 rounded-md bg-white border border-amber-200 text-slate-600 hover:text-rose-600 text-[11px] font-semibold whitespace-nowrap">Hủy</button>
+                                        </div>
                                     </div>
                                 ` : ''}
 
@@ -4838,6 +4833,32 @@ window.MESH_DATA = {
             setStagedStockChange(code, item.name, baseStock, newVal);
         }
 
+        function onStockInputTyping(code, rawVal) {
+            if (!isStaffAuthenticated() || String(rawVal).trim() === "") return;
+            const list = loadProductsStore();
+            const item = list.find(x => x.code === code);
+            if (!item) return;
+
+            const baseStock = Number(item.stock) || 0;
+            const newVal = Math.max(0, parseInt(rawVal, 10) || 0);
+            const initial = (stagedStockChanges[code] !== undefined)
+                ? stagedStockChanges[code].initialStock
+                : baseStock;
+
+            if (newVal === initial) {
+                delete stagedStockChanges[code];
+            } else {
+                stagedStockChanges[code] = {
+                    code: code,
+                    name: item.name,
+                    initialStock: initial,
+                    stagedStock: newVal,
+                    delta: newVal - initial
+                };
+            }
+            updateStagedStockUI();
+        }
+
         function setStagedStockChange(code, name, baseStock, newVal) {
             const initial = (stagedStockChanges[code] !== undefined)
                 ? stagedStockChanges[code].initialStock
@@ -4913,21 +4934,21 @@ window.MESH_DATA = {
                     const item = stagedStockChanges[code];
                     const deltaStr = item.delta > 0 ? ("+" + item.delta) : String(item.delta);
                     const deltaBadge = item.delta > 0
-                        ? "bg-emerald-50 text-[#13a052] border-emerald-200"
-                        : "bg-red-50 text-red-600 border-red-200";
+                        ? "bg-emerald-50 text-[#0F8A4B] border-emerald-200"
+                        : "bg-rose-50 text-rose-700 border-rose-200";
                     return `
-                        <div class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                            <div class="flex items-center gap-3">
-                                <span class="px-2.5 py-1 rounded-xl bg-slate-100 border border-slate-200 font-black text-xs text-[#303c78]">
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 font-mono font-semibold text-xs text-slate-700 shrink-0">
                                     #${escapeHtml(item.code)}
                                 </span>
-                                <div>
-                                    <div class="font-black text-sm text-[#0f172a]">${escapeHtml(item.name)}</div>
+                                <div class="min-w-0">
+                                    <div class="font-semibold text-sm text-slate-900 truncate">${escapeHtml(item.name)}</div>
                                     <div class="text-xs text-slate-500 mt-0.5">Tồn kho ban đầu: <strong class="text-slate-700">${item.initialStock}</strong> món</div>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl border text-xs font-black ${deltaBadge}">
+                            <div class="text-right shrink-0 ml-3">
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-semibold tabular-nums ${deltaBadge}">
                                     <span>${item.initialStock} → ${item.stagedStock}</span>
                                     <span>(${deltaStr})</span>
                                 </div>
@@ -4981,7 +5002,7 @@ window.MESH_DATA = {
                 const conflicts = detectStockConflicts();
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerHTML = `<span>✓ Đồng Ý &amp; Lưu Vào Kho</span>`;
+                    btn.innerHTML = `<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Xác Nhận Lưu Vào Kho</span>`;
                 }
 
                 if (conflicts.length > 0) {
