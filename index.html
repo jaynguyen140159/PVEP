@@ -5353,6 +5353,13 @@ window.MESH_DATA = {
             renderAdminProductsGrid();
         }
 
+        function onProposalQtyTyping(code, rawVal) {
+            if (!proposalSelection[code] || String(rawVal).trim() === "") return;
+            const n = Math.max(1, parseInt(rawVal, 10) || 1);
+            proposalSelection[code].qty = n;
+            renderProposalLivePreview();
+        }
+
         function updateProposalItemQty(code, val) {
             if (!proposalSelection[code]) return;
             const n = Math.max(1, parseInt(val, 10) || 1);
@@ -5428,13 +5435,13 @@ window.MESH_DATA = {
                             </button>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center">
-                            <div class="sm:col-span-5 inline-flex items-center rounded-lg border border-slate-200 bg-white overflow-hidden h-8">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                            <div class="w-full sm:w-[112px] shrink-0 inline-flex items-center rounded-lg border border-slate-200 bg-white overflow-hidden h-8">
                                 <button type="button" onclick="updateProposalItemQty('${escapeHtml(code)}', ${item.qty - 1})" class="w-8 h-8 hover:bg-slate-100 text-slate-600 text-xs font-semibold border-r border-slate-200 shrink-0">−</button>
-                                <input type="number" min="1" value="${item.qty}" onchange="updateProposalItemQty('${escapeHtml(code)}', this.value)" class="w-full h-8 bg-transparent text-center text-xs font-bold tabular-nums text-slate-900 focus:outline-none">
+                                <input type="number" min="1" value="${item.qty}" oninput="onProposalQtyTyping('${escapeHtml(code)}', this.value)" onchange="updateProposalItemQty('${escapeHtml(code)}', this.value)" class="flex-1 min-w-0 h-8 bg-transparent text-center text-xs font-bold tabular-nums text-slate-900 focus:outline-none">
                                 <button type="button" onclick="updateProposalItemQty('${escapeHtml(code)}', ${item.qty + 1})" class="w-8 h-8 hover:bg-slate-100 text-slate-600 text-xs font-semibold border-l border-slate-200 shrink-0">+</button>
                             </div>
-                            <div class="sm:col-span-7">
+                            <div class="flex-1 min-w-0">
                                 <input type="text" value="${escapeHtml(item.note || '')}" oninput="updateProposalItemNote('${escapeHtml(code)}', this.value)" placeholder="Ghi chú kèm theo..." class="w-full h-8 px-2.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:border-[#2E72BB] focus:outline-none">
                             </div>
                         </div>
