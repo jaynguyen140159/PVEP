@@ -463,8 +463,8 @@ function login(username, password) {
   username = String(username || '').trim().toLowerCase();
   password = String(password || '');
   var user = rows_(SHEET_USERS).filter(function (u) {
-    return String(u.Username).trim().toLowerCase() === username &&
-           String(u.TrangThai).trim() === 'HoatDong';
+    var un = String(u.Username || '').trim().toLowerCase();
+    return un !== '' && un === username && String(u.TrangThai || '').trim() === 'HoatDong';
   })[0];
   if (!user || String(user.Password) !== password) {
     return { ok: false, message: 'Tên đăng nhập hoặc mật khẩu không đúng.' };
