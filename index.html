@@ -3169,9 +3169,14 @@ window.MESH_DATA = {
                             <h2 id="adm-page-title" class="text-lg font-bold tracking-tight text-slate-900 mt-0.5 truncate">Bảng Điều Khiển Tồn Kho &amp; Ấn Phẩm</h2>
                         </div>
 
-                        <!-- Chỉ giữ 2 nút hành động toàn cục ở Header -->
+                        <!-- Trạng thái đồng bộ Cloud + 2 nút hành động toàn cục ở Header -->
                         <div class="flex items-center gap-2.5 shrink-0">
-                            <button type="button" onclick="refreshStockFromRemote(true)" class="h-9 inline-flex items-center gap-2 px-3.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-medium transition-colors whitespace-nowrap" title="Làm mới tồn kho từ máy chủ Google Sheet">
+                            <span id="cloud-sync-badge" class="hidden md:inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg bg-[#F8FAFC] border border-slate-200/80 text-[11px] font-medium text-slate-600 whitespace-nowrap" title="Trạng thái kết nối dữ liệu Google Sheets">
+                                <span id="cloud-sync-dot" class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                <span id="cloud-sync-text">Sẵn sàng</span>
+                            </span>
+
+                            <button type="button" onclick="refreshStockFromRemote(true)" class="h-9 inline-flex items-center gap-2 px-3.5 rounded-lg bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-medium transition-colors whitespace-nowrap" title="Làm mới tồn kho, tờ trình và nhật ký từ Google Sheet">
                                 <svg id="refresh-spinner" class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                                 <span>Đồng bộ Sheet</span>
                             </button>
@@ -3855,7 +3860,46 @@ window.MESH_DATA = {
             return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
         }
 
-        function saveProductsStore(list, silent, customMsg) {
+        function setCloudSyncStatus(state, label) {
+            const dot = document.getElementById("cloud-sync-dot");
+            const txt = document.getElementById("cloud-sync-text");
+            if (txt && label) txt.textContent = label;
+            if (!dot) return;
+            if (state === "synced") {
+                dot.className = "w-1.5 h-1.5 rounded-full bg-[#0F8A4B]";
+            } else if (state === "syncing") {
+                dot.className = "w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse";
+            } else if (state === "error") {
+                dot.className = "w-1.5 h-1.5 rounded-full bg-rose-500";
+            } else {
+                dot.className = "w-1.5 h-1.5 rounded-full bg-slate-400";
+            }
+        }
+
+        async function callAppsScriptApi(payload, timeoutMs) {
+            const controller = (typeof AbortController !== "undefined") ? new AbortController() : null;
+            const timer = controller ? setTimeout(() => controller.abort(), timeoutMs || 15000) : null;
+            try {
+                const res = await fetch(APPS_SCRIPT_EXEC_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "text/plain;charset=utf-8" },
+                    redirect: "follow",
+                    body: JSON.stringify(payload),
+                    signal: controller ? controller.signal : undefined
+                });
+                if (!res.ok) {
+                    return { ok: false, offline: true, message: "HTTP " + res.status };
+                }
+                const data = await res.json();
+                return data || { ok: false, offline: true };
+            } catch (e) {
+                return { ok: false, offline: true, message: String(e && e.message ? e.message : e) };
+            } finally {
+                if (timer) clearTimeout(timer);
+            }
+        }
+
+        function saveProductsStore(list, silent, customMsg, syncOpts) {
             localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(list));
             const lastUp = document.getElementById("stat-last-updated");
             if (lastUp) {
@@ -3865,19 +3909,46 @@ window.MESH_DATA = {
             renderAllProductViews();
             if (!silent) {
                 showAutoSaveToast(customMsg);
-                syncToGoogleSheet(list);
+                syncToGoogleSheet(list, syncOpts);
             }
         }
 
-        function syncToGoogleSheet(list) {
-            try {
-                fetch(APPS_SCRIPT_EXEC_URL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { "Content-Type": "text/plain;charset=utf-8" },
-                    body: JSON.stringify({ action: "syncProducts", products: list })
-                }).catch(() => {});
-            } catch (e) {}
+        async function syncToGoogleSheet(list, opts) {
+            const staff = isStaffAuthenticated();
+            if (!staff || !staff.token) {
+                setCloudSyncStatus("fallback", "Chế độ cục bộ");
+                return { ok: false, offline: true };
+            }
+            setCloudSyncStatus("syncing", "Đang đồng bộ...");
+            const res = await callAppsScriptApi({
+                action: "syncProducts",
+                token: staff.token,
+                products: list,
+                expectedStocks: (opts && opts.expectedStocks) || null,
+                force: !!(opts && opts.force)
+            });
+            if (res && res.ok) {
+                if (Array.isArray(res.products) && res.products.length > 0) {
+                    localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(res.products));
+                }
+                setCloudSyncStatus("synced", "Đã đồng bộ Sheet");
+                return res;
+            }
+            if (res && res.code === "CONFLICT" && Array.isArray(res.conflicts)) {
+                setCloudSyncStatus("error", "Phát hiện xung đột");
+                if (Array.isArray(res.liveProducts) && res.liveProducts.length > 0) {
+                    saveProductsStore(res.liveProducts, true);
+                }
+                openConflictResolutionModal(res.conflicts);
+                return res;
+            }
+            if (res && res.code === "SESSION_EXPIRED") {
+                setCloudSyncStatus("error", "Phiên hết hạn");
+                showAutoSaveToast("Phiên đăng nhập máy chủ đã hết hạn — vui lòng đăng nhập lại.");
+                return res;
+            }
+            setCloudSyncStatus("fallback", "Lưu cục bộ (Offline)");
+            return res;
         }
 
         function loadStockLogs() {
@@ -3888,21 +3959,25 @@ window.MESH_DATA = {
             return [];
         }
 
-        function addStockLog(actionText, code, oldVal, newVal) {
+        function addStockLog(actionText, code, oldVal, newVal, skipRemote) {
             try {
                 const staff = isStaffAuthenticated();
                 const actor = staff ? staff.name : "Quản trị viên";
-                const logs = loadStockLogs();
-                logs.unshift({
+                const entry = {
                     time: new Date().toLocaleString("vi-VN"),
                     actor: actor,
                     code: code,
                     action: actionText,
                     oldVal: oldVal,
                     newVal: newVal
-                });
-                localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(logs.slice(0, 30)));
+                };
+                const logs = loadStockLogs();
+                logs.unshift(entry);
+                localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(logs.slice(0, 50)));
                 renderStockLogs();
+                if (!skipRemote && staff && staff.token) {
+                    callAppsScriptApi({ action: "appendLog", token: staff.token, log: entry });
+                }
             } catch (e) {}
         }
 
@@ -4007,6 +4082,55 @@ window.MESH_DATA = {
                 }
             } catch (e) {}
         };
+
+        async function syncAllFromCloud(interactive) {
+            const staff = isStaffAuthenticated();
+            if (!staff || !staff.token) {
+                setCloudSyncStatus("fallback", "Chế độ cục bộ");
+                return new Promise(resolve => {
+                    fetchGoogleSheetLive(sheetProducts => {
+                        resolve({ ok: true, mode: "gviz", products: sheetProducts });
+                    });
+                    setTimeout(() => resolve({ ok: false }), 2500);
+                });
+            }
+
+            setCloudSyncStatus("syncing", "Đang đồng bộ...");
+            const res = await callAppsScriptApi({ action: "getAllData", token: staff.token });
+            if (res && res.ok) {
+                if (Array.isArray(res.products) && res.products.length > 0) {
+                    saveProductsStore(res.products, true);
+                }
+                if (Array.isArray(res.proposals)) {
+                    localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(res.proposals));
+                }
+                if (Array.isArray(res.logs)) {
+                    localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(res.logs));
+                }
+                renderAdminProductsGrid();
+                renderAdminQrCenter();
+                renderStockLogs();
+                renderProposalHistory();
+                renderProposalLivePreview();
+                setCloudSyncStatus("synced", "Đã đồng bộ Sheet");
+                const conflicts = detectStockConflicts();
+                if (conflicts.length > 0) {
+                    showAutoSaveToast("⚠️ Dữ liệu mới nhất có xung đột với các số bạn đang chỉnh sửa!");
+                } else if (interactive) {
+                    showAutoSaveToast("✓ Đã đồng bộ Kho, Tờ trình & Nhật ký từ Google Sheet");
+                }
+                return res;
+            }
+            if (res && res.code === "SESSION_EXPIRED") {
+                setCloudSyncStatus("error", "Phiên hết hạn");
+                return res;
+            }
+            setCloudSyncStatus("fallback", "Chế độ cục bộ");
+            fetchGoogleSheetLive(function() {
+                if (interactive) showAutoSaveToast("Đã làm mới tồn kho từ Google Sheet (GViz)");
+            });
+            return res;
+        }
 
         function fetchGoogleSheetLive(callback) {
             try {
@@ -4401,33 +4525,82 @@ window.MESH_DATA = {
             document.body.style.overflow = "";
         }
 
-        function submitAdminLogin(ev) {
+        async function sha256Hex(str) {
+            const buf = new TextEncoder().encode(str);
+            const digest = await crypto.subtle.digest("SHA-256", buf);
+            return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        async function submitAdminLogin(ev) {
             ev.preventDefault();
             const u = document.getElementById("admin-user").value.trim().toLowerCase();
             const p = document.getElementById("admin-pass").value;
             const err = document.getElementById("admin-login-err");
+            const btn = ev.target ? ev.target.querySelector('button[type="submit"]') : null;
+            const prevBtnHtml = btn ? btn.innerHTML : "";
 
-            const ACCOUNTS = {
-                admin:    { pass: "pvep2026", name: "Ban Tổ Chức PVEP", role: "Quản Trị Viên", initials: "AD" },
-                nhanvien: { pass: "123456",   name: "Nhân Viên Điều Phối", role: "Quản Kho", initials: "NV" }
-            };
+            if (err) err.classList.add("hidden");
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<svg class="animate-spin w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span>Đang xác thực...</span>`;
+            }
 
-            if (ACCOUNTS[u] && ACCOUNTS[u].pass === p) {
-                const session = { username: u, name: ACCOUNTS[u].name, role: ACCOUNTS[u].role, initials: ACCOUNTS[u].initials };
-                sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(session));
-                if (err) err.classList.add("hidden");
-                document.getElementById("admin-pass").value = "";
-                updateStaffStatusIndicator();
-                showAdminDashboard(session);
-            } else if (err) {
-                err.textContent = "Tên đăng nhập hoặc mật khẩu không đúng!";
-                err.classList.remove("hidden");
+            try {
+                // 1. Ưu tiên xác thực qua Google Apps Script (tab TAI_KHOAN)
+                const apiRes = await callAppsScriptApi({ action: "login", username: u, password: p }, 10000);
+                if (apiRes && apiRes.ok && apiRes.token && apiRes.user) {
+                    const session = Object.assign({}, apiRes.user, { token: apiRes.token, authMode: "server" });
+                    sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(session));
+                    document.getElementById("admin-pass").value = "";
+                    updateStaffStatusIndicator();
+                    setCloudSyncStatus("synced", "Đã kết nối Sheet");
+                    showAdminDashboard(session);
+                    return;
+                }
+
+                // Nếu máy chủ Apps Script đã cập nhật và từ chối sai mật khẩu -> báo lỗi ngay
+                if (apiRes && !apiRes.offline && apiRes.message && apiRes.message !== "Invalid action") {
+                    if (err) {
+                        err.textContent = apiRes.message;
+                        err.classList.remove("hidden");
+                    }
+                    return;
+                }
+
+                // 2. Fallback xác thực SHA-256 muối hóa khi ngoại tuyến hoặc chưa deploy Code.gs mới
+                const OFFLINE_AUTH_HASHES = {
+                    admin:    { hash: "8863733b3d23739cdb5b0260a91c335b5ee9e062322d634a709c605fe5499c9d", name: "Ban Tổ Chức PVEP", role: "Quản Trị Viên", initials: "AD" },
+                    nhanvien: { hash: "ab343ba1248774f807606101ccb53200b66ed59ecbf55d099380687b73c7541f", name: "Nhân Viên Điều Phối", role: "Quản Kho", initials: "NV" }
+                };
+                const computed = await sha256Hex("PVEP20::" + u + ":" + p);
+                const rec = OFFLINE_AUTH_HASHES[u];
+                if (rec && rec.hash === computed) {
+                    const session = { username: u, name: rec.name, role: rec.role, initials: rec.initials, authMode: "offline_fallback" };
+                    sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(session));
+                    document.getElementById("admin-pass").value = "";
+                    updateStaffStatusIndicator();
+                    setCloudSyncStatus("fallback", "Chế độ cục bộ");
+                    showAdminDashboard(session);
+                } else if (err) {
+                    err.textContent = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    err.classList.remove("hidden");
+                }
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = prevBtnHtml;
+                }
             }
         }
 
         function logoutAdminPortal() {
+            const staff = isStaffAuthenticated();
+            if (staff && staff.token) {
+                callAppsScriptApi({ action: "logout", token: staff.token });
+            }
             sessionStorage.removeItem(STORAGE_KEY_AUTH);
             updateStaffStatusIndicator();
+            setCloudSyncStatus("idle", "Sẵn sàng");
             const uEl = document.getElementById("admin-user");
             const pEl = document.getElementById("admin-pass");
             const err = document.getElementById("admin-login-err");
@@ -4460,6 +4633,8 @@ window.MESH_DATA = {
             renderStockLogs();
             updateProposalSelectionBadges();
             renderProposalHistory();
+            setCloudSyncStatus(staff && staff.token ? "synced" : "fallback", staff && staff.token ? "Đã kết nối Sheet" : "Chế độ cục bộ");
+            syncAllFromCloud(false);
         }
 
         function switchAdminView(view) {
@@ -5112,8 +5287,9 @@ window.MESH_DATA = {
             }, 300);
         }
 
-        function commitStagedStockFinal(customList) {
+        function commitStagedStockFinal(customList, forceOverwrite) {
             const list = customList || loadProductsStore();
+            const expectedStocks = {};
             let updatedCount = 0;
 
             for (const code in stagedStockChanges) {
@@ -5122,6 +5298,7 @@ window.MESH_DATA = {
                 if (idx >= 0) {
                     const oldVal = Number(list[idx].stock) || 0;
                     const newVal = staged.stagedStock;
+                    expectedStocks[code] = staged.initialStock;
                     list[idx].stock = newVal;
                     const deltaStr = staged.delta > 0 ? ("+" + staged.delta) : String(staged.delta);
                     addStockLog(`Xác nhận cập nhật tồn kho (${deltaStr})`, code, oldVal, newVal);
@@ -5129,7 +5306,10 @@ window.MESH_DATA = {
                 }
             }
 
-            saveProductsStore(list, false, "Đã lưu và đồng bộ an toàn số lượng kho " + updatedCount + " sản phẩm!");
+            saveProductsStore(list, false, "Đã lưu và đồng bộ an toàn số lượng kho " + updatedCount + " sản phẩm!", {
+                expectedStocks: expectedStocks,
+                force: !!forceOverwrite
+            });
             stagedStockChanges = {};
             activeConflicts = [];
             updateStagedStockUI();
@@ -5190,14 +5370,14 @@ window.MESH_DATA = {
                     stagedStockChanges[c.code].initialStock = c.liveStock;
                 }
             }
-            commitStagedStockFinal(list);
+            commitStagedStockFinal(list, false);
             showAutoSaveToast("✓ Đã hợp nhất chênh lệch (Delta Merge) thành công!");
         }
 
         // 2. Ghi đè tuyệt đối (Force Overwrite)
         function resolveConflictWithOverwrite() {
             const list = loadProductsStore();
-            commitStagedStockFinal(list);
+            commitStagedStockFinal(list, true);
             showAutoSaveToast("⚠️ Đã ghi đè số lượng kho theo giá trị bạn nhập!");
         }
 
@@ -5223,27 +5403,21 @@ window.MESH_DATA = {
         });
 
         // Nút bấm làm mới thủ công từ Google Sheet
-        function refreshStockFromRemote(interactive) {
+        async function refreshStockFromRemote(interactive) {
             const spinner = document.getElementById("refresh-spinner");
             if (spinner) spinner.classList.add("animate-spin");
 
-            fetchGoogleSheetLive(function(sheetProducts) {
-                if (spinner) spinner.classList.remove("animate-spin");
-                const conflicts = detectStockConflicts();
-                if (conflicts.length > 0) {
-                    showAutoSaveToast("⚠️ Dữ liệu mới nhất có xung đột với các số bạn đang chỉnh sửa!");
-                } else if (interactive) {
-                    showAutoSaveToast("✓ Đã đồng bộ dữ liệu kho mới nhất từ Google Sheet");
-                }
+            try {
+                await syncAllFromCloud(interactive);
                 const lastUp = document.getElementById("stat-last-updated");
                 if (lastUp) {
                     lastUp.textContent = "Lúc " + new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
                 }
-            });
-
-            setTimeout(() => {
-                if (spinner) spinner.classList.remove("animate-spin");
-            }, 2500);
+            } finally {
+                setTimeout(() => {
+                    if (spinner) spinner.classList.remove("animate-spin");
+                }, 400);
+            }
         }
 
         function viewProductOnSite(code) {
@@ -5755,6 +5929,21 @@ body { margin: 0; padding: 0; background: #ffffff; color: #0f172a; }
             list.unshift(data);
             localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(list.slice(0, 50)));
             addStockLog(`Lập tờ trình xuất kho ${data.code}`, data.items.map(i => i.code).join(","), 0, data.items.reduce((a, b) => a + b.qty, 0));
+            const staff = isStaffAuthenticated();
+            if (staff && staff.token) {
+                setCloudSyncStatus("syncing", "Đang lưu tờ trình...");
+                callAppsScriptApi({ action: "saveProposal", token: staff.token, proposal: data }).then(res => {
+                    if (res && res.ok) {
+                        if (Array.isArray(res.proposals)) {
+                            localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(res.proposals));
+                            renderProposalHistory();
+                        }
+                        setCloudSyncStatus("synced", "Đã đồng bộ Sheet");
+                    } else if (res && res.offline) {
+                        setCloudSyncStatus("fallback", "Lưu cục bộ (Offline)");
+                    }
+                });
+            }
             renderProposalHistory();
             showAutoSaveToast(`✓ Đã lưu tờ trình ${data.code} vào danh sách chờ duyệt!`);
 
@@ -5768,12 +5957,32 @@ body { margin: 0; padding: 0; background: #ffffff; color: #0f172a; }
             }
         }
 
-        function approveAndDeductProposal(proposalId) {
+        async function approveAndDeductProposal(proposalId) {
             const proposals = loadProposalsStore();
             const propIdx = proposals.findIndex(x => x.id === proposalId);
             if (propIdx < 0) return;
             const prop = proposals[propIdx];
             if (prop.status === "approved") return;
+
+            const staff = isStaffAuthenticated();
+            if (staff && staff.token) {
+                setCloudSyncStatus("syncing", "Đang duyệt & trừ kho...");
+                const res = await callAppsScriptApi({ action: "approveProposal", token: staff.token, proposalId: proposalId });
+                if (res && res.ok) {
+                    if (Array.isArray(res.products) && res.products.length > 0) saveProductsStore(res.products, true);
+                    if (Array.isArray(res.proposals)) localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(res.proposals));
+                    if (Array.isArray(res.logs)) localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(res.logs));
+                    renderAdminProductsGrid();
+                    renderStockLogs();
+                    renderProposalHistory();
+                    renderProposalLivePreview();
+                    setCloudSyncStatus("synced", "Đã đồng bộ Sheet");
+                    showAutoSaveToast(res.alreadyApproved
+                        ? `Tờ trình ${prop.code} đã được duyệt trước đó trên máy khác!`
+                        : `✓ Đã duyệt tờ trình ${prop.code} & trừ tồn kho trên Google Sheet!`);
+                    return;
+                }
+            }
 
             const products = loadProductsStore();
             for (const it of prop.items) {
@@ -5789,7 +5998,7 @@ body { margin: 0; padding: 0; background: #ffffff; color: #0f172a; }
             prop.status = "approved";
             prop.approvedAt = new Date().toLocaleString("vi-VN");
             localStorage.setItem(STORAGE_KEY_PROPOSALS, JSON.stringify(proposals));
-            saveProductsStore(products, false, `✓ Đã duyệt tờ trình ${prop.code} & trừ tồn kho thành công!`);
+            saveProductsStore(products, false, `✓ Đã duyệt tờ trình ${prop.code} & trừ tồn kho thành công!`, { force: true });
             renderProposalHistory();
             renderProposalLivePreview();
         }
